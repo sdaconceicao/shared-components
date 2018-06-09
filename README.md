@@ -11,7 +11,7 @@ Shared components library built with React
 yarn install
 
 ## Startup
-2. yarn start 
+yarn start 
 
 ## Testing
 yarn test:watch
