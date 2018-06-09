@@ -1,0 +1,9 @@
+# Ignore build and dist directories
+/build
+/dist
+/.gradle
+/node_modules
+/coverage
+.idea
+.nyc_output
+

@@ -1,0 +1,20 @@
+@import '../../../styles/utilities';
+
+.time-picker-wrapper{
+    height: 399px;
+    width: 300px;
+
+    margin-right: auto;
+    margin-top: -28px;
+}
+
+@include media-breakpoint-up(md) {
+    .time-picker-wrapper {
+        margin-left: auto;
+    }
+}
+@include media-breakpoint-down(sm) {
+    .time-picker-wrapper {
+        margin-left: -15px;
+    }
+}
