@@ -1,5 +1,18 @@
 @import '../../../styles/utilities';
 
+.time-picker{
+    input{
+        width: calc(100% - 42px);
+        display: inline-block;
+    }
+    .btn{
+        margin-top: -3px;
+        margin-bottom: 1px;
+        border: 1px solid #ced4da;
+    }
+}
+
+
 .time-picker-wrapper{
     height: 399px;
     width: 300px;

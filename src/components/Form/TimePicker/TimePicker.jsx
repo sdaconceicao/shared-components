@@ -30,7 +30,7 @@ class TimePicker extends Component {
         const {onChange, format} = this.props;
         if (e && e.value) {
             this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value}, ()=>{
-                onChange(this.state.value, this.props.id);
+                onChange( {value: e.value}, this.props.id);
             });
         } else {
             this.setPicker(null);
@@ -54,7 +54,7 @@ class TimePicker extends Component {
             {value, prettyValue, picker} = this.state;
 
         return (
-            <div className={`${className}`}>
+            <div className={`time-picker ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 {picker === 'time' &&
                     <TimePickerDialog
@@ -65,7 +65,6 @@ class TimePicker extends Component {
                     name={name}
                     id={id}
                     type='text'
-
                     placeholder={placeholder}
                     value={prettyValue}
                     tabIndex={tabIndex}

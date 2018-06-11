@@ -14,12 +14,12 @@ class DatePickerDialog extends Component {
     }
 
     componentDidMount(){
-        new Promise((resolve) => {
+        new Promise(resolve => {
             this.setState({resolve});
         }).then(response=> {
             const {onChange} = this.props;
             if (response) {
-                onChange({value: this.state.value});
+                onChange({value: this.state.dateValue});
             } else {
                 onChange(null);
             }
@@ -34,7 +34,7 @@ class DatePickerDialog extends Component {
     }
 
     onChange(value){
-        this.setState({value});
+        this.setState({dateValue: value});
     }
 
     render(){

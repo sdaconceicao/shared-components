@@ -30,7 +30,7 @@ class DateTimePicker extends Component {
     }
 
     onChangeDate(e){
-        const {onChange, format} = this.props;
+        const {format} = this.props;
         let {value} = this.state;
         if (e && e.value){
             if (!value) value = new Date();
@@ -44,11 +44,10 @@ class DateTimePicker extends Component {
     }
 
     onChangeTime(e){
-        const {onChange, format} = this.props,
-            {value} = this.state;
+        const {onChange, format} = this.props;
         if (e && e.value) {
-            this.setState({picker: null, prettyValue: moment(value).format(format), value}, ()=>{
-                onChange({value: this.state.value}, this.props.id);
+            this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value}, ()=>{
+                onChange({value: e.value}, this.props.id);
             });
         } else {
             this.setPicker('date');
@@ -109,7 +108,7 @@ class DateTimePicker extends Component {
 };
 
 DateTimePicker.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
     disabled: PropTypes.bool,
@@ -133,9 +132,8 @@ DateTimePicker.defaultProps = {
     tabIndex: 1,
     placeholder: '',
     className: '',
-    format: 'MMMM Do YYYY, h:mm a',
-    required: false,
-    value: new Date()
+    format: 'MMMM Do YYYY h:mm a',
+    required: false
 };
 
 export default DateTimePicker;

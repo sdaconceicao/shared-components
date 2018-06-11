@@ -8,6 +8,8 @@ import TextInput from '../TextInput';
 import Button from '../Button';
 import DatePickerDialog from './DatePickerDialog';
 
+import './DatePicker.scss';
+
 class DatePicker extends Component {
 
     constructor(props) {
@@ -54,7 +56,7 @@ class DatePicker extends Component {
                 onBlur, onKeyDown} = this.props,
             {value, prettyValue, picker} = this.state;
         return (
-            <div className={`${className}`}>
+            <div className={`date-picker ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 {picker === 'date' &&
                     <DatePickerDialog
@@ -82,7 +84,7 @@ class DatePicker extends Component {
 };
 
 DatePicker.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
     disabled: PropTypes.bool,

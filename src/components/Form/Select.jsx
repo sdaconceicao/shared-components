@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import StyledSelect from 'react-select'
 import CreatableSelect from 'react-select/lib/Creatable';
@@ -79,7 +79,7 @@ class Select extends Component {
 };
 
 Select.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
     disabled: PropTypes.bool,
