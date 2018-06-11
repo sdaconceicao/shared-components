@@ -26,7 +26,7 @@ class Textarea extends Component {
         const {onChange} = this.props;
         this.setState({value: e.target.value});
         e.persist();
-        onChange && onChange({...e, value: e.target.value}, this.props.id)
+        onChange && onChange({...e, value: e.target.value}, this.props.name)
     }
 
     render () {

@@ -47,7 +47,7 @@ class DateTimePicker extends Component {
         const {onChange, format} = this.props;
         if (e && e.value) {
             this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value}, ()=>{
-                onChange({value: e.value}, this.props.id);
+                onChange({value: e.value}, this.props.name);
             });
         } else {
             this.setPicker('date');
@@ -57,7 +57,7 @@ class DateTimePicker extends Component {
     onChangeWrapper(value){
         const {onChange} = this.props;
         this.setState({value});
-        onChange({value}, this.props.id)
+        onChange({value}, this.props.name)
     }
 
     setPicker(picker){

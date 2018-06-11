@@ -92,7 +92,7 @@ DatePicker.propTypes = {
     placeholder: PropTypes.string,
     label: PropTypes.string,
     required: PropTypes.bool,
-    value: PropTypes.string,
+    value: PropTypes.instanceOf(Date),
     /** Earliest date allowed to choose */
     minDate: PropTypes.string,
     /** Latest date allowed to choose */

@@ -24,12 +24,12 @@ class Select extends Component {
     onChangeWrapper(value){
         const {onChange} = this.props;
         this.setState({value});
-        onChange && onChange(value, this.props.id);
+        onChange && onChange(value, this.props.name);
     }
 
     onInputChange(value){
         const {onKeyDown} = this.props;
-        onKeyDown && onKeyDown(value, this.props.id);
+        onKeyDown && onKeyDown(value, this.props.name);
     }
 
     render(){

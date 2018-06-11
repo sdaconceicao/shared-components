@@ -87,6 +87,7 @@ TimePicker.propTypes = {
     placeholder: PropTypes.string,
     label: PropTypes.string,
     required: PropTypes.bool,
+    value: PropTypes.instanceOf(Date),
     /** Time format */
     format: PropTypes.string,
     onChange: PropTypes.func.isRequired,
