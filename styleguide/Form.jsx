@@ -12,7 +12,8 @@ class FormStyleguide extends Component{
                 {value: 'ham', label: 'Ham'}
             ],
             textInput: 'text input',
-            textArea: 'text area'
+            textArea: 'text area',
+            checkbox: true
         };
         this.onChange = this.onChange.bind(this);
     }
@@ -22,7 +23,7 @@ class FormStyleguide extends Component{
     }
 
     render(){
-        const {options, textInput, textArea} = this.state;
+        const {options, checkbox, textInput, textArea} = this.state;
         return (
             <Form.Form onChange={this.onChange}>
                 <Form.TextInput id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
@@ -30,7 +31,7 @@ class FormStyleguide extends Component{
                 <Form.DateTimePicker id="dateTimePicker" name="dateTimePicker"/>
                 <Form.TimePicker id="timePicker" name="timePicker" />
                 <Form.DatePicker id="datePicker" name="datePicker"/>
-                <Form.Checkbox id="checkbox" name="checkbox" value={true}>Save</Form.Checkbox>
+                <Form.Checkbox id="checkbox" name="checkbox" value={checkbox}>Save</Form.Checkbox>
                 <Form.Select id="select-autocomplete" name="autocomplete" add={true} options={options}>Save</Form.Select>
                 <Form.Select id="select-one" name="select" options={options}>Save</Form.Select>
                 <Form.Button type="submit">Save</Form.Button>

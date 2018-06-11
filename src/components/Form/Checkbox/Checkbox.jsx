@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {withForm} from '../FormContext';
 import Label from '../Label';
 
 import './Checkbox.scss';
@@ -9,7 +10,7 @@ const Checkbox = (props) => {
     const {id, name, className, tabIndex, value, disabled, label, required} = props;
 
     function onChangeWrapper(e){
-        props.onChange({...e, value: e.target.checked, checked: e.target.checked});
+        props.onChange({...e, value: e.target.checked, checked: e.target.checked}, props.name);
     }
 
     return (
@@ -45,4 +46,4 @@ Checkbox.defaultProps = {
     value: false
 };
 
-export default Checkbox;
+export default withForm(Checkbox);
