@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import FaClockO from 'react-icons/lib/fa/clock-o';
 
+import {withForm} from '../FormContext';
 import Label from '../Label';
 import TextInput from '../TextInput';
 import Button from '../Button';
@@ -103,4 +104,4 @@ TimePicker.defaultProps = {
     format: 'h:mm a'
 };
 
-export default TimePicker;
+export default withForm(TimePicker);

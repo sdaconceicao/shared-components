@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import FaCalendar from 'react-icons/lib/fa/calendar';
 
+import {withForm} from '../FormContext';
 import Label from '../Label';
 import TextInput from '../TextInput';
 import Button from '../Button';
@@ -113,4 +114,4 @@ DatePicker.defaultProps = {
     format: 'MMMM Do YYYY',
 };
 
-export default DatePicker;
+export default withForm(DatePicker);

@@ -2,10 +2,11 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import TextAreaAutosize from 'react-textarea-autosize';
 
+import {withForm} from './FormContext';
 import Label from './Label';
 
 /** Textarea component with label */
-class Textarea extends Component {
+export class Textarea extends Component {
 
     constructor(props) {
         super(props);
@@ -83,4 +84,4 @@ Textarea.defaultProps = {
     placeholder: ''
 };
 
-export default Textarea;
+export default withForm(Textarea);

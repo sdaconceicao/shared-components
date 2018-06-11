@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import StyledSelect from 'react-select'
 import CreatableSelect from 'react-select/lib/Creatable';
 
+import {withForm} from './FormContext';
 import Label from './Label';
 
 /** Select component with optional autocomplete and label */
@@ -106,4 +107,4 @@ Select.defaultProps = {
     autocomplete: true
 };
 
-export default Select;
+export default withForm(Select);

@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 
+import {withForm} from './FormContext';
 import Label from './Label';
 
 /** Text Input component with optional label */
@@ -83,4 +84,4 @@ TextInput.defaultProps = {
     required: false
 };
 
-export default TextInput;
+export default withForm(TextInput);
