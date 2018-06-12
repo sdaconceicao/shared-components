@@ -8,35 +8,12 @@ import Label from './Label';
 /** Textarea component with label */
 export class Textarea extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {value: props.value};
-        this.onChangeWrapper = this.onChangeWrapper.bind(this);
-    }
-
-    static getDerivedStateFromProps(nextProps, prevState){
-        if (nextProps.value !== prevState.value) {
-            return {
-                value: nextProps.value
-            };
-        }
-        return null;
-    }
-
-    onChangeWrapper(e){
-        const {onChange} = this.props;
-        this.setState({value: e.target.value});
-        e.persist();
-        onChange && onChange({...e, value: e.target.value}, this.props.name)
-    }
-
     render () {
         const {
             id, name, type, tabIndex, minRows, maxLength, placeholder, className, disabled,
-            label, required,
-            onBlur
-        } = this.props,
-        {value} = this.state;
+            label, required, value,
+            onBlur, onChange
+        } = this.props;
 
         return (
             <Fragment>
@@ -53,7 +30,8 @@ export class Textarea extends Component {
                     tabIndex={tabIndex}
                     maxLength={maxLength}
                     onBlur={onBlur}
-                    onChange={this.onChangeWrapper}/>
+                    onChange={(e)=>onChange({...e, value: e.target.value}, name)}
+                />
             </Fragment>
 
         )

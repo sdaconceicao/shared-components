@@ -5,12 +5,36 @@ import {FormContext} from './FormContext';
 
 export class Form extends Component {
 
+    constructor(props){
+        super(props);
+        this.state = {};
+    }
+
+    componentDidMount(){
+        let childProps = {};
+        this.props.children.map(child=>{
+            child.props.name ? childProps[child.props.name] = child.props.value : null;
+        });
+        this.setState(childProps);
+    }
+
+    onChange(e, target){
+        const value = e.value === null ? null : `"${e.value}"`;
+        this.setState(JSON.parse(`{"${target}": ${value}}`));
+    }
+
     render (){
-        const {children, onChange} = this.props;
+        const {children} = this.props;
         return (
-            <FormContext.Provider value={{onChange}}>
+            <FormContext.Provider value={{onChange: this.onChange.bind(this)}}>
                 <form>
-                    {children}
+                    {children.map(child=>{
+                        return(
+                            React.cloneElement(child, {
+                                value: this.state[child.props.name]
+                            })
+                        )
+                    })}
                 </form>
             </FormContext.Provider>
         )
@@ -19,7 +43,7 @@ export class Form extends Component {
 
 Form.propTypes = {
     children: PropTypes.array.isRequired,
-    onChange: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
 };
 
 export default Form;

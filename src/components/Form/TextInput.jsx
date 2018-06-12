@@ -7,32 +7,10 @@ import Label from './Label';
 /** Text Input component with optional label */
 class TextInput extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {value: props.value};
-        this.onChangeWrapper = this.onChangeWrapper.bind(this);
-    }
-
-    static getDerivedStateFromProps(nextProps, prevState){
-        if (nextProps.value !== prevState.value) {
-            return { value: nextProps.value };
-        }
-        return null;
-    }
-
-    onChangeWrapper(e){
-        const {onChange} = this.props;
-        this.setState({value: e.target.value});
-        e.persist();
-        onChange && onChange({...e, value: e.target.value}, this.props.name)
-    }
-
-
     render(){
         const { id, name, type, tabIndex, autoCapitalize, className, placeholder, disabled,
                 label, required,
-                onBlur, onKeyDown} = this.props,
-            {value} = this.state;
+                onBlur, onKeyDown, onChange, value} = this.props;
 
         return (
             <Fragment>
@@ -48,7 +26,7 @@ class TextInput extends Component {
                     autoCapitalize={autoCapitalize}
                     onKeyDown={onKeyDown}
                     tabIndex={tabIndex}
-                    onChange={this.onChangeWrapper}
+                    onChange={(e)=>onChange({...e, value: e.target.value}, name)}
                     onBlur={onBlur}/>
             </Fragment>
         );

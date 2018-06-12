@@ -10,7 +10,8 @@ export function withForm(Component) {
                     const {onChange} = context;
                     return (
                         <Component {...props}
-                                   onChange={onChange}/>
+                                   onChange={onChange}
+                        />
                     )
                 }}
             </FormContext.Consumer>

@@ -15,18 +15,10 @@ module.exports = function(proxy, allowedHost) {
         compress: true,
         clientLogLevel: 'none',
         contentBase: paths.appPublic,
-        watchContentBase: true,
+        watchContentBase: false,
         hot: true,
         publicPath: config.output.publicPath,
         quiet: true,
-        watchOptions: {
-            ignored: new RegExp(
-                `^(?!${path
-                    .normalize(paths.appSrc + '/')
-                    .replace(/[\\]+/g, '\\\\')}).+[\\\\/]node_modules[\\\\/]`,
-                'g'
-            ),
-        },
         https: protocol === 'https',
         host: host,
         overlay: false,

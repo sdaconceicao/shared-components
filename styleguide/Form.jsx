@@ -13,13 +13,14 @@ class FormStyleguide extends Component{
             ],
             textInput: 'text input',
             textArea: 'text area',
-            checkbox: true
+            checkbox: true,
         };
         this.onChange = this.onChange.bind(this);
     }
 
     onChange(e, target){
-        this.setState(JSON.parse(`{"${target}": "${e.value}"}`));
+        const value = e.value === null ? null : `"${e.value}"`;
+        this.setState(JSON.parse(`{"${target}": ${value}}`));
     }
 
     render(){
@@ -31,9 +32,9 @@ class FormStyleguide extends Component{
                 <Form.DateTimePicker id="dateTimePicker" name="dateTimePicker"/>
                 <Form.TimePicker id="timePicker" name="timePicker" />
                 <Form.DatePicker id="datePicker" name="datePicker"/>
-                <Form.Checkbox id="checkbox" name="checkbox" value={checkbox}>Save</Form.Checkbox>
-                <Form.Select id="select-autocomplete" name="autocomplete" add={true} options={options}>Save</Form.Select>
-                <Form.Select id="select-one" name="select" options={options}>Save</Form.Select>
+                <Form.Checkbox id="checkbox" name="checkbox" checked={checkbox} value="checkbox1" label="Checkbox 1" />
+                <Form.Select id="select-autocomplete" name="autocomplete" add={true} options={options}/>
+                <Form.Select id="select-one" name="select" options={options}/>
                 <Form.Button type="submit">Save</Form.Button>
             </Form.Form>
         )

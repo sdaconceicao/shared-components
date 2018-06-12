@@ -7,10 +7,11 @@ import Label from '../Label';
 import './Checkbox.scss';
 
 const Checkbox = (props) => {
-    const {id, name, className, tabIndex, value, disabled, label, required} = props;
+    const {id, name, className, tabIndex, value, checked, disabled, label, required} = props;
 
     function onChangeWrapper(e){
-        props.onChange({...e, value: e.target.checked, checked: e.target.checked}, props.name);
+        console.log("SENDING", e.target.value);
+        props.onChange({...e, value: e.target.checked ? e.target.value : null, checked: e.target.checked}, props.name);
     }
 
     return (
@@ -18,9 +19,10 @@ const Checkbox = (props) => {
             <input id={id}
                    name={name}
                    type="checkbox"
-                   defaultChecked={value}
+                   defaultChecked={checked}
                    disabled={disabled}
                    onChange={onChangeWrapper}
+                   value={value}
                    tabIndex={tabIndex}/>
             {label && <Label htmlFor={id} required={required}>{label}</Label>}
         </div>
@@ -36,14 +38,16 @@ Checkbox.propTypes = {
     placeholder: PropTypes.string,
     label: PropTypes.string,
     required: PropTypes.bool,
-    value: PropTypes.bool.isRequired,
+    value: PropTypes.string.isRequired,
+    checked: PropTypes.bool.isRequired,
     onChange: PropTypes.func
 };
 
 Checkbox.defaultProps = {
     tabIndex: 1,
     disabled: false,
-    value: false
+    value: false,
+    checked: false
 };
 
 export default withForm(Checkbox);

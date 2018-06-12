@@ -32,7 +32,7 @@ class DatePicker extends Component {
         const {onChange, format} = this.props;
         if (e && e.value){
             this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value},()=>{
-                onChange(this.state.value, this.props.id);
+                onChange({...e, value: this.state.value}, this.props.id);
             });
         } else {
             this.setPicker(null);
