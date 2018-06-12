@@ -8,6 +8,7 @@ export class Form extends Component {
     constructor(props){
         super(props);
         this.state = {};
+        this.onChange = this.onChange.bind(this);
     }
 
     componentDidMount(){
@@ -26,22 +27,30 @@ export class Form extends Component {
             previousState[target].value = value;
             if (e.checked !== undefined) previousState[target].checked = e.checked;
             return previousState;
-        }, ()=>{
-            console.log(this.state);
         });
     }
 
     render (){
-        const {children} = this.props;
+        const {children, onSubmit} = this.props;
         return (
-            <FormContext.Provider value={{onChange: this.onChange.bind(this)}}>
+            <FormContext.Provider value={{onChange: this.onChange}}>
                 <form>
                     {children.map(child=>{
-                        return(
-                            React.cloneElement(child, {
-                                value: this.state[child.props.name] ? this.state[child.props.name].value : null
-                            })
-                        )
+                        if (child.props.type === 'submit'){
+                            return (
+                                React.cloneElement(child, {
+                                    onClick: (e)=>{e.preventDefault(); onSubmit(this.state);}
+                                })
+                            )
+                        } else {
+                            return(
+                                React.cloneElement(child, {
+                                    value: this.state[child.props.name] ? this.state[child.props.name].value : null
+                                })
+                            )
+                        }
+
+
                     })}
                 </form>
             </FormContext.Provider>

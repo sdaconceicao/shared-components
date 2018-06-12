@@ -22,7 +22,6 @@ class TimePickerDialog extends Component {
             this.setState({resolve});
         }).then(response=> {
             const {onChange} = this.props;
-            console.log("giving", response, this.state);
             if (response) {
                 onChange({value: this.state.value, timeValue:`${this.state.value.getHours()}:${this.state.value.getMinutes()}`});
             } else {

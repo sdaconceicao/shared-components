@@ -15,12 +15,17 @@ class FormStyleguide extends Component{
             textArea: 'text area',
             checkbox: true,
         };
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onSubmit(values){
+        console.log("VALUES", values);
     }
 
     render(){
         const {options, checkbox, textInput, textArea} = this.state;
         return (
-            <Form.Form onChange={this.onChange}>
+            <Form.Form onSubmit={this.onSubmit}>
                 <Form.TextInput id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
                 <Form.Textarea id="textarea" name="textArea" type="input" label="Text Area" value={textArea}/>
                 <Form.DateTimePicker id="dateTimePicker" name="dateTimePicker"/>
