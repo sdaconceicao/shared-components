@@ -13,14 +13,22 @@ export class Form extends Component {
     componentDidMount(){
         let childProps = {};
         this.props.children.map(child=>{
-            child.props.name ? childProps[child.props.name] = child.props.value : null;
+            if (child.props.name) {
+                childProps[child.props.name] = {...child.props};
+            }
         });
         this.setState(childProps);
     }
 
     onChange(e, target){
-        const value = e.value === null ? null : `"${e.value}"`;
-        this.setState(JSON.parse(`{"${target}": ${value}}`));
+        const value = e.value === null ? null : e.value;
+        this.setState((previousState) => {
+            previousState[target].value = value;
+            if (e.checked !== undefined) previousState[target].checked = e.checked;
+            return previousState;
+        }, ()=>{
+            console.log(this.state);
+        });
     }
 
     render (){
@@ -31,7 +39,7 @@ export class Form extends Component {
                     {children.map(child=>{
                         return(
                             React.cloneElement(child, {
-                                value: this.state[child.props.name]
+                                value: this.state[child.props.name] ? this.state[child.props.name].value : null
                             })
                         )
                     })}

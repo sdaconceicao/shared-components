@@ -15,12 +15,6 @@ class FormStyleguide extends Component{
             textArea: 'text area',
             checkbox: true,
         };
-        this.onChange = this.onChange.bind(this);
-    }
-
-    onChange(e, target){
-        const value = e.value === null ? null : `"${e.value}"`;
-        this.setState(JSON.parse(`{"${target}": ${value}}`));
     }
 
     render(){

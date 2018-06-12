@@ -15,29 +15,21 @@ class Select extends Component {
         this.onChangeWrapper = this.onChangeWrapper.bind(this);
     }
 
-    static getDerivedStateFromProps(nextProps, prevState){
-        if (nextProps.value !== prevState.value) {
-            return { value: nextProps.value };
-        }
-        return null;
-    }
 
     onChangeWrapper(value){
         const {onChange} = this.props;
-        this.setState({value});
-        onChange && onChange(value, this.props.name);
+        onChange && onChange({value}, this.props.name);
     }
 
     onInputChange(value){
         const {onKeyDown} = this.props;
-        onKeyDown && onKeyDown(value, this.props.name);
+        onKeyDown && onKeyDown({value}, this.props.name);
     }
 
     render(){
         const { id, name,  tabIndex, className, placeholder, add, autocomplete, options, disabled,
-                label, required,
-                onBlur} = this.props,
-            {value} = this.state;
+                label, required, value,
+                onBlur} = this.props;
 
         return (
             <div className={className}>

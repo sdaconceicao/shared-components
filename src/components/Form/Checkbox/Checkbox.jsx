@@ -10,8 +10,7 @@ const Checkbox = (props) => {
     const {id, name, className, tabIndex, value, checked, disabled, label, required} = props;
 
     function onChangeWrapper(e){
-        console.log("SENDING", e.target.value);
-        props.onChange({...e, value: e.target.checked ? e.target.value : null, checked: e.target.checked}, props.name);
+        props.onChange({...e, value: e.target.value, checked: e.target.checked}, props.name);
     }
 
     return (
