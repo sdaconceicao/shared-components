@@ -18,12 +18,14 @@ export class Form extends Component {
                 childProps[child.props.name] = {...child.props};
             }
         });
+
         this.setState(childProps);
     }
 
     onChange(e, target){
         const value = e.value === null ? null : e.value;
         this.setState((previousState) => {
+            console.log("IS", previousState[target], target);
             previousState[target].value = value;
             if (e.checked !== undefined) previousState[target].checked = e.checked;
             return previousState;

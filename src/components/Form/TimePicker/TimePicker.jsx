@@ -14,7 +14,7 @@ class TimePicker extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {value: props.value, picker: null};
+        this.state = {value: props.value, picker: null, prettyValue: props.value ? moment(props.value).format(props.format) : null};
         this.onChangeWrapper = this.onChangeWrapper.bind(this);
         this.onChangeTime = this.onChangeTime.bind(this);
         this.setPicker = this.setPicker.bind(this);
@@ -31,7 +31,7 @@ class TimePicker extends Component {
         const {onChange, format} = this.props;
         if (e && e.value) {
             this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value}, ()=>{
-                onChange( {value: e.value}, this.props.id);
+                onChange( {value: e.value}, this.props.name);
             });
         } else {
             this.setPicker(null);
@@ -41,7 +41,7 @@ class TimePicker extends Component {
     onChangeWrapper(value){
         const {onChange} = this.props;
         this.setState({value});
-        onChange({value}, this.props.id)
+        onChange({value}, this.props.name)
     }
 
     setPicker(picker){
