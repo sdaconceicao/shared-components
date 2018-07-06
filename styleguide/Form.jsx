@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Form} from '../src';
+import {Form, Forms} from '../src';
 
 class FormStyleguide extends Component{
 
@@ -28,17 +28,17 @@ class FormStyleguide extends Component{
     render(){
         const {options, checkbox, textInput, textArea, date, dateTime, time} = this.state;
         return (
-            <Form.Form onSubmit={this.onSubmit}>
-                <Form.TextInput id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
-                <Form.Textarea id="textarea" name="textArea" type="input" label="Text Area" value={textArea}/>
-                <Form.DateTimePicker id="dateTimePicker" name="dateTime"  value={dateTime}/>
-                <Form.TimePicker id="timePicker" name="time" value={time} />
-                <Form.DatePicker id="datePicker" name="date" value={date}/>
-                <Form.Checkbox id="checkbox" name="checkbox" checked={checkbox} value="checkbox1" label="Checkbox 1" />
-                <Form.Select id="select-autocomplete" name="autocomplete" add={true} options={options}/>
-                <Form.Select id="select-one" name="select" options={options}/>
-                <Form.Button type="submit">Save</Form.Button>
-            </Form.Form>
+            <Form onSubmit={this.onSubmit}>
+                <Forms.TextInput id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
+                <Forms.Textarea id="textarea" name="textArea" type="input" label="Text Area" value={textArea}/>
+                <Forms.DateTimePicker id="dateTimePicker" name="dateTime"  value={dateTime}/>
+                <Forms.TimePicker id="timePicker" name="time" value={time} />
+                <Forms.DatePicker id="datePicker" name="date" value={date}/>
+                <Forms.Checkbox id="checkbox" name="checkbox" checked={checkbox} value="checkbox1" label="Checkbox 1" />
+                <Forms.Select id="select-autocomplete" name="autocomplete" add={true} options={options}/>
+                <Forms.Select id="select-one" name="select" options={options}/>
+                <Forms.Button type="submit">Save</Forms.Button>
+            </Form>
         )
     }
 
