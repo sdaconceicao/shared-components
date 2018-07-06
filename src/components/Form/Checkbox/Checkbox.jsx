@@ -14,7 +14,7 @@ const Checkbox = (props) => {
     }
 
     return (
-        <div className={className}>
+        <div className={`checkbox ${className}`}>
             <input id={id}
                    name={name}
                    type="checkbox"
@@ -23,13 +23,13 @@ const Checkbox = (props) => {
                    onChange={onChangeWrapper}
                    value={value}
                    tabIndex={tabIndex}/>
-            {label && <Label htmlFor={id} required={required}>{label}</Label>}
+            <Label htmlFor={id} required={required}>{label}</Label>
         </div>
     );
 };
 
 Checkbox.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
     disabled: PropTypes.bool,
@@ -43,6 +43,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
+    className: '',
     tabIndex: 1,
     disabled: false,
     value: false,
