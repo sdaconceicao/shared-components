@@ -1,3 +1,5 @@
+@import '../../../styles/utilities';
+
 .date-picker{
     input{
         width: calc(100% - 42px);
@@ -7,5 +9,13 @@
         margin-top: -3px;
         margin-bottom: 1px;
         border: 1px solid #ced4da;
+    }
+}
+
+.date-picker-wrapper{
+    @include media-breakpoint-down(sm) {
+        .react-calendar {
+            width: 100%;
+        }
     }
 }
