@@ -12,13 +12,15 @@
     }
 }
 
-
 .time-picker-wrapper{
-    height: 399px;
+    height: 406px;
     width: 300px;
-
     margin-right: auto;
     margin-top: -28px;
+}
+
+.time_picker_modal_header{
+    background-color: $color-secondary-bg;
 }
 
 @include media-breakpoint-up(md) {
