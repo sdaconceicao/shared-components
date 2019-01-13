@@ -6,8 +6,7 @@ import Label from '../Label';
 
 import './Checkbox.scss';
 
-const Checkbox = (props) => {
-    const {id, name, className, tabIndex, value, checked, disabled, label, required} = props;
+const Checkbox = ({id, name, className, tabIndex, value, checked, disabled, label, required}) => {
 
     function onChangeWrapper(e){
         props.onChange({...e, value: e.target.value, checked: e.target.checked}, props.name);
@@ -35,7 +34,7 @@ Checkbox.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     required: PropTypes.bool,
     value: PropTypes.string.isRequired,
     checked: PropTypes.bool.isRequired,

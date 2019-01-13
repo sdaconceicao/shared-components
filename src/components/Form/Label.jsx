@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /** Label component */
-const Label = (props) => {
-    const {htmlFor, className, required, children} = props;
+const Label = ({htmlFor, className, required, children}) => {
     return (
         <label htmlFor={htmlFor} className={`${className} form-label`}>
             {children}
@@ -19,7 +18,7 @@ Label.propTypes = {
     htmlFor: PropTypes.string,
     /** Flag for controlling whether an element is required, to display a required asterick */
     required: PropTypes.bool,
-    children: PropTypes.string.isRequired
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired
 };
 
 Label.defaultProps = {

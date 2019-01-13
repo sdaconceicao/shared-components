@@ -12,13 +12,13 @@ import TimePickerDialog from './TimePickerDialog';
 /** Timepicker input component with optional label component */
 class TimePicker extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {value: props.value, picker: null, prettyValue: props.value ? moment(props.value).format(props.format) : null};
-        this.onChangeWrapper = this.onChangeWrapper.bind(this);
-        this.onChangeTime = this.onChangeTime.bind(this);
-        this.setPicker = this.setPicker.bind(this);
-    }
+    state = {
+        value: props.value,
+        picker: null,
+        prettyValue: props.value
+            ? moment(props.value).format(props.format)
+            : null
+    };
 
     static getDerivedStateFromProps(nextProps, prevState){
         if (nextProps.value !== prevState.value) {
@@ -27,7 +27,7 @@ class TimePicker extends Component {
         return null;
     }
 
-    onChangeTime(e){
+    onChangeTime = (e) =>{
         const {onChange, format} = this.props;
         if (e && e.value) {
             this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value}, ()=>{
@@ -36,17 +36,17 @@ class TimePicker extends Component {
         } else {
             this.setPicker(null);
         }
-    }
+    };
 
-    onChangeWrapper(value){
+    onChangeWrapper = (value) =>{
         const {onChange} = this.props;
         this.setState({value});
         onChange({value}, this.props.name)
-    }
+    };
 
-    setPicker(picker){
+    setPicker = (picker) =>{
         this.setState({picker});
-    }
+    };
 
     render(){
         const { id, name, tabIndex, className, placeholder,
@@ -86,7 +86,7 @@ TimePicker.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     required: PropTypes.bool,
     value: PropTypes.instanceOf(Date),
     /** Time format */

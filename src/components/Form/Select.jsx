@@ -9,22 +9,19 @@ import Label from './Label';
 /** Select component with optional autocomplete and label */
 class Select extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {value: props.value};
-        this.onChangeWrapper = this.onChangeWrapper.bind(this);
-    }
+    state = {
+        value: this.props.value
+    };
 
-
-    onChangeWrapper(value){
+    onChangeWrapper = (value) =>{
         const {onChange} = this.props;
         onChange && onChange({value}, this.props.name);
-    }
+    };
 
-    onInputChange(value){
+    onInputChange = (value) =>{
         const {onKeyDown} = this.props;
         onKeyDown && onKeyDown({value}, this.props.name);
-    }
+    };
 
     render(){
         const { id, name,  tabIndex, className, placeholder, add, autocomplete, options, disabled,
@@ -78,7 +75,7 @@ Select.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     required: PropTypes.bool,
     options: PropTypes.array,
     /** Flag to control whether user can input options via textfield */

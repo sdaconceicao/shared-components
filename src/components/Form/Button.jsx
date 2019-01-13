@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { UncontrolledTooltip as Tooltip } from 'reactstrap';
 
 /** Button component with optional tooltip */
-const Button = (props) => {
-    const {id, className, name, onClick, type, disabled, tooltip} = props;
+const Button = ({id, className, name, onClick, type, disabled, tooltip, children}) => {
     return (
         <button
             id={id}
@@ -18,7 +17,7 @@ const Button = (props) => {
                     {tooltip}
                 </Tooltip>
             }
-            {props.children}
+            {children}
         </button>
     );
 };

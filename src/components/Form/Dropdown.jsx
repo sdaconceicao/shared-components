@@ -4,15 +4,13 @@ import { Dropdown as DropdownWrapper } from 'reactstrap';
 
 export class Dropdown extends Component{
 
-    constructor(props){
-        super(props);
-        this.state = {open: false};
-        this.toggle = this.toggle.bind(this);
-    }
+    state = {
+        open: false
+    };
 
-    toggle(){
+    toggle = () =>{
         this.setState({open: !this.state.open});
-    }
+    };
 
     render(){
         const {className, children} = this.props;

@@ -13,13 +13,13 @@ import './DatePicker.scss';
 
 class DatePicker extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {value: props.value, picker: null, prettyValue: props.value ? moment(props.value).format(props.format) : null};
-        this.onChangeWrapper = this.onChangeWrapper.bind(this);
-        this.onChangeDate = this.onChangeDate.bind(this);
-        this.setPicker = this.setPicker.bind(this);
-    }
+    state = {
+        value: props.value,
+        picker: null,
+        prettyValue: props.value
+            ? moment(props.value).format(props.format)
+            : null
+    };
 
     static getDerivedStateFromProps(nextProps, prevState){
         if (nextProps.value !== prevState.value) {
@@ -28,27 +28,26 @@ class DatePicker extends Component {
         return null;
     }
 
-    onChangeDate(e){
+    onChangeDate = (e) => {
         const {onChange, format} = this.props;
-        if (e && e.value){
-            this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value},()=>{
+        if (e && e.value) {
+            this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value}, () => {
                 onChange({...e, value: this.state.value}, this.props.name);
             });
         } else {
             this.setPicker(null);
         }
+    };
 
-    }
-
-    onChangeWrapper(value){
+    onChangeWrapper = (value) =>{
         const {onChange} = this.props;
         this.setState({value});
         onChange({value}, this.props.name)
-    }
+    };
 
-    setPicker(picker){
+    setPicker = (picker) =>{
         this.setState({picker});
-    }
+    };
 
     render(){
         const { id, name, tabIndex, className, placeholder,
@@ -91,7 +90,7 @@ DatePicker.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     required: PropTypes.bool,
     value: PropTypes.instanceOf(Date),
     /** Earliest date allowed to choose */

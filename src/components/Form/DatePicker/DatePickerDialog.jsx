@@ -7,11 +7,9 @@ import ModalConfirm from '../../Modal/ModalConfirm';
 
 class DatePickerDialog extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {value: props.value};
-        this.onChange = this.onChange.bind(this);
-    }
+    state = {
+        value: props.value
+    };
 
     componentDidMount(){
         new Promise(resolve => {
@@ -33,9 +31,9 @@ class DatePickerDialog extends Component {
         return null;
     }
 
-    onChange(value){
+    onChange = (value) =>{
         this.setState({dateValue: value});
-    }
+    };
 
     render(){
         const { className, minDate, maxDate} = this.props,

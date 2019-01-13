@@ -11,11 +11,10 @@ import './TimePicker.scss';
 /** Timepicker component */
 class TimePickerDialog extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {value: props.value, timeValue:`${props.value.getHours()}:${props.value.getMinutes()}`};
-        this.onChange = this.onChange.bind(this);
-    }
+    state = {
+        value: props.value,
+        timeValue:`${props.value.getHours()}:${props.value.getMinutes()}`
+    };
 
     componentDidMount(){
         new Promise((resolve) => {
@@ -37,17 +36,17 @@ class TimePickerDialog extends Component {
         return null;
     }
 
-    onChange(timeValue){
+    onChange = (timeValue) => {
         const timeSplit = timeValue.split(':'),
             {value} = this.state;
         value.setHours(timeSplit[0]);
         value.setMinutes(timeSplit[1]);
         this.setState({value, timeValue});
-    }
+    };
 
-    onMinutesChange(){
+    onMinutesChange = () =>{
         this.state.resolve(true);
-    }
+    };
 
     render(){
         const { className } = this.props,
