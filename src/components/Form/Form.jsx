@@ -40,7 +40,7 @@ export class Form extends Component {
     };
 
     render (){
-        const {children, onSubmit} = this.props;
+        const {children} = this.props;
         return (
             <FormContext.Provider value={{onChange: this.onChange}}>
                 <form>
@@ -52,7 +52,7 @@ export class Form extends Component {
                             })
                         :  React.cloneElement(child, {
                                 key: child.props.id ||  child.props.name ||  index,
-                                value: this.state[child.props.name] ? this.state[child.props.name].value : null
+                                value: this.state[child.props.name] ? this.state[child.props.name].value : ''
                             })
                     })}
                 </form>
