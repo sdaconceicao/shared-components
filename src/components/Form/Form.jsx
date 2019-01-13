@@ -33,7 +33,9 @@ export class Form extends Component {
         e.preventDefault();
         const results = [];
         Object.keys(this.state).map(key => {
-            results[key] = this.state[key].value;
+            results[key] = this.state[key].value  && this.state[key].value.value
+                ? this.state[key].value.value
+                : this.state[key].value;
         });
 
         this.props.onSubmit(results);
