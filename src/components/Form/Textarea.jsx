@@ -39,7 +39,7 @@ Textarea.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
     /** Max number of characters allowed in field */
     maxLength: PropTypes.number,

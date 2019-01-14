@@ -13,8 +13,13 @@ export class Form extends Component {
         this.setState(childProps);
     }
 
-    componentDidUpdate(prevProps){
-
+    componentDidUpdate(){
+        const numberElements = Object.keys(getFormElementsFromNode(this.props.children)).length,
+            existingElements = Object.keys(this.state).length;
+        if(numberElements !== existingElements){ //Add new state objects for dynamically added form elements
+            const childProps = getFormElementsFromNode(this.props.children, this.state);
+            this.setState(childProps);
+        }
     }
 
     onChange = (e, target) =>{

@@ -37,7 +37,6 @@ export class Fieldset extends Component {
 
 Fieldset.propTypes = {
     children: PropTypes.array.isRequired,
-    onSubmit: PropTypes.func.isRequired
 };
 
 export default Fieldset;

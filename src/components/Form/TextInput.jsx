@@ -38,7 +38,7 @@ TextInput.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
     /** Type of input, text or password */
     type: PropTypes.string.isRequired,
