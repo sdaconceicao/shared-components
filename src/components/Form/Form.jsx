@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {FormContext} from './FormContext';
-import {getFormElementsFromNode} from './Form.util';
+import {getFormElementsFromNode, renderChildren} from './Form.util';
 
 export class Form extends Component {
 
@@ -22,7 +22,6 @@ export class Form extends Component {
             ? null
             : e.value;
         this.setState((previousState) => {
-            console.log("SETTING", target, value)
             previousState[target].value = value;
             if (e.checked !== undefined) previousState[target].checked = e.checked;
             return previousState;
@@ -46,19 +45,7 @@ export class Form extends Component {
         return (
             <FormContext.Provider value={{onChange: this.onChange}}>
                 <form>
-                    {children.map((child, index)=>{
-                        return child.props && child.props.type === 'submit'
-                        ? React.cloneElement(child, {
-                                key: child.props.id ||  child.props.name ||  index,
-                                onClick: this.onSubmit
-                            })
-                        : child.props
-                            ? React.cloneElement(child, {
-                                key: child.props.id ||  child.props.name ||  index,
-                                value: this.state[child.props.name] ? this.state[child.props.name].value : ''
-                            })
-                            : child
-                    })}
+                    {renderChildren(children, this.onSubmit, this.state)}
                 </form>
             </FormContext.Provider>
         )
