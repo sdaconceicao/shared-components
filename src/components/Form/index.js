@@ -3,6 +3,7 @@ export Checkbox from './Checkbox';
 export DatePicker from './DatePicker';
 export DateTimePicker from './DateTimePicker/DateTimePicker';
 export Dropdown from './Dropdown';
+export Fieldset from './Fieldset';
 export Form from './Form';
 export Label from './Label';
 export Select from './Select';
