@@ -1,10 +1,15 @@
 import React from "react";
 
-export const getFormElementsFromNode = (node, childProps = {}) =>{
+export const getFormElementsFromNode = (node, childProps) =>{
     Array.isArray(node) && node.map(child=>{
         if(child.props){
-            if (child.props.name && !childProps[child.props.name]) {
-                childProps[child.props.name] = {...child.props};
+            if (child.props.name ) {
+                if (!isNaN(child.props.index)){
+                    if ( !childProps[child.props.name]) childProps[child.props.name] = [];
+                    childProps[child.props.name][child.props.index] = {...child.props};
+                } else {
+                    childProps[child.props.name] = {...child.props};
+                }
             } else {
                 childProps = getFormElementsFromNode(child.props.children, childProps);
             }
@@ -12,7 +17,7 @@ export const getFormElementsFromNode = (node, childProps = {}) =>{
             childProps = getFormElementsFromNode(child, childProps);
         }
     });
-    if (node && node.props && node.props.name && !childProps[node.props.name]) {
+    if (node && node.props && node.props.name) {
         childProps[node.props.name] = {...node.props};
     }
     return childProps;
@@ -44,7 +49,11 @@ export const renderElement = (element, onSubmit, state, index) => {
         } else if(element.props.name){  //A form component, needs form state added to it
             return React.cloneElement(element, {
                 key:  element.props.id ||  element.props.name ||  index,
-                value: state[element.props.name] ? state[element.props.name].value : ''
+                value: state[element.props.name] ?
+                            !isNaN(element.props.index)
+                                ? state[element.props.name][index].value
+                                : state[element.props.name].value
+                                    : ''
             })
         } else if(element.props.children){ //Children to iterate over
             return React.cloneElement(element, {

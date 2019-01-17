@@ -9,25 +9,32 @@ export class Form extends Component {
     state = {};
 
     componentDidMount(){
-        const childProps = getFormElementsFromNode(this.props.children);
+        const childProps = getFormElementsFromNode(this.props.children, this.state);
         this.setState(childProps);
     }
 
-    componentDidUpdate(){
-        const numberElements = Object.keys(getFormElementsFromNode(this.props.children)).length,
-            existingElements = Object.keys(this.state).length;
+    componentDidUpdate(prevProps){
+
+        const numberElements = Object.keys(getFormElementsFromNode(this.props.children, {})).length,
+            existingElements = Object.keys(getFormElementsFromNode(prevProps.children, {})).length;
         if(numberElements !== existingElements){ //Add new state objects for dynamically added form elements
             const childProps = getFormElementsFromNode(this.props.children, this.state);
             this.setState(childProps);
         }
+
     }
 
-    onChange = (e, target) =>{
+    onChange = (e, target, index) =>{
         const value = e.value === null
             ? null
             : e.value;
+
         this.setState((previousState) => {
-            previousState[target].value = value;
+            if(!isNaN(index)){
+                previousState[target][index].value = value;
+            } else {
+                previousState[target].value = value;
+            }
             if (e.checked !== undefined) previousState[target].checked = e.checked;
             return previousState;
         });
@@ -37,9 +44,13 @@ export class Form extends Component {
         e.preventDefault();
         const results = [];
         Object.keys(this.state).map(key => {
-            results[key] = this.state[key].value  && this.state[key].value.value
-                ? this.state[key].value.value
-                : this.state[key].value;
+            if (Array.isArray(this.state[key])) {
+               results[key] = this.state[key].map(element => element.value);
+            } else {
+                results[key] = this.state[key].value && this.state[key].value.value
+                    ? this.state[key].value.value
+                    : this.state[key].value;
+            }
         });
 
         this.props.onSubmit(results);

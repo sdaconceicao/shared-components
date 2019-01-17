@@ -6,7 +6,7 @@ import Label from './Label';
 
 /** Text Input component with optional label */
 export const TextInput = ({ id, name, type, tabIndex, autoCapitalize, className, placeholder, disabled,
-    label, required, value,
+    label, required, value, index,
     onBlur, onKeyDown, onChange}) => {
 
     return (
@@ -23,7 +23,7 @@ export const TextInput = ({ id, name, type, tabIndex, autoCapitalize, className,
                 autoCapitalize={autoCapitalize}
                 onKeyDown={onKeyDown}
                 tabIndex={tabIndex}
-                onChange={(e)=>onChange({...e, value: e.target.value}, name)}
+                onChange={(e)=>onChange({...e, value: e.target.value}, name, index)}
                 onBlur={onBlur}/>
         </Fragment>
     );

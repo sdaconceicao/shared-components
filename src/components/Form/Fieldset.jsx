@@ -1,42 +1,35 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
+
+import Button from './Button';
 
 export class Fieldset extends Component {
 
-    state = {};
-
-    componentDidMount(){
-        let childProps = {};
-        this.props.children && this.props.children.map(child=>{
-            if (child.props && child.props.name) {
-                childProps[child.props.name] = {...child.props};
-            }
-        });
-
-        this.setState(childProps);
-    }
-
-
-
     render (){
-        const {children} = this.props;
+        const {children, handleAdd, handleRemove, addText} = this.props;
         return (
             <fieldset>
                 {children.map((child, index)=>{
-                    return child.props
-                        ? React.cloneElement(child, {
-                            key: child.props.id ||  child.props.name ||  index,
-                            value: this.state[child.props.name] ? this.state[child.props.name].value : ''
-                        })
+                    return child.props && child.props.name
+                        ? <Fragment>
+                            {child}
+                            {handleRemove && <Button onClick={()=>handleRemove(index)}>X</Button>}
+                        </Fragment>
                         : child
                 })}
+                {handleAdd &&
+                    <Button onClick={handleAdd}>{addText}</Button>
+                }
             </fieldset>
         )
     }
 }
 
 Fieldset.propTypes = {
+    addText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     children: PropTypes.array.isRequired,
+    handleRemove: PropTypes.func,
+    handleAdd: PropTypes.func
 };
 
 export default Fieldset;
