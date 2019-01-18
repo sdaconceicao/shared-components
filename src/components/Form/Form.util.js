@@ -23,6 +23,20 @@ export const getFormElementsFromNode = (node, childProps) =>{
     return childProps;
 };
 
+export const getNumberOfItems = (state) =>{
+    let entries = 0;
+    for (const p in state) {
+        if( state.hasOwnProperty(p) ) {
+            if (Array.isArray(state[p])){
+                entries = entries + state[p].length;
+            } else {
+                entries = entries + 1;
+            }
+        }
+    }
+    return entries;
+};
+
 export const renderChildren = (children, onSubmit, state) =>{
     if ( Array.isArray(children)){
         return children.map((child, index)=>{
@@ -50,7 +64,7 @@ export const renderElement = (element, onSubmit, state, index) => {
             return React.cloneElement(element, {
                 key:  element.props.id ||  element.props.name ||  index,
                 value: state[element.props.name] ?
-                            !isNaN(element.props.index)
+                            !isNaN(element.props.index) && state[element.props.name][index]
                                 ? state[element.props.name][index].value
                                 : state[element.props.name].value
                                     : ''

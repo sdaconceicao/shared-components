@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {FormContext} from './FormContext';
-import {getFormElementsFromNode, renderChildren} from './Form.util';
+import {getFormElementsFromNode, getNumberOfItems, renderChildren} from './Form.util';
 
 export class Form extends Component {
 
@@ -15,8 +15,8 @@ export class Form extends Component {
 
     componentDidUpdate(prevProps){
 
-        const numberElements = Object.keys(getFormElementsFromNode(this.props.children, {})).length,
-            existingElements = Object.keys(getFormElementsFromNode(prevProps.children, {})).length;
+        const numberElements = getNumberOfItems(getFormElementsFromNode(this.props.children, {})),
+            existingElements = getNumberOfItems(getFormElementsFromNode(prevProps.children, {}));
         if(numberElements !== existingElements){ //Add new state objects for dynamically added form elements
             const childProps = getFormElementsFromNode(this.props.children, this.state);
             this.setState(childProps);
