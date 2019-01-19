@@ -12,8 +12,8 @@ import './TimePicker.scss';
 class TimePickerDialog extends Component {
 
     state = {
-        value: props.value,
-        timeValue:`${props.value.getHours()}:${props.value.getMinutes()}`
+        value: this.props.value,
+        timeValue:`${this.props.value.getHours()}:${this.props.value.getMinutes()}`
     };
 
     componentDidMount(){

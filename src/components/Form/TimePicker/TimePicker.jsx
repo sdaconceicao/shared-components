@@ -13,10 +13,10 @@ import TimePickerDialog from './TimePickerDialog';
 class TimePicker extends Component {
 
     state = {
-        value: props.value,
+        value: this.props.value,
         picker: null,
-        prettyValue: props.value
-            ? moment(props.value).format(props.format)
+        prettyValue: this.props.value
+            ? moment(this.props.value).format(props.format)
             : null
     };
 

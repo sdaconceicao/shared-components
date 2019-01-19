@@ -7,10 +7,12 @@ export function withForm(Component) {
         return (
             <FormContext.Consumer>
                 { (context) => {
-                    const {onChange} = context;
+                    const {onSubmit, addFormElement, removeFormElement} = context;
                     return (
                         <Component {...props}
-                                   onChange={onChange}
+                                   onSubmit={onSubmit}
+                                   addFormElement={addFormElement}
+                                   removeFormElement={removeFormElement}
                         />
                     )
                 }}

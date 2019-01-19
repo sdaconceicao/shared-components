@@ -15,10 +15,10 @@ import './DateTimePicker.scss';
 class DateTimePicker extends Component {
 
     state = {
-        value: props.value,
+        value: this.props.value,
         picker: null,
-        prettyValue: props.value
-            ? moment(props.value).format(props.format)
+        prettyValue: this.props.value
+            ? moment(this.props.value).format(thisl.props.format)
             : null
     };
 

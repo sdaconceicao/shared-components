@@ -1,33 +1,55 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {withForm} from './FormContext';
 import Label from './Label';
 
 /** Text Input component with optional label */
-export const TextInput = ({ id, name, type, tabIndex, autoCapitalize, className, placeholder, disabled,
-    label, required, value, index,
-    onBlur, onKeyDown, onChange}) => {
+export class TextInput extends Component {
 
-    return (
-        <Fragment>
-            {label && <Label htmlFor={id} required={required}>{label}</Label>}
-            <input
-                name={name}
-                id={id}
-                type={type}
-                className={`form-control ${className}`}
-                placeholder={placeholder}
-                disabled={disabled}
-                value={value}
-                autoCapitalize={autoCapitalize}
-                onKeyDown={onKeyDown}
-                tabIndex={tabIndex}
-                onChange={(e)=>onChange({...e, value: e.target.value}, name, index)}
-                onBlur={onBlur}/>
-        </Fragment>
-    );
+    state = {
+        value: this.props.value
+    };
 
+    componentDidMount(){
+        this.props.addFormElement(this);
+    }
+
+    componentWillUnmount(){
+        this.props.removeFormElement(this);
+    }
+
+    onChange(e){
+        this.setState({value: e.value});
+    }
+
+    render() {
+        const {
+            id, name, type, tabIndex, autoCapitalize, className, placeholder, disabled,
+            label, required, index,
+            onBlur, onKeyDown
+        } = this.props,
+        {value} = this.state;
+        return (
+            <Fragment>
+                {label && <Label htmlFor={id} required={required}>{label}</Label>}
+                <input
+                    name={name}
+                    id={id}
+                    index={index}
+                    type={type}
+                    className={`form-control ${className}`}
+                    placeholder={placeholder}
+                    disabled={disabled}
+                    value={value}
+                    autoCapitalize={autoCapitalize}
+                    onKeyDown={onKeyDown}
+                    tabIndex={tabIndex}
+                    onChange={(e) => this.onChange({...e, value: e.target.value}, name, index)}
+                    onBlur={onBlur}/>
+            </Fragment>
+        );
+    }
 
 };
 

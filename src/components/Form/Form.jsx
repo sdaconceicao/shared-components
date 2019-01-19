@@ -2,55 +2,35 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {FormContext} from './FormContext';
-import {getFormElementsFromNode, getNumberOfItems, renderChildren} from './Form.util';
 
 export class Form extends Component {
 
-    state = {};
+    elements = [];
 
-    componentDidMount(){
-        const childProps = getFormElementsFromNode(this.props.children, this.state);
-        this.setState(childProps);
-    }
-
-    componentDidUpdate(prevProps){
-
-        const numberElements = getNumberOfItems(getFormElementsFromNode(this.props.children, {})),
-            existingElements = getNumberOfItems(getFormElementsFromNode(prevProps.children, {}));
-        if(numberElements !== existingElements){ //Add new state objects for dynamically added form elements
-            const childProps = getFormElementsFromNode(this.props.children, this.state);
-            this.setState(childProps);
+    addFormElement = (elements) =>{
+        if(this.elements.indexOf(elements) === -1) {
+            this.elements.push(elements);
         }
+    };
 
-    }
-
-    onChange = (e, target, index) =>{
-        const value = e.value === null
-            ? null
-            : e.value;
-
-        this.setState((previousState) => {
-            if(!isNaN(index)){
-                previousState[target][index].value = value;
-            } else {
-                previousState[target].value = value;
-            }
-            if (e.checked !== undefined) previousState[target].checked = e.checked;
-            return previousState;
-        });
+    removeFormElement = (elements) =>{
+        const elIndex = this.elements.indexOf(elements);
+        if (elIndex !== -1) {
+            this.elements = this.elements.slice(0, elIndex).concat(this.elements.slice(elIndex + 1));
+        }
     };
 
     onSubmit = (e) =>{
         e.preventDefault();
-        const results = [];
-        Object.keys(this.state).map(key => {
-            if (Array.isArray(this.state[key])) {
-               results[key] = this.state[key].map(element => element.value);
+        const results = {};
+        this.elements.map(element=>{
+            if(!isNaN(element.props.index)){
+                if (!results[element.props.name]) results[element.props.name] = []; //index indicates result is an array
+                results[element.props.name][element.props.index] = element.state.value;
             } else {
-                results[key] = this.state[key].value && this.state[key].value.value
-                    ? this.state[key].value.value
-                    : this.state[key].value;
+                results[element.props.name] = element.state.value;
             }
+
         });
 
         this.props.onSubmit(results);
@@ -59,9 +39,13 @@ export class Form extends Component {
     render (){
         const {children} = this.props;
         return (
-            <FormContext.Provider value={{onChange: this.onChange}}>
+            <FormContext.Provider value={{
+                    onSubmit: this.onSubmit,
+                    addFormElement: this.addFormElement,
+                    removeFormElement: this.removeFormElement
+                }}>
                 <form>
-                    {renderChildren(children, this.onSubmit, this.state)}
+                    {children}
                 </form>
             </FormContext.Provider>
         )

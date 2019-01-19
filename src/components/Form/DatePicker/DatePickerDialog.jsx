@@ -8,7 +8,7 @@ import ModalConfirm from '../../Modal/ModalConfirm';
 class DatePickerDialog extends Component {
 
     state = {
-        value: props.value
+        value: this.props.value
     };
 
     componentDidMount(){
