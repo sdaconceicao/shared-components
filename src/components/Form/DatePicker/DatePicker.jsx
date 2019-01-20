@@ -5,7 +5,7 @@ import FaCalendar from 'react-icons/lib/fa/calendar';
 
 import {withForm} from '../FormContext';
 import Label from '../Label';
-import TextInput from '../TextInput';
+import {TextInput} from '../TextInput';
 import Button from '../Button';
 import DatePickerDialog from './DatePickerDialog';
 

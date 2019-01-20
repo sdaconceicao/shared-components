@@ -47,7 +47,6 @@ class TimePickerDialog extends FormElement {
     render(){
         const { className } = this.props,
             { timeValue, resolve} = this.state;
-        console.log("TIME", timeValue);
         return (
             <ModalConfirm resolve={resolve} title={<FormattedMessage id="timePicker.title"/>}>
                 <div className={`time-picker-wrapper ${className}`}>
@@ -56,7 +55,6 @@ class TimePickerDialog extends FormElement {
                         trigger={(<div/>)}
                         time={timeValue}
                         theme="material"
-                        onMinuteChange={this.onMinutesChange}
                         onTimeChange={this.onChange}
                     />
                 </div>

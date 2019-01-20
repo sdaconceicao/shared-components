@@ -7,14 +7,14 @@ export class Form extends Component {
 
     elements = [];
 
-    addFormElement = (elements) =>{
-        if(this.elements.indexOf(elements) === -1) {
-            this.elements.push(elements);
+    addFormElement = (element) =>{
+        if(this.elements.indexOf(element) === -1) {
+            this.elements.push(element);
         }
     };
 
-    removeFormElement = (elements) =>{
-        const elIndex = this.elements.indexOf(elements);
+    removeFormElement = (element) =>{
+        const elIndex = this.elements.indexOf(element);
         if (elIndex !== -1) {
             this.elements = this.elements.slice(0, elIndex).concat(this.elements.slice(elIndex + 1));
         }
@@ -32,7 +32,6 @@ export class Form extends Component {
             }
 
         });
-        console.log("RETURN", results);
         this.props.onSubmit(results);
     };
 
