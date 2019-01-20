@@ -4,13 +4,14 @@ import moment from 'moment';
 import FaClockO from 'react-icons/lib/fa/clock-o';
 
 import {withForm} from '../FormContext';
+import FormElement from '../FormElement';
 import Label from '../Label';
 import TextInput from '../TextInput';
 import Button from '../Button';
 import TimePickerDialog from './TimePickerDialog';
 
 /** Timepicker input component with optional label component */
-class TimePicker extends Component {
+class TimePicker extends FormElement {
 
     state = {
         value: this.props.value,
@@ -19,13 +20,6 @@ class TimePicker extends Component {
             ? moment(this.props.value).format(props.format)
             : null
     };
-
-    static getDerivedStateFromProps(nextProps, prevState){
-        if (nextProps.value !== prevState.value) {
-            return { value: nextProps.value };
-        }
-        return null;
-    }
 
     onChangeTime = (e) =>{
         const {onChange, format} = this.props;
@@ -36,12 +30,6 @@ class TimePicker extends Component {
         } else {
             this.setPicker(null);
         }
-    };
-
-    onChangeWrapper = (value) =>{
-        const {onChange} = this.props;
-        this.setState({value});
-        onChange({value}, this.props.name)
     };
 
     setPicker = (picker) =>{
@@ -69,7 +57,7 @@ class TimePicker extends Component {
                     placeholder={placeholder}
                     value={prettyValue}
                     tabIndex={tabIndex}
-                    onChange={this.onChangeWrapper}
+                    onChange={this.onChange}
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
                 <Button onClick={() => this.setPicker('time')}><FaClockO/></Button>

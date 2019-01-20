@@ -2,30 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {withForm} from '../FormContext';
+import FormElement from '../FormElement';
 import Label from '../Label';
 
 import './Checkbox.scss';
 
-const Checkbox = ({id, name, className, tabIndex, value, checked, disabled, label, required}) => {
+export class Checkbox extends FormElement{
 
-    function onChangeWrapper(e){
-        props.onChange({...e, value: e.target.value, checked: e.target.checked}, props.name);
+    onChange = (e) =>{
+        this.setState({checked: e.target.checked});
+    };
+
+    getValue(){
+        return this.state.checked
+            ? this.props.value
+            : undefined;
     }
 
-    return (
-        <div className={`checkbox ${className}`}>
-            <input id={id}
-                   name={name}
-                   type="checkbox"
-                   defaultChecked={checked}
-                   disabled={disabled}
-                   onChange={onChangeWrapper}
-                   value={value}
-                   tabIndex={tabIndex}/>
-            <Label htmlFor={id} required={required}>{label}</Label>
-        </div>
-    );
-};
+    render(){
+        const {id, name, className, tabIndex, index, value, checked, disabled, label, required} = this.props;
+        return (
+            <div className={`checkbox ${className}`}>
+                <input id={id}
+                       name={name}
+                       type="checkbox"
+                       defaultChecked={checked}
+                       disabled={disabled}
+                       onChange={this.onChange}
+                       value={value}
+                       tabIndex={tabIndex}
+                       index={index} />
+                <Label htmlFor={id} required={required}>{label}</Label>
+            </div>
+        );
+    }
+
+}
 
 Checkbox.propTypes = {
     id: PropTypes.string.isRequired,
@@ -33,6 +45,7 @@ Checkbox.propTypes = {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
+    index: PropTypes.number,
     placeholder: PropTypes.string,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     required: PropTypes.bool,

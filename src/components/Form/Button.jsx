@@ -4,14 +4,14 @@ import { UncontrolledTooltip as Tooltip } from 'reactstrap';
 import {withForm} from "./FormContext";
 
 /** Button component with optional tooltip */
-const Button = ({id, className, name, onClick, onSubmit, type, disabled, tooltip, children}) => {
+const Button = ({id, className, name, onClick, type, disabled, tooltip, children}) => {
     return (
         <button
             id={id}
             type={type}
             name={name}
             className={`btn ${className}`}
-            onClick={type === 'submit' ? onSubmit : onClick}
+            onClick={onClick}
             disabled={disabled}>
             {tooltip &&
                 <Tooltip placement="top" target={id} delay={{show: 0, hide: 200}}>
@@ -30,8 +30,7 @@ Button.propTypes = {
     type: PropTypes.string,
     /** Tooltip to display on button hover */
     tooltip: PropTypes.object,
-    onClick: PropTypes.func,
-    onSubmit: PropTypes.func
+    onClick: PropTypes.func
 };
 
 Button.defaultProps = {

@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 export class Fieldset extends Component {
 
     render (){
-        const {children} = this.props;
+        const {children, legend, required} = this.props;
         return (
             <fieldset>
+                {legend && <legend>{legend}{required && <span>*</span>}</legend>}
+
                 {children}
             </fieldset>
         )
@@ -14,7 +16,7 @@ export class Fieldset extends Component {
 }
 
 Fieldset.propTypes = {
-    children: PropTypes.array.isRequired
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 };
 
 export default Fieldset;

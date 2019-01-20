@@ -24,15 +24,15 @@ export class Form extends Component {
         e.preventDefault();
         const results = {};
         this.elements.map(element=>{
-            if(!isNaN(element.props.index)){
-                if (!results[element.props.name]) results[element.props.name] = []; //index indicates result is an array
-                results[element.props.name][element.props.index] = element.state.value;
+            if(!isNaN(element.props.index)){  //index indicates result is an array
+                if (!results[element.props.name]) results[element.props.name] = [];
+                results[element.props.name][element.props.index] = element.getValue();
             } else {
-                results[element.props.name] = element.state.value;
+                results[element.props.name] = element.getValue();
             }
 
         });
-
+        console.log("RETURN", results);
         this.props.onSubmit(results);
     };
 
@@ -40,11 +40,10 @@ export class Form extends Component {
         const {children} = this.props;
         return (
             <FormContext.Provider value={{
-                    onSubmit: this.onSubmit,
                     addFormElement: this.addFormElement,
                     removeFormElement: this.removeFormElement
                 }}>
-                <form>
+                <form onSubmit={this.onSubmit}>
                     {children}
                 </form>
             </FormContext.Provider>

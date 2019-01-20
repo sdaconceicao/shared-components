@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import TimePickerClock from 'react-times';
 import {FormattedMessage} from 'react-intl';
@@ -7,9 +7,10 @@ import ModalConfirm from '../../Modal/ModalConfirm';
 
 import 'react-times/css/material/default.css';
 import './TimePicker.scss';
+import FormElement from "../FormElement";
 
 /** Timepicker component */
-class TimePickerDialog extends Component {
+class TimePickerDialog extends FormElement {
 
     state = {
         value: this.props.value,
@@ -17,6 +18,7 @@ class TimePickerDialog extends Component {
     };
 
     componentDidMount(){
+        this.props.addFormElement && this.props.addFormElement(this);
         new Promise((resolve) => {
             this.setState({resolve});
         }).then(response=> {
@@ -29,29 +31,23 @@ class TimePickerDialog extends Component {
         });
     }
 
-    static getDerivedStateFromProps(nextProps, prevState){
-        if (nextProps.value !== prevState.value) {
-            return { value: nextProps.value };
-        }
-        return null;
-    }
-
     onChange = (timeValue) => {
-        const timeSplit = timeValue.split(':'),
-            {value} = this.state;
-        value.setHours(timeSplit[0]);
-        value.setMinutes(timeSplit[1]);
-        this.setState({value, timeValue});
+
+        const {value} = this.state;
+        value.setHours(timeValue.hour);
+        value.setMinutes(timeValue.minute);
+        if(!this.state.setHour){
+            this.setState({value, timeValue: `${timeValue.hour}:${timeValue.minute}`, setHour: true});
+        } else {
+            this.state.resolve(true);
+        }
     };
 
-    onMinutesChange = () =>{
-        this.state.resolve(true);
-    };
 
     render(){
         const { className } = this.props,
             { timeValue, resolve} = this.state;
-
+        console.log("TIME", timeValue);
         return (
             <ModalConfirm resolve={resolve} title={<FormattedMessage id="timePicker.title"/>}>
                 <div className={`time-picker-wrapper ${className}`}>
@@ -60,15 +56,14 @@ class TimePickerDialog extends Component {
                         trigger={(<div/>)}
                         time={timeValue}
                         theme="material"
-                        onMinuteChange={this.onMinutesChange.bind(this)}
-                        onTimeChange={this.onChange.bind(this)}
+                        onMinuteChange={this.onMinutesChange}
+                        onTimeChange={this.onChange}
                     />
                 </div>
             </ModalConfirm>
         )
     }
-
-};
+}
 
 TimePickerDialog.propTypes = {
     id: PropTypes.string.isRequired,

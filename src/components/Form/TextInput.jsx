@@ -1,27 +1,12 @@
-import React, {Fragment, Component} from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 import {withForm} from './FormContext';
+import FormElement from './FormElement';
 import Label from './Label';
 
 /** Text Input component with optional label */
-export class TextInput extends Component {
-
-    state = {
-        value: this.props.value
-    };
-
-    componentDidMount(){
-        this.props.addFormElement(this);
-    }
-
-    componentWillUnmount(){
-        this.props.removeFormElement(this);
-    }
-
-    onChange(e){
-        this.setState({value: e.value});
-    }
+export class TextInput extends FormElement {
 
     render() {
         const {

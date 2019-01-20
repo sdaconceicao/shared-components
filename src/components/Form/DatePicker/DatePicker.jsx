@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import FaCalendar from 'react-icons/lib/fa/calendar';
@@ -10,8 +10,9 @@ import Button from '../Button';
 import DatePickerDialog from './DatePickerDialog';
 
 import './DatePicker.scss';
+import FormElement from "../FormElement";
 
-class DatePicker extends Component {
+class DatePicker extends FormElement {
 
     state = {
         value: this.props.value,
@@ -21,28 +22,14 @@ class DatePicker extends Component {
             : null
     };
 
-    static getDerivedStateFromProps(nextProps, prevState){
-        if (nextProps.value !== prevState.value) {
-            return { value: nextProps.value };
-        }
-        return null;
-    }
-
     onChangeDate = (e) => {
-        const {onChange, format} = this.props;
+        const {format} = this.props;
         if (e && e.value) {
-            this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value}, () => {
-                onChange({...e, value: this.state.value}, this.props.name);
-            });
+            console.log("value", format);
+            this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value});
         } else {
             this.setPicker(null);
         }
-    };
-
-    onChangeWrapper = (value) =>{
-        const {onChange} = this.props;
-        this.setState({value});
-        onChange({value}, this.props.name)
     };
 
     setPicker = (picker) =>{
@@ -55,6 +42,7 @@ class DatePicker extends Component {
                 label, required,
                 onBlur, onKeyDown} = this.props,
             {value, prettyValue, picker} = this.state;
+
         return (
             <div className={`date-picker ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
@@ -73,7 +61,7 @@ class DatePicker extends Component {
                     placeholder={placeholder}
                     value={prettyValue}
                     tabIndex={tabIndex}
-                    onChange={this.onChangeWrapper}
+                    onChange={this.onChange}
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
                 <Button onClick={() => this.setPicker('date')}><FaCalendar/></Button>

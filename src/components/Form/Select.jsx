@@ -1,17 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import StyledSelect from 'react-select'
 import CreatableSelect from 'react-select/lib/Creatable';
 
 import {withForm} from './FormContext';
+import FormElement from './FormElement';
 import Label from './Label';
 
 /** Select component with optional autocomplete and label */
-class Select extends Component {
-
-    state = {
-        value: this.props.value
-    };
+class Select extends FormElement {
 
     onChangeWrapper = (value) =>{
         const {onChange} = this.props;

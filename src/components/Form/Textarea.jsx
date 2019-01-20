@@ -1,28 +1,13 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import TextAreaAutosize from 'react-textarea-autosize';
 
 import {withForm} from './FormContext';
 import Label from './Label';
+import FormElement from "./FormElement";
 
 /** Textarea component with label */
-export class Textarea extends Component{
-
-    state = {
-        value: this.props.value
-    };
-
-    componentDidMount(){
-        this.props.addFormElement(this);
-    }
-
-    componentWillUnmount(){
-        this.props.removeFormElement(this);
-    }
-
-    onChange(e){
-        this.setState({value: e.value});
-    }
+export class Textarea extends FormElement{
 
     render() {
         const {id, name, type, tabIndex, minRows, maxLength, placeholder, className, disabled,
