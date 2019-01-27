@@ -34,7 +34,7 @@ export class Checkbox extends FormElement{
         const {id, name, className, tabIndex, index, value, disabled, label, required,
             checkedIcon, uncheckedIcon} = this.props,
             {checked} = this.state;
-        console.log("CHECKED IS", value, checked);
+
         return (
             <span className={`form-element checkbox ${className}`}>
                 <input id={id}
