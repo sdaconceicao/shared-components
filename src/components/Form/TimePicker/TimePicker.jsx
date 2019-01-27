@@ -74,12 +74,12 @@ TimePicker.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
     value: PropTypes.instanceOf(Date),
     /** Time format */
     format: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func
 };

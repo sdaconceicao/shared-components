@@ -101,16 +101,16 @@ DateTimePicker.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     /** Earliest date allowed to choose */
     minDate: PropTypes.string,
     /** Latest date allowed to choose */
     maxDate: PropTypes.string,
     /** Date/time format */
     format: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import FaSquare from 'react-icons/lib/fa/square';
 import FaCheck from 'react-icons/lib/fa/check-square';
@@ -37,9 +37,11 @@ export class Checkbox extends FormElement{
                        tabIndex={tabIndex}
                        index={index} />
                 <Label htmlFor={id} required={required}>
+                    <Fragment>
                     {checked && checkedIcon}
                     {!checked && uncheckedIcon}
                     {label}
+                    </Fragment>
                 </Label>
             </div>
         );
