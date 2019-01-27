@@ -5,9 +5,9 @@ import FaClockO from 'react-icons/lib/fa/clock-o';
 
 import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
-import Label from '../Label/Label';
-import Input from '../Input';
-import Button from '../Button/Button';
+import Label from '../Label';
+import {Input} from '../Input';
+import Button from '../Button';
 import TimePickerDialog from './TimePickerDialog';
 
 /** Timepicker input component with optional label component */
@@ -43,7 +43,7 @@ class TimePicker extends FormElement {
             {value, prettyValue, picker} = this.state;
 
         return (
-            <div className={`time-picker ${className}`}>
+            <span className={`form-element time-picker ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 {picker === 'time' &&
                     <TimePickerDialog
@@ -61,7 +61,7 @@ class TimePicker extends FormElement {
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
                 <Button onClick={() => this.setPicker('time')}><FaClockO/></Button>
-            </div>
+            </span>
         )
     }
 

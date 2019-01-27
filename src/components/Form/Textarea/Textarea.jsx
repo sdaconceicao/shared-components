@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import TextAreaAutosize from 'react-textarea-autosize';
 
@@ -16,14 +16,14 @@ export class Textarea extends FormElement{
             {value} = this.state;
 
         return (
-            <Fragment>
+            <span className={`form-element ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 <TextAreaAutosize
                     id={id}
                     type={type}
                     name={name}
                     minRows={minRows}
-                    className={`form-control ${className}`}
+                    className="form-control"
                     disabled={disabled}
                     placeholder={placeholder}
                     value={value}
@@ -32,7 +32,7 @@ export class Textarea extends FormElement{
                     onBlur={onBlur}
                     onChange={(e) => this.onChange({...e, value: e.target.value}, name)}
                 />
-            </Fragment>
+            </span>
         )
     }
 

@@ -58,7 +58,7 @@ class DateTimePicker extends FormElement {
                 onBlur, onKeyDown} = this.props,
             {value, prettyValue, picker} = this.state;
         return (
-            <div className={`date-time-picker ${className}`}>
+            <span className={`form-element date-time-picker ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 {picker !== null &&
                     <Fragment>
@@ -88,7 +88,7 @@ class DateTimePicker extends FormElement {
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
                 <Button onClick={() => this.setPicker('date')}><FaCalendar/></Button>
-            </div>
+            </span>
         )
     }
 

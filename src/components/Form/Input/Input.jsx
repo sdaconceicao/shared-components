@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import {withForm} from '../FormContext';
@@ -16,14 +16,14 @@ export class Input extends FormElement {
         } = this.props,
         {value} = this.state;
         return (
-            <Fragment>
+            <span className={`form-element ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 <input
                     name={name}
                     id={id}
+                    className="form-control"
                     index={index}
                     type={type}
-                    className={`form-control ${className}`}
                     placeholder={placeholder}
                     disabled={disabled}
                     value={value}
@@ -32,7 +32,7 @@ export class Input extends FormElement {
                     tabIndex={tabIndex}
                     onChange={(e) => this.onChange({...e, value: e.target.value}, name, index)}
                     onBlur={onBlur}/>
-            </Fragment>
+            </span>
         );
     }
 

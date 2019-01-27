@@ -22,10 +22,6 @@ class DatePicker extends FormElement {
             : null
     };
 
-    componentDidMount(){
-        console.log("PROPS", this.props);
-    }
-
     onChangeDate = (e) => {
         const {format} = this.props;
         if (e && e.value) {
@@ -47,7 +43,7 @@ class DatePicker extends FormElement {
             {value, prettyValue, picker} = this.state;
 
         return (
-            <div className={`date-picker ${className}`}>
+            <span className={`form-element date-picker ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 {picker === 'date' &&
                     <DatePickerDialog
@@ -68,7 +64,7 @@ class DatePicker extends FormElement {
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
                 <Button onClick={() => this.setPicker('date')}><FaCalendar/></Button>
-            </div>
+            </span>
         )
     }
 

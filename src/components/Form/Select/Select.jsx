@@ -21,7 +21,7 @@ class Select extends FormElement {
                 onBlur} = this.props;
 
         return (
-            <div className={className}>
+            <span className={`form-element select ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 {add &&
                     <CreatableSelect
@@ -54,7 +54,7 @@ class Select extends FormElement {
                         onBlur={onBlur}
                     />
                 }
-            </div>
+            </span>
         );
     }
 

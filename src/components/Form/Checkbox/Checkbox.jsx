@@ -26,7 +26,7 @@ export class Checkbox extends FormElement{
             checkedIcon, uncheckedIcon} = this.props,
             {checked} = this.state;
         return (
-            <div className={`checkbox ${className}`}>
+            <span className={`form-element checkbox ${className}`}>
                 <input id={id}
                        name={name}
                        type="checkbox"
@@ -43,7 +43,7 @@ export class Checkbox extends FormElement{
                     {label}
                     </Fragment>
                 </Label>
-            </div>
+            </span>
         );
     }
 
@@ -56,7 +56,8 @@ Checkbox.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     index: PropTypes.number,
-    placeholder: PropTypes.string,
+    checkedIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    uncheckedIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     required: PropTypes.bool,
     value: PropTypes.string.isRequired,
