@@ -11,8 +11,17 @@ import './Checkbox.scss';
 
 export class Checkbox extends FormElement{
 
+    state={
+        checked: this.props.checked
+    };
+
     onChange = (e) =>{
         this.setState({checked: e.target.checked});
+        this.props.onChange && this.props.onChange({
+            value: this.props.value,
+            checked: e.target.checked,
+            name: this.props.name
+        });
     };
 
     getValue(){
@@ -25,6 +34,7 @@ export class Checkbox extends FormElement{
         const {id, name, className, tabIndex, index, value, disabled, label, required,
             checkedIcon, uncheckedIcon} = this.props,
             {checked} = this.state;
+        console.log("CHECKED IS", value, checked);
         return (
             <span className={`form-element checkbox ${className}`}>
                 <input id={id}

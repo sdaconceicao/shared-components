@@ -1,5 +1,6 @@
 export Button from './Button';
 export Checkbox from './Checkbox';
+export CheckboxList from './Checkbox/CheckboxList';
 export DatePicker from './DatePicker';
 export DateTimePicker from './DateTimePicker';
 export Fieldset from './Fieldset';

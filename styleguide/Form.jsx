@@ -8,7 +8,7 @@ class FormStyleguide extends Component{
         this.state = {
             options: [
                 {value: 'bacon', label: 'Bacon'},
-                {value: 'eggs', label: 'Eggs'},
+                {value: 'eggs', label: 'Eggs Cracked'},
                 {value: 'ham', label: 'Ham'}
             ],
             textInput: 'text input',
@@ -17,6 +17,7 @@ class FormStyleguide extends Component{
             dateTime: new Date(),
             time: new Date(),
             checkbox: true,
+            checkboxList: ['eggs']
         };
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -26,7 +27,7 @@ class FormStyleguide extends Component{
     }
 
     render(){
-        const {options, checkbox, textInput, textArea, date, dateTime, time} = this.state;
+        const {options, checkbox, checkboxList, textInput, textArea, date, dateTime, time} = this.state;
         return (
             <Form onSubmit={this.onSubmit}>
                 <Forms.Input id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
@@ -37,6 +38,7 @@ class FormStyleguide extends Component{
                 <Forms.Checkbox id="checkbox" name="checkbox" checked={checkbox} value="checkbox1" label="Checkbox 1" />
                 <Forms.Select id="select-autocomplete" name="autocomplete" add={true} options={options}/>
                 <Forms.Select id="select-one" name="select" options={options}/>
+                <Forms.CheckboxList id="select-one" name="foods" options={options} label="Checkbox List" value={checkboxList}/>
                 <Forms.Button type="submit">Save</Forms.Button>
             </Form>
         )

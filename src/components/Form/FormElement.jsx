@@ -21,7 +21,10 @@ export class FormElement extends Component {
 
     onChange(e){
         this.setState({value: e && e.value});
-        this.props.onChange && this.props.onChange({value: e.value}, this.props.name);
+        this.props.onChange && this.props.onChange({
+            value: e.value,
+            name: this.props.name
+        });
     }
 
     getValue(){
