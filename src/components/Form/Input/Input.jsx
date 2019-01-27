@@ -1,12 +1,12 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import {withForm} from './FormContext';
-import FormElement from './FormElement';
-import Label from './Label';
+import {withForm} from '../FormContext';
+import FormElement from '../FormElement';
+import Label from '../Label/Label';
 
 /** Text Input component with optional label */
-export class TextInput extends FormElement {
+export class Input extends FormElement {
 
     render() {
         const {
@@ -38,7 +38,7 @@ export class TextInput extends FormElement {
 
 };
 
-TextInput.propTypes = {
+Input.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     className: PropTypes.string,
@@ -56,7 +56,7 @@ TextInput.propTypes = {
     onKeyDown: PropTypes.func
 };
 
-TextInput.defaultProps = {
+Input.defaultProps = {
     tabIndex: 1,
     type: "text",
     placeholder: '',
@@ -66,4 +66,4 @@ TextInput.defaultProps = {
     required: false
 };
 
-export default withForm(TextInput);
+export default withForm(Input);

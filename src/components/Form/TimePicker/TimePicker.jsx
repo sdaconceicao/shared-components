@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import FaClockO from 'react-icons/lib/fa/clock-o';
 
 import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
-import Label from '../Label';
-import TextInput from '../TextInput';
-import Button from '../Button';
+import Label from '../Label/Label';
+import Input from '../Input';
+import Button from '../Button/Button';
 import TimePickerDialog from './TimePickerDialog';
 
 /** Timepicker input component with optional label component */
@@ -17,7 +17,7 @@ class TimePicker extends FormElement {
         value: this.props.value,
         picker: null,
         prettyValue: this.props.value
-            ? moment(this.props.value).format(props.format)
+            ? moment(this.props.value).format(this.props.format)
             : null
     };
 
@@ -25,7 +25,7 @@ class TimePicker extends FormElement {
         const {onChange, format} = this.props;
         if (e && e.value) {
             this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value}, ()=>{
-                onChange( {value: e.value}, this.props.name);
+                onChange && onChange( {value: e.value}, this.props.name);
             });
         } else {
             this.setPicker(null);
@@ -50,7 +50,7 @@ class TimePicker extends FormElement {
                         onChange={this.onChangeTime}
                         value={value}/>
                 }
-                <TextInput
+                <Input
                     name={name}
                     id={id}
                     type='text'
@@ -89,6 +89,7 @@ TimePicker.defaultProps = {
     placeholder: '',
     className: '',
     required: false,
+    value: new Date(),
     format: 'h:mm a'
 };
 

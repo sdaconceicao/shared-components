@@ -8,7 +8,6 @@ export class Fieldset extends Component {
         return (
             <fieldset>
                 {legend && <legend>{legend}{required && <span>*</span>}</legend>}
-
                 {children}
             </fieldset>
         )

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 
 /** Abstract FormElement class used to setup forms for usage within Form component */
 export class FormElement extends Component {
@@ -20,7 +20,8 @@ export class FormElement extends Component {
     }
 
     onChange(e){
-        this.setState({value: e.value});
+        this.setState({value: e && e.value});
+        this.props.onChange && this.props.onChange({value: e.value}, this.props.name);
     }
 
     getValue(){

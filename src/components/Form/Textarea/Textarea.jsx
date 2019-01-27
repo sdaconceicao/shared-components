@@ -2,9 +2,9 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import TextAreaAutosize from 'react-textarea-autosize';
 
-import {withForm} from './FormContext';
-import Label from './Label';
-import FormElement from "./FormElement";
+import {withForm} from '../FormContext';
+import Label from '../Label';
+import FormElement from "../FormElement";
 
 /** Textarea component with label */
 export class Textarea extends FormElement{

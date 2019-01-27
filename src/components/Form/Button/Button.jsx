@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledTooltip as Tooltip } from 'reactstrap';
-import {withForm} from "./FormContext";
+import {withForm} from "../FormContext";
 
 /** Button component with optional tooltip */
 const Button = ({id, className, name, onClick, type, disabled, tooltip, children}) => {

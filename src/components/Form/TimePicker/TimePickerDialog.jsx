@@ -4,10 +4,10 @@ import TimePickerClock from 'react-times';
 import {FormattedMessage} from 'react-intl';
 
 import ModalConfirm from '../../Modal/ModalConfirm';
+import FormElement from "../FormElement";
 
 import 'react-times/css/material/default.css';
 import './TimePicker.scss';
-import FormElement from "../FormElement";
 
 /** Timepicker component */
 class TimePickerDialog extends FormElement {

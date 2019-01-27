@@ -3,21 +3,16 @@ import PropTypes from 'prop-types';
 import StyledSelect from 'react-select'
 import CreatableSelect from 'react-select/lib/Creatable';
 
-import {withForm} from './FormContext';
-import FormElement from './FormElement';
-import Label from './Label';
+import {withForm} from '../FormContext';
+import FormElement from '../FormElement';
+import Label from '../Label/Label';
 
 /** Select component with optional autocomplete and label */
 class Select extends FormElement {
 
-    onChangeWrapper = (value) =>{
-        const {onChange} = this.props;
-        onChange && onChange({value}, this.props.name);
-    };
-
-    onInputChange = (value) =>{
+    onInputChange = (e) =>{
         const {onKeyDown} = this.props;
-        onKeyDown && onKeyDown({value}, this.props.name);
+        onKeyDown && onKeyDown({value: e.value}, this.props.name);
     };
 
     render(){
@@ -39,7 +34,7 @@ class Select extends FormElement {
                         options={options}
                         value={value}
                         placeholder={placeholder}
-                        onChange={value => this.onChangeWrapper(value)}
+                        onChange={value => this.onChange(value)}
                         onInputChange={inputValue => this.onInputChange(inputValue)}
                         onBlur={onBlur}
                     />
@@ -54,7 +49,7 @@ class Select extends FormElement {
                         options={options}
                         value={value}
                         placeholder={placeholder}
-                        onChange={value => this.onChangeWrapper(value)}
+                        onChange={value => this.onChange(value)}
                         onInputChange={inputValue => this.onInputChange(inputValue)}
                         onBlur={onBlur}
                     />

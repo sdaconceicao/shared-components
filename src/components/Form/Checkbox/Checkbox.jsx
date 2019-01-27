@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FaSquare from 'react-icons/lib/fa/square';
+import FaCheck from 'react-icons/lib/fa/check-square';
 
 import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
@@ -20,7 +22,9 @@ export class Checkbox extends FormElement{
     }
 
     render(){
-        const {id, name, className, tabIndex, index, value, checked, disabled, label, required} = this.props;
+        const {id, name, className, tabIndex, index, value, disabled, label, required,
+            checkedIcon, uncheckedIcon} = this.props,
+            {checked} = this.state;
         return (
             <div className={`checkbox ${className}`}>
                 <input id={id}
@@ -32,7 +36,11 @@ export class Checkbox extends FormElement{
                        value={value}
                        tabIndex={tabIndex}
                        index={index} />
-                <Label htmlFor={id} required={required}>{label}</Label>
+                <Label htmlFor={id} required={required}>
+                    {checked && checkedIcon}
+                    {!checked && uncheckedIcon}
+                    {label}
+                </Label>
             </div>
         );
     }
@@ -59,7 +67,9 @@ Checkbox.defaultProps = {
     tabIndex: 1,
     disabled: false,
     value: false,
-    checked: false
+    checked: false,
+    checkedIcon: <FaCheck/>,
+    uncheckedIcon: <FaSquare/>
 };
 
 export default withForm(Checkbox);

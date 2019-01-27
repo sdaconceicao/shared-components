@@ -5,7 +5,7 @@ import FaCalendar from 'react-icons/lib/fa/calendar';
 
 import {withForm} from '../FormContext';
 import Label from '../Label';
-import {TextInput} from '../TextInput';
+import {Input} from '../Input';
 import Button from '../Button';
 import {DatePickerDialog} from '../DatePicker';
 import {TimePickerDialog} from '../TimePicker';
@@ -77,7 +77,7 @@ class DateTimePicker extends FormElement {
                     </Fragment>
                 }
 
-                <TextInput
+                <Input
                     name={name}
                     id={id}
                     type='text'
@@ -119,6 +119,7 @@ DateTimePicker.defaultProps = {
     tabIndex: 1,
     placeholder: '',
     className: '',
+    value: new Date(),
     format: 'MMMM Do YYYY h:mm a',
     required: false
 };

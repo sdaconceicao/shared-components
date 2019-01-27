@@ -5,7 +5,7 @@ import FaCalendar from 'react-icons/lib/fa/calendar';
 
 import {withForm} from '../FormContext';
 import Label from '../Label';
-import {TextInput} from '../TextInput';
+import {Input} from '../Input';
 import Button from '../Button';
 import DatePickerDialog from './DatePickerDialog';
 
@@ -22,10 +22,13 @@ class DatePicker extends FormElement {
             : null
     };
 
+    componentDidMount(){
+        console.log("PROPS", this.props);
+    }
+
     onChangeDate = (e) => {
         const {format} = this.props;
         if (e && e.value) {
-            console.log("value", format);
             this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value});
         } else {
             this.setPicker(null);
@@ -54,7 +57,7 @@ class DatePicker extends FormElement {
                         maxDate={maxDate}/>
                 }
 
-                <TextInput
+                <Input
                     name={name}
                     id={id}
                     type='text'

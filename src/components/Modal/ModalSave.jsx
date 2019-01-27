@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
 import {FormattedMessage} from 'react-intl';
 
-import Button from '../Form/Button';
+import Button from '../Form/Button/Button';
 
 import './Modal.scss';
 

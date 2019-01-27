@@ -13,7 +13,7 @@ class FormStyleguide extends Component{
             ],
             textInput: 'text input',
             textArea: 'text area',
-            date: null,
+            date: new Date(),
             dateTime: new Date(),
             time: new Date(),
             checkbox: true,
@@ -29,7 +29,7 @@ class FormStyleguide extends Component{
         const {options, checkbox, textInput, textArea, date, dateTime, time} = this.state;
         return (
             <Form onSubmit={this.onSubmit}>
-                <Forms.TextInput id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
+                <Forms.Input id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
                 <Forms.Textarea id="textarea" name="textArea" type="input" label="Text Area" value={textArea}/>
                 <Forms.DateTimePicker id="dateTimePicker" name="dateTime"  value={dateTime}/>
                 <Forms.TimePicker id="timePicker" name="time" value={time} />
