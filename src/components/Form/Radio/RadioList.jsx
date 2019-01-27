@@ -12,6 +12,10 @@ export class RadioList extends FormElement{
 
     onChange = (e) =>{
         this.setState({value: e.value});
+        this.props.onChange && this.props.onChange({
+            value: e.value,
+            name: this.props.name
+        });
     };
 
     render(){
