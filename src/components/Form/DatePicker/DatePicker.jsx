@@ -16,7 +16,7 @@ class DatePicker extends FormElement {
 
     state = {
         value: this.props.value,
-        picker: null,
+        btnTarget: `btn-${this.props.id}`,
         prettyValue: this.props.value
             ? moment(this.props.value).format(this.props.format)
             : null
@@ -40,18 +40,17 @@ class DatePicker extends FormElement {
                 minDate, maxDate,
                 label, required,
                 onBlur, onKeyDown} = this.props,
-            {value, prettyValue, picker} = this.state;
+            {value, prettyValue, btnTarget} = this.state;
 
         return (
             <span className={`form-element date-picker ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
-                {picker === 'date' &&
-                    <DatePickerDialog
-                        onChange={this.onChangeDate}
-                        value={value}
-                        minDate={minDate}
-                        maxDate={maxDate}/>
-                }
+                <DatePickerDialog
+                    onChange={this.onChangeDate}
+                    value={value}
+                    minDate={minDate}
+                    maxDate={maxDate}
+                    target={btnTarget}/>
 
                 <Input
                     name={name}
@@ -63,7 +62,7 @@ class DatePicker extends FormElement {
                     onChange={this.onChange}
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
-                <Button onClick={() => this.setPicker('date')}><FaCalendar/></Button>
+                <Button id={btnTarget}><FaCalendar/></Button>
             </span>
         )
     }

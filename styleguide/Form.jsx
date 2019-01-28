@@ -32,7 +32,7 @@ class FormStyleguide extends Component{
         return (
             <Form onSubmit={this.onSubmit}>
                 <Forms.Input id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
-                <Forms.Textarea id="textarea" name="textArea" type="input" label="Text Area" value={textArea}/>
+                <Forms.Textarea id="textarea" name="textArea" type="input" label="Text Area" value={textArea} disabled={true}/>
                 <Forms.DateTimePicker id="dateTimePicker" name="dateTime"  value={dateTime}/>
                 <Forms.TimePicker id="timePicker" name="time" value={time} />
                 <Forms.DatePicker id="datePicker" name="date" value={date}/>

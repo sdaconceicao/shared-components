@@ -3,26 +3,13 @@ import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import {FormattedMessage} from 'react-intl';
 
-import ModalConfirm from '../../Modal/ModalConfirm';
+import Popover from '../../Popover';
 
 class DatePickerDialog extends Component {
 
     state = {
         value: this.props.value
     };
-
-    componentDidMount(){
-        new Promise(resolve => {
-            this.setState({resolve});
-        }).then(response=> {
-            const {onChange} = this.props;
-            if (response) {
-                onChange({value: this.state.dateValue});
-            } else {
-                onChange(null);
-            }
-        });
-    }
 
     static getDerivedStateFromProps(nextProps, prevState){
         if (nextProps.value !== prevState.value) {
@@ -32,14 +19,17 @@ class DatePickerDialog extends Component {
     }
 
     onChange = (value) =>{
+        const {onChange} = this.props;
         this.setState({dateValue: value});
+        onChange && onChange({value});
     };
 
     render(){
-        const { className, minDate, maxDate} = this.props,
-            {value, resolve} = this.state;
+        const { className, minDate, maxDate, target} = this.props,
+            {value} = this.state;
         return (
-            <ModalConfirm resolve={resolve} title={<FormattedMessage id="datePicker.title"/>}>
+            <Popover title={<FormattedMessage id="datePicker.title"/>}
+                     target={target}>
                 <div className={`date-picker-wrapper ${className}`}>
                     <Calendar
                         onChange={this.onChange}
@@ -49,14 +39,13 @@ class DatePickerDialog extends Component {
                         maxDate={maxDate}
                     />
                 </div>
-            </ModalConfirm>
+            </Popover>
         )
     }
 
 };
 
 DatePickerDialog.propTypes = {
-    id: PropTypes.string.isRequired,
     value: PropTypes.string,
     className: PropTypes.string,
     /** Earliest date allowed to choose */
