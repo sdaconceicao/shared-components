@@ -7,9 +7,9 @@ class FormStyleguide extends Component{
         super(props);
         this.state = {
             options: [
-                {value: 'bacon', label: 'Bacon'},
-                {value: 'eggs', label: 'Eggs Cracked'},
-                {value: 'ham', label: 'Ham'}
+                {label: 'Bacon', value: 'bacon' },
+                {label: 'Eggs Cracked', value: 'eggs'},
+                {label: 'Ham', value: 'ham'}
             ],
             textInput: 'text input',
             textArea: 'text area',
@@ -18,7 +18,9 @@ class FormStyleguide extends Component{
             time: new Date(),
             checkbox: true,
             checkboxList: ['eggs'],
-            radioList: 'ham'
+            radioList: 'ham',
+            select: 'eggs',
+            autocomplete: 'eggs'
         };
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -28,7 +30,7 @@ class FormStyleguide extends Component{
     }
 
     render(){
-        const {options, checkbox, checkboxList, radioList, textInput, textArea, date, dateTime, time} = this.state;
+        const {options, checkbox, checkboxList, radioList, textInput, textArea, date, dateTime, time, select, autocomplete} = this.state;
         return (
             <Form onSubmit={this.onSubmit}>
                 <Forms.Input id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
@@ -37,8 +39,8 @@ class FormStyleguide extends Component{
                 <Forms.TimePicker id="timePicker" name="time" value={time} />
                 <Forms.DatePicker id="datePicker" name="date" value={date}/>
                 <Forms.Checkbox id="checkbox" name="checkbox" checked={checkbox} value="checkbox1" label="Checkbox 1" />
-                <Forms.Select id="select-autocomplete" name="autocomplete" add={true} options={options}/>
-                <Forms.Select id="select-one" name="select" options={options}/>
+                <Forms.Select id="select-autocomplete" name="autocomplete" add={true} options={options} value={autocomplete}/>
+                <Forms.Select id="select-one" name="select" options={options} value={select}/>
                 <Forms.CheckboxList id="check-list" name="foods" options={options} label="Checkbox List" value={checkboxList}/>
                 <Forms.RadioList id="radio-list" name="foodsOne" options={options} label="Radio List" value={radioList}/>
                 <Forms.Button type="submit">Save</Forms.Button>

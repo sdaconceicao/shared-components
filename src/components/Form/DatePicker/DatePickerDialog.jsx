@@ -46,7 +46,7 @@ class DatePickerDialog extends Component {
 };
 
 DatePickerDialog.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     className: PropTypes.string,
     /** Earliest date allowed to choose */
     minDate: PropTypes.string,

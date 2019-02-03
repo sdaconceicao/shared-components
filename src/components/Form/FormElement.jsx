@@ -19,13 +19,13 @@ export class FormElement extends Component {
         this.props.value !== prevProps.value && this.setState({ value: this.props.value });
     }
 
-    onChange(e){
+    onChange = (e) => {
         this.setState({value: e && e.value});
         this.props.onChange && this.props.onChange({
             value: e.value,
             name: this.props.name
         });
-    }
+    };
 
     getValue(){
         return this.state.value;

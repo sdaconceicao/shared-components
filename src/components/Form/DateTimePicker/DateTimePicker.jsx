@@ -1,25 +1,26 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import Calendar from "react-calendar";
 import FaCalendar from 'react-icons/lib/fa/calendar';
+import {FormattedMessage} from "react-intl";
 
 import {withForm} from '../FormContext';
 import Label from '../Label';
 import {Input} from '../Input';
 import Button from '../Button';
-import {DatePickerDialog} from '../DatePicker';
-import {TimePickerDialog} from '../TimePicker';
 import FormElement from "../FormElement";
+import Popover from "../../Popover";
+import TimePicker from "../TimePicker/TimePicker";
 
 import './DateTimePicker.scss';
-
 
 /** Date/Time Picker input component with optional label */
 class DateTimePicker extends FormElement {
 
     state = {
         value: this.props.value,
-        picker: null,
+        btnTarget: `btn-${this.props.id}`,
         prettyValue: this.props.value
             ? moment(this.props.value).format(this.props.format)
             : null
@@ -28,27 +29,15 @@ class DateTimePicker extends FormElement {
     onChangeDate = (e) =>{
         const {format} = this.props;
         let {value} = this.state;
-        if (e && e.value){
-            if (!value) value = new Date();
-            e.value.setHours(value.getHours());
-            e.value.setMinutes(value.getMinutes());
-            this.setState({picker: 'time', prettyValue: moment(e.value).format(format), value: e.value});
-        } else {
-            this.setPicker(null);
-        }
+        if (!value) value = new Date();
+        e.setHours(value.getHours());
+        e.setMinutes(value.getMinutes());
+        this.setState({prettyValue: moment(e).format(format), value: e});
     };
 
     onChangeTime = (e) =>{
         const {format} = this.props;
-        if (e && e.value) {
-            this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value});
-        } else {
-            this.setPicker('date');
-        }
-    };
-
-    setPicker = (picker) =>{
-        this.setState({picker});
+        this.setState({prettyValue: moment(e.value).format(format), value: e.value});
     };
 
     render(){
@@ -56,27 +45,26 @@ class DateTimePicker extends FormElement {
                 minDate, maxDate,
                 label, required,
                 onBlur, onKeyDown} = this.props,
-            {value, prettyValue, picker} = this.state;
+            {value, prettyValue, btnTarget} = this.state;
         return (
             <span className={`form-element date-time-picker ${className}`}>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
-                {picker !== null &&
-                    <Fragment>
-                        {picker === 'date' &&
-                            <DatePickerDialog
-                                onChange={this.onChangeDate}
-                                value={value}
-                                minDate={minDate}
-                                maxDate={maxDate}/>
-                        }
-                        {picker === 'time' &&
-                            <TimePickerDialog
-                                onChange={this.onChangeTime}
-                                value={value}/>
-                            }
-                    </Fragment>
-                }
-
+                <Popover title={<FormattedMessage id="datePicker.title"/>}
+                         target={btnTarget}>
+                    <div className={`date-picker-wrapper ${className}`}>
+                        <Calendar
+                            onChange={this.onChangeDate}
+                            calendarType="US"
+                            value={value}
+                            minDate={minDate}
+                            maxDate={maxDate}
+                        />
+                        <TimePicker id={`time-picker-${id}`}
+                                    name={`time-picker-${name}`}
+                                    value={value}
+                                    onChange={this.onChangeTime}/>
+                    </div>
+                </Popover>
                 <Input
                     name={name}
                     id={id}
@@ -87,7 +75,7 @@ class DateTimePicker extends FormElement {
                     onChange={this.onChange}
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
-                <Button onClick={() => this.setPicker('date')}><FaCalendar/></Button>
+                <Button id={btnTarget}><FaCalendar/></Button>
             </span>
         )
     }

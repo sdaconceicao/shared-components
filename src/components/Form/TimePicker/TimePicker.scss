@@ -1,35 +1,7 @@
-@import '../../../styles/utilities';
-
 .time-picker{
-    input{
-        width: calc(100% - 42px);
+    &__hours, &__minutes, &__ampm{
         display: inline-block;
+        width: 80px;
     }
-    .btn{
-        margin-top: -3px;
-        margin-bottom: 1px;
-        border: 1px solid #ced4da;
-    }
-}
 
-.time-picker-wrapper{
-    height: 406px;
-    width: 300px;
-    margin-right: auto;
-    margin-top: -28px;
-}
-
-.time_picker_modal_header{
-    background-color: $color-secondary-bg;
-}
-
-@include media-breakpoint-up(md) {
-    .time-picker-wrapper {
-        margin-left: auto;
-    }
-}
-@include media-breakpoint-down(sm) {
-    .time-picker-wrapper {
-        margin-left: -15px;
-    }
 }

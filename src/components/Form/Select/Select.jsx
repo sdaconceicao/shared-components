@@ -8,16 +8,25 @@ import FormElement from '../FormElement';
 import Label from '../Label/Label';
 
 /** Select component with optional autocomplete and label */
-class Select extends FormElement {
+export class Select extends FormElement {
 
     onInputChange = (e) =>{
         const {onKeyDown} = this.props;
         onKeyDown && onKeyDown({value: e.value}, this.props.name);
     };
 
+    onChange = (e) =>{
+        this.setState({value: e.value});
+        this.props.onChange && this.props.onChange({
+            value: e.value,
+            name: this.props.name
+        });
+    };
+
+
     render(){
         const { id, name,  tabIndex, className, placeholder, add, autocomplete, options, disabled,
-                label, required, value,
+                label, required,
                 onBlur} = this.props;
 
         return (
@@ -32,9 +41,9 @@ class Select extends FormElement {
                         isClearable
                         isSearchable={autocomplete}
                         options={options}
-                        value={value}
+                        value={options.filter(({value}) => value === this.state.value)}
                         placeholder={placeholder}
-                        onChange={value => this.onChange(value)}
+                        onChange={this.onChange}
                         onInputChange={inputValue => this.onInputChange(inputValue)}
                         onBlur={onBlur}
                     />
@@ -47,9 +56,9 @@ class Select extends FormElement {
                         disabled={disabled}
                         isSearchable={autocomplete}
                         options={options}
-                        value={value}
+                        value={options.filter(({value}) => value === this.state.value)}
                         placeholder={placeholder}
-                        onChange={value => this.onChange(value)}
+                        onChange={this.onChange}
                         onInputChange={inputValue => this.onInputChange(inputValue)}
                         onBlur={onBlur}
                     />
@@ -57,8 +66,7 @@ class Select extends FormElement {
             </span>
         );
     }
-
-};
+}
 
 Select.propTypes = {
     id: PropTypes.string,
