@@ -2,6 +2,8 @@
     .styled-select {
         &__control {
             border-color: var(--color-input-border);
+            height: var(--input-height);
+            min-height: var(--input-height);
             &--is-focused{
                 box-shadow:none;
                 :hover{
