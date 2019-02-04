@@ -5,6 +5,8 @@ import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
 import Label from '../Label';
 import {Select} from '../Select';
+import {convertTimeByAmPm, getHourFromDateAndMode, getHourValueByMode} from './TimePicker.util';
+
 
 import './TimePicker.scss';
 
@@ -15,26 +17,24 @@ class TimePicker extends FormElement {
         value: this.props.value
     };
 
-    hours = Array.from(Array(this.props.mode === '12' ? 12 : 24), (_, x)=> {return {label: x+1, value: x+1}});
+    hours = this.props.mode === '12'
+        ? Array.from(Array(12), (_, x)=> {return {label: x+1, value: x+1}})
+        : Array.from(Array(24), (_, x)=> {return {label: x, value: x}});
     minutes = Array.from(Array(60), (_, x)=> {return {label: x+1, value: x+1}});
     ampm = [{label: 'AM', value: 'am'}, {label:"PM", value: 'pm'}];
 
     onChange = (e, type) =>{
-        const {onChange} = this.props,
+        const {onChange, mode} = this.props,
             timeValue = this.state.value;
         switch (type){
             case "hours":
-                timeValue.setHours(e.value);
+                timeValue.setHours(getHourFromDateAndMode(e.value, mode, timeValue));
                 break;
             case "minutes":
                 timeValue.setMinutes(e.value);
                 break;
             case "ampm":
-                if(e.value === 'am'){
-                    timeValue.setHours(timeValue.getHours()-12);
-                } else {
-                    timeValue.setHours(timeValue.getHours()+12);
-                }
+                timeValue.setHours(convertTimeByAmPm(e.value, timeValue));
                 break;
         }
         this.setState({value: timeValue}, ()=>{
@@ -51,15 +51,17 @@ class TimePicker extends FormElement {
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 <Select name={`time-picker-hours-${name}`}
                         className="time-picker__hours"
-                        value={value.getHours() > 12 ? value.getHours() - 12 : value.getHours()}
+                        value={getHourValueByMode(mode, value)}
                         options={this.hours}
                         tabIndex={tabIndex}
+                        placeholder="--"
                         onChange={(e)=>this.onChange(e, 'hours')}/>
                 <Select name={`time-picker-minutes-${name}`}
                         className="time-picker__minutes"
                         value={value.getMinutes()}
                         options={this.minutes}
                         tabIndex={tabIndex + .1}
+                        placeholder="--"
                         onChange={(e)=>this.onChange(e, 'minutes')}/>
                 {mode === '12' &&
                     <Select name={`time-picker-ampm-${name}`}
@@ -67,6 +69,7 @@ class TimePicker extends FormElement {
                             value={value.getHours() > 12 ? 'pm' : 'am'}
                             options={this.ampm}
                             tabIndex={tabIndex + .2}
+                            placeholder="--"
                             onChange={(e)=>this.onChange(e, 'ampm')}/>
                 }
             </span>
