@@ -21,4 +21,16 @@
             width: 100%;
         }
     }
+    .react-calendar__tile:enabled:hover, .react-calendar__tile:enabled:focus{
+        background-color: var(--color-primary-hover-bg);
+        color: var(--color-primary-hover-text);
+    }
+    .react-calendar__tile--active:enabled:hover, .react-calendar__tile--active:enabled:focus{
+        background-color: var(--color-primary-bg);
+        color: var(--color-primary-text);
+    }
+    .react-calendar__tile--active{
+        background-color: var(--color-primary-bg);
+        color: var(--color-primary-text);
+    }
 }

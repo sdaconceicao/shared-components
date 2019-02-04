@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Popover as PopoverWrapper, PopoverHeader, PopoverBody } from 'reactstrap';
 import PropTypes from "prop-types";
 
+import './Popover.scss';
+
 export default class Popover extends Component {
 
     state = {
