@@ -1,11 +1,14 @@
 .date-time-picker{
     input{
-        width: calc(100% - 42px);
+        width: calc(100% - 2rem);
         display: inline-block;
+        border-radius: var(--input-radius) 0 0 var(--input-radius);
+        border-right: none;
     }
     .btn{
+        width: 2rem;
         margin-top: -3px;
         margin-bottom: 1px;
-        border: 1px solid #ced4da;
+        border-radius: 0 var(--input-radius) var(--input-radius) 0;
     }
 }

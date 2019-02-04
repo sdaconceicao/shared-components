@@ -5,6 +5,8 @@ import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
 import Label from '../Label/Label';
 
+import './Input.scss';
+
 /** Text Input component with optional label */
 export class Input extends FormElement {
 

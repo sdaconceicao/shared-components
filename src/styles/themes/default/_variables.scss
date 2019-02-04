@@ -1,0 +1,67 @@
+:root{
+    --input-height: 2rem;
+    --input-padding: 0 .5rem;;
+    --input-radius: .25rem;
+    --input-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+
+
+    --color-success: #5CBA5C;
+    --color-success-dark: #448744;
+    --color-warning: #F0D540;
+    --color-warning-dark: #907f28;
+    --color-error: #df3e43;
+    --color-error-dark: #762427;
+
+    --color-white: #fff;
+    --color-light: #CCC;
+    --color-medium: #a7a7a7;
+    --color-medium-dark: #808080;
+    --color-dark: #333333;
+    --color-black: #000000;
+
+    --color-primary: #ae1c2f;
+    --color-primary-dark: #580e18;
+    --color-secondary: #CCCCCC;
+    --color-secondary-dark: #9a9a9a;
+    --color-tertiary: #6c716e;
+    --color-tertiary-dark: #202221;
+
+    --color-primary-bg: var(--color-primary);
+    --color-primary-text: var(--color-white);
+    --color-primary-border: var(--color-primary);
+    --color-primary-hover-bg: var(--color-primary-dark);
+    --color-primary-hover-text:  var(--color-white);
+    --color-primary-hover-border: var(--color-primary-dark);
+    --color-secondary-bg: var(--color-secondary);
+    --color-secondary-text: var(--color-dark);
+    --color-secondary-border: var(--color-secondary);
+    --color-secondary-hover-bg: var(--color-secondary-dark);
+    --color-secondary-hover-text: var(--color-white);
+    --color-secondary-hover-border: var(--color-secondary-dark);
+    --color-tertiary-bg: var(--color-tertiary);
+    --color-tertiary-text: var(--color-light);
+    --color-tertiary-border: var(--color-tertiary);
+    --color-tertiary-hover-bg: var(--color-tertiary-dark);
+    --color-tertiary-hover-text: var(--color-light);
+    --color-tertiary-hover-border: var(--color-tertiary-dark);
+
+    --color-input-bg: var(--color-white);
+    --color-input-text: var(--color-dark);
+    --color-input-border: var(--color-medium);
+    --color-input-hover-bg: var(--color-light);
+    --color-input-hover-text: var(--color-white);
+    --color-input-hover-border: var(--color-medium);
+
+    --color-success-bg: var(--color-success);
+    --color-success-border: var(--color-success-dark);
+    --color-success-text: var(--color-success-dark);
+    --color-warning-bg: var(--color-warning );
+    --color-warning-border: var(--color-warning-dark);
+    --color-warning-text: var(--color-warning-dark);
+    --color-error-bg: var(--color-error);
+    --color-error-border: var(--color-error-dark);
+    --color-error-text: var(--color-error-dark);
+}
+
+

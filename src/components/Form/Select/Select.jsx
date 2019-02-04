@@ -7,6 +7,8 @@ import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
 import Label from '../Label/Label';
 
+import './Select.scss';
+
 /** Select component with optional autocomplete and label */
 export class Select extends FormElement {
 
@@ -36,6 +38,7 @@ export class Select extends FormElement {
                     <CreatableSelect
                         id={id}
                         name={name}
+                        classNamePrefix={`styled-select`}
                         tabIndex={tabIndex}
                         disabled={disabled}
                         isClearable
@@ -52,6 +55,7 @@ export class Select extends FormElement {
                     <StyledSelect
                         id={id}
                         name={name}
+                        classNamePrefix="styled-select"
                         tabIndex={tabIndex}
                         disabled={disabled}
                         isSearchable={autocomplete}
