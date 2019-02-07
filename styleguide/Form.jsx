@@ -13,6 +13,7 @@ class FormStyleguide extends Component{
             ],
             textInput: 'text input',
             textArea: 'text area',
+            richtText: '<p>Hello World</p>',
             date: new Date(),
             dateTime: new Date(),
             time: new Date(),
@@ -30,11 +31,12 @@ class FormStyleguide extends Component{
     }
 
     render(){
-        const {options, checkbox, checkboxList, radioList, textInput, textArea, date, dateTime, time, select, autocomplete} = this.state;
+        const {options, checkbox, checkboxList, radioList, textInput, textArea, richtText, date, dateTime, time, select, autocomplete} = this.state;
         return (
             <Form onSubmit={this.onSubmit}>
                 <Forms.Input id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
-                <Forms.Textarea id="textarea" name="textArea" type="input" label="Text Area" value={textArea} disabled={true}/>
+                <Forms.Textarea id="textarea" name="textArea" type="input" label="Text Area" value={textArea} />
+                <Forms.RichTextEditor id="richtext" name="richtext" label="Rich Text Editor" value={richtText}/>
                 <Forms.DateTimePicker id="dateTimePicker" name="dateTime"  value={dateTime}/>
                 <Forms.TimePicker id="timePicker" name="time" value={time} />
                 <Forms.DatePicker id="datePicker" name="date" value={date}/>

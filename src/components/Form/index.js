@@ -11,6 +11,7 @@ export RadioList from './Radio/RadioList';
 export Select from './Select';
 export Textarea from './Textarea';
 export Input from './Input';
+export RichTextEditor from './RichTextEditor';
 export TimePicker from './TimePicker';
 
 export default from './Form';
