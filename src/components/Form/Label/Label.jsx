@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './Label.scss';
+
 /** Label component */
 const Label = ({htmlFor, className, required, children}) => {
     return (

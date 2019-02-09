@@ -1,12 +1,15 @@
 .rdw-editor-toolbar{
     border: 1px solid var(--color-input-border);
+    border-radius: var(--input-radius) var(--input-radius) 0 0;
     margin-bottom: 0;
     min-height: calc(var(--input-height) + 1rem);
     vertical-align: top;
 }
 .rdw-editor-main{
     border: 1px solid var(--color-input-border);
+    border-radius: 0 0 var(--input-radius) var(--input-radius);
     border-top: none;
+    padding: 0 1rem;
 }
 
 .rdw-link-modal{

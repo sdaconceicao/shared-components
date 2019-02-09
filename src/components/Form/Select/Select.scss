@@ -14,10 +14,21 @@
         &__indicator {
             color: var(--color-input-border);
             cursor: pointer;
-            &:hover{
-                color: var(--color-input-hover-border);
+            padding: 5px;
+            transition: var(--input-transition);
+            &:last-child{
+                border-left: 1px solid var(--color-input-border);
+                height: 100%;
+                &:hover{
+                    color: var(--color-input-hover-text);
+                    background-color: var(--color-input-hover-bg);
+                }
+            }
+            &-separator{
+                background-color: transparent;
             }
         }
+
         &__option{
             transition: var(--input-transition);
 
