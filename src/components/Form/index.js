@@ -5,6 +5,7 @@ export ColorPicker from './ColorPicker';
 export DatePicker from './DatePicker';
 export DateTimePicker from './DateTimePicker';
 export Fieldset from './Fieldset';
+export FilePicker from './FilePicker';
 export Form from './Form';
 export Input from './Input';
 export Label from './Label';

@@ -32,12 +32,19 @@ class FormStyleguide extends Component{
     }
 
     render(){
-        const {options, checkbox, checkboxList, radioList, textInput, textArea, color, richtText, date, dateTime, time, select, autocomplete} = this.state;
+        const {options, checkbox, checkboxList, radioList, textInput, textArea, color, richtText, date, dateTime, time, file, select, autocomplete} = this.state;
         return (
             <Form onSubmit={this.onSubmit}>
                 <Forms.Input id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
                 <Forms.Textarea id="textarea" name="textArea" type="input" label="Text Area" value={textArea} />
                 <Forms.RichTextEditor id="richtext" name="richtext" label="Rich Text Editor" value={richtText}/>
+                <Forms.FilePicker id="file"
+                                  name="file"
+                                  label="Image"
+                                  value={file} render={(value)=>{
+                    return value ? <img src={value} alt='preview' /> : null;}}>
+                    Upload Image
+                </Forms.FilePicker>
                 <Forms.ColorPicker id="color" name="color" label="Color Picker" value={color}/>
                 <Forms.DateTimePicker id="dateTimePicker" name="dateTime"  value={dateTime}/>
                 <Forms.TimePicker id="timePicker" name="time" value={time} />

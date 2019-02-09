@@ -1,0 +1,11 @@
+.file-upload{
+    &__input{
+        display: none;
+    }
+    &__button{
+        display: block;
+    }
+    &__label{
+        cursor: pointer;
+    }
+}
