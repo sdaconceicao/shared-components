@@ -10,5 +10,8 @@
         margin-top: -3px;
         margin-bottom: 1px;
         border-radius: 0 var(--input-radius) var(--input-radius) 0;
+        svg {
+            margin-top: -.2rem;
+        }
     }
 }
