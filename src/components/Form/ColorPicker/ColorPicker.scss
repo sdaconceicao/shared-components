@@ -1,0 +1,36 @@
+.color-dropdown{
+    display: inline-block;
+    margin: 0;
+    position:relative;
+    .dropdown-menu{
+        background-color: transparent;
+        border: none;
+    }
+    .sketch-picker{
+        position: absolute;
+        z-index: 40000;
+    }
+    &__indicator{
+        display: inline-block;
+        width: 23px;
+        height: 18px;
+        margin-top: 3px;
+        vertical-align: top;
+        font-size: .75rem;
+        border: 1px solid var(--color-input-border);
+    }
+    &__close{
+        position: absolute;
+        z-index: 50000;
+        border-radius: .25rem;
+        height: 19px;
+        vertical-align: top;
+        padding: 0;
+        bottom: -17.3rem;
+        right: -3rem;
+        svg{
+            position: relative;
+            top: -5px;
+        }
+    }
+}

@@ -3,13 +3,13 @@ import TestUtils from 'react-dom/test-utils';
 import {mount} from 'enzyme';
 import expect from 'expect';
 
-import TextInput from './TextInput';
+import Input from './Input';
 
-describe('TextInput', ()=> {
+describe('Input', ()=> {
 
     function setup(props){
         return mount(
-            <TextInput {...props}/>
+            <Input {...props}/>
         )
     }
 

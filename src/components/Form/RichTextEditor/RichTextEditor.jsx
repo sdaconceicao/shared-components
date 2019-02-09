@@ -1,14 +1,16 @@
 import React, {Fragment} from 'react';
+import PropTypes from "prop-types";
 import { EditorState, ContentState, convertFromHTML } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import {stateToHTML} from 'draft-js-export-html';
 
 import FormElement from "../FormElement";
 import {withForm} from "../FormContext";
+import Label from "../Label";
+import {ColorPicker} from "../ColorPicker";
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import PropTypes from "prop-types";
-import Label from "../Label";
+import './RichTextEditor.scss';
 
 export class RichTextEditor extends FormElement {
 
@@ -31,7 +33,7 @@ export class RichTextEditor extends FormElement {
     }
 
     render() {
-        const {id, label, required, className, tabIndex} = this.props,
+        const {id, label, required, className, tabIndex, toolbar} = this.props,
             {editorState} = this.state;
         return (
             <Fragment>
@@ -40,6 +42,7 @@ export class RichTextEditor extends FormElement {
                         className={className}
                         tabIndex={tabIndex}
                         editorState={editorState}
+                        toolbar={toolbar}
                         onEditorStateChange={this.onChange}/>
             </Fragment>
         )
@@ -52,6 +55,7 @@ RichTextEditor.propTypes = {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
+    toolbar: PropTypes.array,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
     onChange: PropTypes.func
@@ -59,7 +63,12 @@ RichTextEditor.propTypes = {
 
 RichTextEditor.defaultProps = {
     tabIndex: 1,
-    className: ''
+    className: '',
+    toolbar: {
+        options: ['fontSize', 'fontFamily', 'blockType', 'list', 'textAlign', 'colorPicker', 'link', 'image'],
+        colorPicker: { component: ColorPicker },
+    }
+
 };
 
 
