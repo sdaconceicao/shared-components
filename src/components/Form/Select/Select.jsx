@@ -18,9 +18,13 @@ export class Select extends FormElement {
     };
 
     onChange = (e) =>{
-        this.setState({value: e.value});
+        const value = e
+            ? e.value
+            : null;
+
+        this.setState({value});
         this.props.onChange && this.props.onChange({
-            value: e.value,
+            value,
             name: this.props.name
         });
     };
