@@ -4,7 +4,7 @@ import {Dropdown, DropdownMenu, DropdownToggle} from "reactstrap";
 
 import {withForm} from '../FormContext';
 import FormElement from "../FormElement";
-import {ColorPickerControl} from './ColorPickerControl';
+import {ColorPickerDialog} from './ColorPickerDialog';
 
 import './ColorPicker.scss';
 
@@ -38,7 +38,7 @@ export class ColorPicker extends FormElement {
                     }
                 </DropdownToggle>
                 <DropdownMenu>
-                    <ColorPickerControl onClose={this.onToggle} onChange={this.onChange}/>
+                    <ColorPickerDialog onClose={this.onToggle} onChange={this.onChange} value={value}/>
                 </DropdownMenu>
             </Dropdown>
         )

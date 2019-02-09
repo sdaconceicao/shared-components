@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import PropTypes from "prop-types";
-import { EditorState, ContentState, convertFromHTML } from 'draft-js';
+import { EditorState, ContentState, convertFromHTML, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
-import {stateToHTML} from 'draft-js-export-html';
+import draftToHtml from 'draftjs-to-html'
 
 import FormElement from "../FormElement";
 import {withForm} from "../FormContext";
@@ -23,13 +23,13 @@ export class RichTextEditor extends FormElement {
     onChange = (editorState) => {
         this.setState({editorState});
         this.props.onChange && this.props.onChange({
-            value: stateToHTML(this.state.editorState.getCurrentContent()),
+            value: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
             name: this.props.name
         });
     };
 
     getValue(){
-        return stateToHTML(this.state.editorState.getCurrentContent());
+        return  draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
     }
 
     render() {
@@ -55,7 +55,7 @@ RichTextEditor.propTypes = {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
-    toolbar: PropTypes.array,
+    toolbar: PropTypes.object,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
     onChange: PropTypes.func

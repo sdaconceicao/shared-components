@@ -6,10 +6,10 @@ import FaClose from 'react-icons/lib/fa/close';
 import {withForm} from '../FormContext';
 import FormElement from "../FormElement";
 
-export class ColorPickerControl extends FormElement {
+export class ColorPickerDialog extends FormElement {
     state = {
         color: {
-            hex: this.props.initialColor
+            hex: this.props.value
         },
     };
 
@@ -35,17 +35,17 @@ export class ColorPickerControl extends FormElement {
     }
 }
 
-ColorPickerControl.propTypes = {
+ColorPickerDialog.propTypes = {
     onChange: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
     presetColors: PropTypes.array
 };
 
-ColorPickerControl.defaultProps = {
+ColorPickerDialog.defaultProps = {
     presetColors: ['#D0021B', '#F5A623', '#F8E71C', '#8B572A', '#7ED321', '#417505',
         '#BD10E0', '#9013FE', '#4A90E2', '#50E3C2', '#B8E986', '#000000', '#4A4A4A',
         '#9B9B9B', 'transparent']
 };
 
-export default withForm(ColorPickerControl);
+export default withForm(ColorPickerDialog);
