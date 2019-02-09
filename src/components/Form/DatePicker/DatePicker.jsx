@@ -26,13 +26,7 @@ class DatePicker extends FormElement {
         const {format} = this.props;
         if (e && e.value) {
             this.setState({picker: null, prettyValue: moment(e.value).format(format), value: e.value});
-        } else {
-            this.setPicker(null);
         }
-    };
-
-    setPicker = (picker) =>{
-        this.setState({picker});
     };
 
     render(){
