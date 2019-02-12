@@ -8,7 +8,7 @@
     &.with-button{
         width: calc(100% - 2rem);
         display: inline-block;
-        border-radius: var(--radius-input) 0 0 var(--radius-input);
+        border-radius: var(--input-radius) 0 0 var(--input-radius);
         border-right: none;
     }
 }
