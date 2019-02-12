@@ -13,8 +13,6 @@ import FormElement from "../FormElement";
 import Popover from "../../Popover";
 import TimePicker from "../TimePicker/TimePicker";
 
-import './DateTimePicker.scss';
-
 /** Date/Time Picker input component with optional label */
 class DateTimePicker extends FormElement {
 
@@ -72,10 +70,12 @@ class DateTimePicker extends FormElement {
                     placeholder={placeholder}
                     value={prettyValue}
                     tabIndex={tabIndex}
+                    className="with-button"
                     onChange={this.onChange}
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
-                <Button id={btnTarget}><FaCalendar/></Button>
+                <Button id={btnTarget}
+                        className="with-input"><FaCalendar/></Button>
             </span>
         )
     }

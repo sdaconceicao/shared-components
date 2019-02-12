@@ -54,9 +54,11 @@ class DatePicker extends FormElement {
                     value={prettyValue}
                     tabIndex={tabIndex}
                     onChange={this.onChange}
+                    className="with-button"
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
-                <Button id={btnTarget}><FaCalendar/></Button>
+                <Button id={btnTarget}
+                        className="with-input"><FaCalendar/></Button>
             </span>
         )
     }

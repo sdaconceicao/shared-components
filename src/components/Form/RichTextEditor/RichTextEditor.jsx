@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from "prop-types";
 import { EditorState, ContentState, convertFromHTML, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -15,9 +15,9 @@ import './RichTextEditor.scss';
 export class RichTextEditor extends FormElement {
 
     state = {
-        editorState: EditorState.createWithContent(
-            ContentState.createFromBlockArray(convertFromHTML(this.props.value))
-        )
+        editorState: this.props.value
+            ? EditorState.createWithContent(ContentState.createFromBlockArray(convertFromHTML(this.props.value)))
+            : EditorState.createEmpty()
     };
 
     onChange = (editorState) => {
@@ -36,15 +36,15 @@ export class RichTextEditor extends FormElement {
         const {id, label, required, className, tabIndex, toolbar} = this.props,
             {editorState} = this.state;
         return (
-            <span className={`form-element ${className}`}>
+            <Fragment>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 <Editor id={id}
-                        className={className}
+                        wrapperClassName={`richTextEditor ${className}`}
                         tabIndex={tabIndex}
                         editorState={editorState}
                         toolbar={toolbar}
                         onEditorStateChange={this.onChange}/>
-            </span>
+            </Fragment>
         )
     }
 }

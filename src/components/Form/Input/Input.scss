@@ -5,4 +5,10 @@
         border-color: var(--color-input-border);
         box-shadow: none;
     }
+    &.with-button{
+        width: calc(100% - 2rem);
+        display: inline-block;
+        border-radius: var(--radius-input) 0 0 var(--radius-input);
+        border-right: none;
+    }
 }

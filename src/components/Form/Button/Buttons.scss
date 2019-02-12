@@ -41,6 +41,17 @@
             border-color: var(--color-tertiary-hover-border);
         }
     }
+
+    &.with-input{
+        width: 2rem;
+        margin-bottom: 1px;
+        border-radius: 0 var(--input-radius) var(--input-radius) 0;
+        svg {
+            margin-top: -.2rem;
+        }
+
+    }
+
 }
 
 .btn-group{

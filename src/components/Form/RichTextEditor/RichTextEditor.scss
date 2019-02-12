@@ -1,3 +1,18 @@
+.richTextEditor{
+    &.with-button{
+        width: calc(100% - 2rem);
+        display: inline-block;
+        .rdw-editor-toolbar {
+            border-radius:  var(--input-radius) 0 0 0;
+        }
+        & + .with-input{
+            border-left: none;
+            margin-top: 0px;
+            vertical-align: top;
+        }
+    }
+}
+
 .rdw-editor-toolbar{
     border: 1px solid var(--color-input-border);
     border-radius: var(--input-radius) var(--input-radius) 0 0;
