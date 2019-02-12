@@ -16,7 +16,7 @@ Fieldset.propTypes = {
     children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
     className: PropTypes.string,
     required: PropTypes.bool,
-    legend: PropTypes.string
+    legend: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 Fieldset.defaultValues = {

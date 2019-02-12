@@ -56,7 +56,7 @@ export class PlaceholderImage extends Component {
 
 PlaceholderImage.propTypes = {
     className: PropTypes.string,
-    src: PropTypes.string.isRequired,
+    src: PropTypes.string,
     alt: PropTypes.string,
     onLoad: PropTypes.func
 };
