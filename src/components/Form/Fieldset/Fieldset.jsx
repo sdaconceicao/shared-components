@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Fieldset = ({children, legend, required}) => {
+import './Fieldset.scss';
+
+const Fieldset = ({children, className, legend, required}) => {
     return (
-        <fieldset>
+        <fieldset className={`fieldset ${className}`}>
             {legend && <legend>{legend}{required && <span>*</span>}</legend>}
             {children}
         </fieldset>
@@ -11,7 +13,15 @@ const Fieldset = ({children, legend, required}) => {
 };
 
 Fieldset.propTypes = {
-    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+    className: PropTypes.string,
+    required: PropTypes.bool,
+    legend: PropTypes.string
+};
+
+Fieldset.defaultValues = {
+    className: '',
+    required: false
 };
 
 export default Fieldset;
