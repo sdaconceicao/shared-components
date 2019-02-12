@@ -32,7 +32,7 @@ export class FilePicker extends FormElement {
             <span className={`form-element file-upload ${className}`}>
                 {label && <Label required={required}>{label}</Label>}
                 <Button disabled={disabled} className={'file-upload__button'}>
-                    <Label htmlFor={id} required={required} className={'file-upload__label'}>{buttonText}</Label>
+                    <Label htmlFor={id} className={'file-upload__label'}>{buttonText}</Label>
                     <input
                         name={name}
                         id={id}
