@@ -25,13 +25,13 @@ export class FilePicker extends FormElement {
     };
 
     render() {
-        const {id, name, tabIndex, className, disabled, accepts, label, required, index, children:buttonText, render} = this.props,
+        const {id, name, tabIndex, className, buttonClassName, disabled, accepts, label, required, index, children:buttonText, render} = this.props,
             {value} = this.state;
 
         return (
             <span className={`form-element file-upload ${className}`}>
                 {label && <Label required={required}>{label}</Label>}
-                <Button disabled={disabled} className={'file-upload__button'}>
+                <Button disabled={disabled} className={`file-upload__button ${buttonClassName}`}>
                     <Label htmlFor={id} className={'file-upload__label'}>{buttonText}</Label>
                     <input
                         name={name}
@@ -59,6 +59,7 @@ FilePicker.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     className: PropTypes.string,
+    buttonClassName: PropTypes.string,
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     accepts: PropTypes.string,
@@ -72,6 +73,7 @@ FilePicker.defaultProps = {
     tabIndex: 1,
     disabled: false,
     className: '',
+    buttonClassName: '',
     required: false,
     children: <FormattedMessage id='file.button'/>
 };
