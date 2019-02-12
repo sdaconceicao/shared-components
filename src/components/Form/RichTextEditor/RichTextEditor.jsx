@@ -65,8 +65,11 @@ RichTextEditor.defaultProps = {
     tabIndex: 1,
     className: '',
     toolbar: {
-        options: ['fontSize', 'fontFamily', 'blockType', 'list', 'textAlign', 'colorPicker', 'link', 'image'],
+        options: ['inline', 'fontSize', 'fontFamily', 'blockType', 'list', 'textAlign', 'colorPicker', 'link', 'image'],
         colorPicker: { component: ColorPicker },
+        inline: {
+            options: ['bold', 'italic', 'underline', 'strikethrough'],
+        }
     }
 
 };
