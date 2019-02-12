@@ -1,5 +1,9 @@
 .fieldset{
-    legend{
+    &__legend{
         font-size: 1rem;
+        margin-bottom: 0;
+    }
+    &--required{
+        color: var(--color-error);
     }
 }

@@ -6,7 +6,7 @@ import './Fieldset.scss';
 const Fieldset = ({children, className, legend, required}) => {
     return (
         <fieldset className={`fieldset ${className}`}>
-            {legend && <legend>{legend}{required && <span>*</span>}</legend>}
+            {legend && <legend className="fieldset__legend">{legend}{required && <span className="fieldset--required">*</span>}</legend>}
             {children}
         </fieldset>
     )

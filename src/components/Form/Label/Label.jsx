@@ -8,7 +8,7 @@ const Label = ({htmlFor, className, required, children}) => {
     return (
         <label htmlFor={htmlFor} className={`${className} form-label`}>
             {children}
-            {required && <span className="label-required">*</span>}
+            {required && <span className="form-label--required">*</span>}
         </label>
     )
 };

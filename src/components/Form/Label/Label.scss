@@ -1,3 +1,6 @@
 .form-label{
     margin: 0;
+    &--required{
+        color: var(--color-error);
+    }
 }
