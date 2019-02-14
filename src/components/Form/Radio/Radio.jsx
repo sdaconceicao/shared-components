@@ -39,24 +39,26 @@ export class Radio extends FormElement{
             {checked} = this.state;
 
         return (
-            <span className={`form-element radio ${className}`}>
-                <input id={id}
-                       name={name}
-                       type="radio"
-                       defaultChecked={checked}
-                       disabled={disabled}
-                       onChange={this.onChange}
-                       value={value}
-                       tabIndex={tabIndex}
-                       index={index} />
-                <Label htmlFor={id} required={required}>
+            <Fragment>
+
+                <Label htmlFor={id} required={required} className={`radio ${className}`}>
                     <Fragment>
-                    {checked && checkedIcon}
+                        {checked && checkedIcon}
                         {!checked && uncheckedIcon}
                         {label}
+                        <input id={id}
+                               name={name}
+                               type="radio"
+                               className="d-none"
+                               defaultChecked={checked}
+                               disabled={disabled}
+                               onChange={this.onChange}
+                               value={value}
+                               tabIndex={tabIndex}
+                               index={index} />
                     </Fragment>
                 </Label>
-            </span>
+            </Fragment>
         );
     }
 

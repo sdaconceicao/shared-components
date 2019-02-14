@@ -5,7 +5,6 @@ import FaCircleO from 'react-icons/lib/fa/circle-o';
 
 import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
-import Label from '../Label';
 import {Radio} from "./Radio";
 
 export class RadioList extends FormElement{
@@ -19,29 +18,26 @@ export class RadioList extends FormElement{
     };
 
     render(){
-        const {name, className, label, options, checkedIcon, uncheckedIcon} = this.props,
+        const {name, className, options, checkedIcon, uncheckedIcon} = this.props,
             {value} = this.state;
 
         return (
-            <span className={`form-element ${className}`}>
-                <Label>{label}</Label>
-                <ul className="radio-list">
-                    {options && options.map((option, index)=>{
-                        return (
-                            <li key={index} className="checkbox-list__item">
-                                <Radio name={name}
-                                       id={`${name}-${index}`}
-                                       value={option.value}
-                                       label={option.label}
-                                       checkedIcon={checkedIcon}
-                                       uncheckedIcon={uncheckedIcon}
-                                       checked={value === option.value }
-                                       onChange={this.onChange} />
-                            </li>
-                        )
-                    })}
-                </ul>
-            </span>
+            <ul className={`radio-list ${className}`}>
+                {options && options.map((option, index)=>{
+                    return (
+                        <li key={index} className="checkbox-list__item">
+                            <Radio name={name}
+                                   id={`${name}-${index}`}
+                                   value={option.value}
+                                   label={option.label}
+                                   checkedIcon={checkedIcon}
+                                   uncheckedIcon={uncheckedIcon}
+                                   checked={value === option.value }
+                                   onChange={this.onChange} />
+                        </li>
+                    )
+                })}
+            </ul>
         );
     }
 
@@ -58,7 +54,6 @@ RadioList.propTypes = {
     value: PropTypes.string.isRequired,
     checkedIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     uncheckedIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     required: PropTypes.bool,
     onChange: PropTypes.func
 };

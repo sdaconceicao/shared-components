@@ -1,8 +1,7 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 
-import Label from "../Label";
 import {Slider} from './Slider';
 import {Input} from '../Input';
 import {withForm} from "../FormContext";
@@ -51,23 +50,21 @@ export class SliderDropdown extends FormElement {
     };
 
     render (){
-        const {id, name, label, required, className, disabled, minValue, maxValue, tabIndex} = this.props,
+        const {id, name, className, disabled, minValue, maxValue, tabIndex} = this.props,
             {isOpen, value, inputValue, width} = this.state;
         return (
-            <Fragment>
-                {label && <Label htmlFor={id} required={required}>{label}</Label>}
-                <Dropdown toggle={this.onToggle} isOpen={isOpen} className={`slider-dropdown ${className}`}>
-                    <DropdownToggle id={id}  caret tag="button" className={'btn'} onClick={(e)=>e.preventDefault()}>
+            <Dropdown toggle={this.onToggle} isOpen={isOpen} className={`slider-dropdown ${className}`}>
+                <DropdownToggle id={id}  caret tag="button" className={'btn'} onClick={(e)=>e.preventDefault()}>
                     <Input id={`slider-${id}`}
-                                    name={`slider-${name}`}
-                                    ref={this.state.inputRef}
-                                    value={inputValue}
-                                    className="slider-dropdown__input"
-                                    style={{width: width}}
-                                    onChange={this.onChangeInput}/>
+                           name={`slider-${name}`}
+                           ref={this.state.inputRef}
+                           value={inputValue}
+                           className="slider-dropdown__input"
+                           style={{width: width}}
+                           onChange={this.onChangeInput}/>
 
-                    </DropdownToggle>
-                    <DropdownMenu>
+                </DropdownToggle>
+                <DropdownMenu>
                     <Slider
                         id={`slider-${id}`}
                         name={name}
@@ -78,9 +75,8 @@ export class SliderDropdown extends FormElement {
                         minValue={minValue}
                         maxValue={maxValue}
                         onChange={this.onChangeWrapper} />
-                    </DropdownMenu>
-                </Dropdown>
-            </Fragment>
+                </DropdownMenu>
+            </Dropdown>
         )
     }
 }
@@ -90,7 +86,6 @@ SliderDropdown.propTypes = {
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
     disabled: PropTypes.bool,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
     minValue: PropTypes.number.isRequired,
     maxValue: PropTypes.number.isRequired,

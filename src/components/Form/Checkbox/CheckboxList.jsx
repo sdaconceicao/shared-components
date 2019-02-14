@@ -4,8 +4,7 @@ import FaSquare from 'react-icons/lib/fa/square';
 import FaCheck from 'react-icons/lib/fa/check-square';
 
 import {withForm} from '../FormContext';
-import FormElement from '../FormElement';
-import Label from '../Label';
+import FormElement from '../FormElement/FormElement';
 import {Checkbox} from "./Checkbox";
 
 export class CheckboxList extends FormElement{
@@ -26,15 +25,13 @@ export class CheckboxList extends FormElement{
     }
 
     render(){
-        const {name, className, label, options, checkedIcon, uncheckedIcon, value} = this.props;
+        const {name, className, options, checkedIcon, uncheckedIcon, value} = this.props;
 
         return (
-            <span className={`form-element ${className}`}>
-                <Label>{label}</Label>
-                <ul className="checkbox-list">
-                    {options && options.map((option, index)=>(
-                        <li key={index} className="checkbox-list__item">
-                            <Checkbox name={option.label}
+            <ul className={`checkbox-list ${className}`}>
+                {options && options.map((option, index)=>(
+                    <li key={index} className="checkbox-list__item">
+                        <Checkbox name={option.label}
                                   id={`${name}-${index}`}
                                   value={option.value}
                                   label={option.label}
@@ -42,10 +39,9 @@ export class CheckboxList extends FormElement{
                                   uncheckedIcon={uncheckedIcon}
                                   checked={value.includes(option.value) }
                                   addFormElement={this.addFormElement}  />
-                        </li>
-                    ))}
-                </ul>
-            </span>
+                    </li>
+                ))}
+            </ul>
         );
     }
 
@@ -62,7 +58,6 @@ CheckboxList.propTypes = {
     value: PropTypes.array.isRequired,
     checkedIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     uncheckedIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     required: PropTypes.bool,
     onChange: PropTypes.func
 };

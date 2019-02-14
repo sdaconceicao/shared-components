@@ -36,24 +36,23 @@ export class Checkbox extends FormElement{
             {checked} = this.state;
 
         return (
-            <span className={`form-element checkbox ${className}`}>
-                <input id={id}
-                       name={name}
-                       type="checkbox"
-                       defaultChecked={checked}
-                       disabled={disabled}
-                       onChange={this.onChange}
-                       value={value}
-                       tabIndex={tabIndex}
-                       index={index} />
-                <Label htmlFor={id} required={required}>
-                    <Fragment>
+            <Label htmlFor={id} required={required} className={`checkbox ${className}`}>
+                <Fragment>
                     {checked && checkedIcon}
                     {!checked && uncheckedIcon}
                     {label}
-                    </Fragment>
-                </Label>
-            </span>
+                    <input id={id}
+                           name={name}
+                           className="d-none"
+                           type="checkbox"
+                           defaultChecked={checked}
+                           disabled={disabled}
+                           onChange={this.onChange}
+                           value={value}
+                           tabIndex={tabIndex}
+                           index={index} />
+                </Fragment>
+            </Label>
         );
     }
 

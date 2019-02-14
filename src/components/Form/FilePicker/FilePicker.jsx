@@ -25,12 +25,11 @@ export class FilePicker extends FormElement {
     };
 
     render() {
-        const {id, name, tabIndex, className, buttonClassName, disabled, accepts, label, required, index, children:buttonText, render} = this.props,
+        const {id, name, tabIndex, className, buttonClassName, disabled, accepts, index, children:buttonText, render} = this.props,
             {value} = this.state;
 
         return (
-            <span className={`form-element file-upload ${className}`}>
-                {label && <Label required={required}>{label}</Label>}
+            <div className={`file-upload ${className}`}>
                 <Button disabled={disabled} className={`file-upload__button ${buttonClassName}`}>
                     <Label htmlFor={id} className={'file-upload__label'}>{buttonText}</Label>
                     <input
@@ -49,7 +48,7 @@ export class FilePicker extends FormElement {
                         {render(value)}
                     </div>
                 }
-            </span>
+            </div>
         );
     }
 

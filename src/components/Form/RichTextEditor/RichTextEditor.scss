@@ -20,14 +20,14 @@
     padding: 0 0 .5rem .25rem;
     min-height: calc(var(--input-height) + .5rem);
     vertical-align: top;
-    .form-element {
+    .color-dropdown {
         margin: .5rem .25rem 0rem .25rem;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-    }
-    .color-dropdown .btn{
-        height: calc(var(--input-height) - .5rem);
+        .btn{
+            height: calc(var(--input-height) - .5rem);
+        }
     }
 }
 .rdw-editor-main{

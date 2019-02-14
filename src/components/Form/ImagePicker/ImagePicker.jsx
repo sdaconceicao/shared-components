@@ -30,7 +30,7 @@ export class ImagePicker extends FormElement {
             {value} = this.state;
 
         return (
-            <span className={`form-element image-picker ${className}`}>
+            <div className={`image-picker ${className}`}>
                 {label && <Label required={required}>{label}</Label>}
                 <div className="image-picker__preview">
                     <PlaceholderImage src={value} index={value} className="image-picker__preview-image"/>
@@ -52,7 +52,7 @@ export class ImagePicker extends FormElement {
                             onClick={this.onRemove}><FaTrash/></Button>
                 }
 
-            </span>
+            </div>
         );
     }
 

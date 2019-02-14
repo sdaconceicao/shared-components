@@ -4,7 +4,7 @@ import { SketchPicker } from 'react-color'
 import FaClose from 'react-icons/lib/fa/close';
 
 import {withForm} from '../FormContext';
-import FormElement from "../FormElement";
+import FormElement from "../FormElement/FormElement";
 
 export class ColorPickerDialog extends FormElement {
     state = {

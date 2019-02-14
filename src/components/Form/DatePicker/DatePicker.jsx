@@ -4,13 +4,13 @@ import moment from 'moment';
 import FaCalendar from 'react-icons/lib/fa/calendar';
 
 import {withForm} from '../FormContext';
-import Label from '../Label';
+import FormElement from "../FormElement";
 import {Input} from '../Input';
 import Button from '../Button';
 import DatePickerDialog from './DatePickerDialog';
 
 import './DatePicker.scss';
-import FormElement from "../FormElement";
+
 
 class DatePicker extends FormElement {
 
@@ -32,20 +32,11 @@ class DatePicker extends FormElement {
     render(){
         const { id, name, tabIndex, className, placeholder,
                 minDate, maxDate,
-                label, required,
                 onBlur, onKeyDown} = this.props,
             {value, prettyValue, btnTarget} = this.state;
 
         return (
-            <span className={`form-element date-picker ${className}`}>
-                {label && <Label htmlFor={id} required={required}>{label}</Label>}
-                <DatePickerDialog
-                    onChange={this.onChangeDate}
-                    value={value}
-                    minDate={minDate}
-                    maxDate={maxDate}
-                    target={btnTarget}/>
-
+            <div className={`date-picker ${className}`}>
                 <Input
                     name={name}
                     id={id}
@@ -59,7 +50,13 @@ class DatePicker extends FormElement {
                     onKeyDown={onKeyDown}/>
                 <Button id={btnTarget}
                         className="with-input"><FaCalendar/></Button>
-            </span>
+                <DatePickerDialog
+                    onChange={this.onChangeDate}
+                    value={value}
+                    minDate={minDate}
+                    maxDate={maxDate}
+                    target={btnTarget}/>
+            </div>
         )
     }
 
@@ -72,7 +69,6 @@ DatePicker.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     /** Earliest date allowed to choose */

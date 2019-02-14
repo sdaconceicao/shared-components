@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import StyledSelect from 'react-select'
 import CreatableSelect from 'react-select/lib/Creatable';
 
 import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
-import Label from '../Label/Label';
 
 import './Select.scss';
 
@@ -32,17 +31,16 @@ export class Select extends FormElement {
 
     render(){
         const { id, name,  tabIndex, className, placeholder, add, autocomplete, options, disabled,
-                label, required,
                 onBlur} = this.props;
 
         return (
-            <span className={`form-element select ${className}`}>
-                {label && <Label htmlFor={id} required={required}>{label}</Label>}
+            <Fragment>
                 {add &&
                     <CreatableSelect
                         id={id}
                         name={name}
                         classNamePrefix={`styled-select`}
+                        className={className}
                         tabIndex={tabIndex}
                         disabled={disabled}
                         isClearable
@@ -60,6 +58,7 @@ export class Select extends FormElement {
                         id={id}
                         name={name}
                         classNamePrefix="styled-select"
+                        className={className}
                         tabIndex={tabIndex}
                         disabled={disabled}
                         isSearchable={autocomplete}
@@ -71,7 +70,7 @@ export class Select extends FormElement {
                         onBlur={onBlur}
                     />
                 }
-            </span>
+            </Fragment>
         );
     }
 }

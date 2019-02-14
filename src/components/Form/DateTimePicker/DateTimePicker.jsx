@@ -6,7 +6,6 @@ import FaCalendar from 'react-icons/lib/fa/calendar';
 import {FormattedMessage} from "react-intl";
 
 import {withForm} from '../FormContext';
-import Label from '../Label';
 import {Input} from '../Input';
 import Button from '../Button';
 import FormElement from "../FormElement";
@@ -41,12 +40,10 @@ class DateTimePicker extends FormElement {
     render(){
         const { id, name, tabIndex, className, placeholder,
                 minDate, maxDate,
-                label, required,
                 onBlur, onKeyDown} = this.props,
             {value, prettyValue, btnTarget} = this.state;
         return (
-            <span className={`form-element date-time-picker ${className}`}>
-                {label && <Label htmlFor={id} required={required}>{label}</Label>}
+            <div className={`date-time-picker ${className}`}>
                 <Popover title={<FormattedMessage id="datePicker.title"/>}
                          target={btnTarget}>
                     <div className={`date-picker-wrapper ${className}`}>
@@ -76,7 +73,7 @@ class DateTimePicker extends FormElement {
                     onKeyDown={onKeyDown}/>
                 <Button id={btnTarget}
                         className="with-input"><FaCalendar/></Button>
-            </span>
+            </div>
         )
     }
 
@@ -89,7 +86,6 @@ DateTimePicker.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
     /** Earliest date allowed to choose */

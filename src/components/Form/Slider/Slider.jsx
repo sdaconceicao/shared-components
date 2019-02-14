@@ -1,8 +1,7 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 import RcSlider from 'rc-slider';
 
-import Label from "../Label";
 import {withForm} from "../FormContext";
 import FormElement from "../FormElement";
 
@@ -24,23 +23,20 @@ export class Slider extends FormElement {
     };
 
     render (){
-        const {id, label, required, className, disabled, minValue, maxValue, tabIndex} = this.props,
+        const {id, className, disabled, minValue, maxValue, tabIndex} = this.props,
             {value} = this.state;
         return (
-            <Fragment>
-                {label && <Label htmlFor={id} required={required}>{label}</Label>}
-                <RcSlider
-                    id={id}
-                    className={`${className}`}
-                    disabled={disabled}
-                    defaultValue={value}
-                    value={value}
-                    tabIndex={tabIndex}
-                    min={minValue}
-                    max={maxValue}
-                    onChange={this.onChange}
-                  />
-            </Fragment>
+            <RcSlider
+                id={id}
+                className={`${className}`}
+                disabled={disabled}
+                defaultValue={value}
+                value={value}
+                tabIndex={tabIndex}
+                min={minValue}
+                max={maxValue}
+                onChange={this.onChange}
+            />
 
         )
     }

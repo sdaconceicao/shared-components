@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {withForm} from '../FormContext';
-import FormElement from '../FormElement';
-import Label from '../Label';
+import FormElement from '../FormElement/FormElement';
 import {Select} from '../Select';
 import {convertTimeByAmPm, getHourFromDateAndMode, getHourValueByMode} from './TimePicker.util';
 
@@ -44,19 +43,20 @@ class TimePicker extends FormElement {
 
     render(){
         const { id, name, tabIndex, className,
-                label, required, mode} = this.props,
+                mode} = this.props,
             {value} = this.state;
         return (
-            <span className={`form-element time-picker ${className}`}>
-                {label && <Label htmlFor={id} required={required}>{label}</Label>}
-                <Select name={`time-picker-hours-${name}`}
+            <div className={`time-picker ${className}`}>
+                <Select id={`time-picker-hours-${id}`}
+                        name={`time-picker-hours-${name}`}
                         className="time-picker__hours"
                         value={getHourValueByMode(mode, value)}
                         options={this.hours}
                         tabIndex={tabIndex}
                         placeholder="--"
                         onChange={(e)=>this.onChange(e, 'hours')}/>
-                <Select name={`time-picker-minutes-${name}`}
+                <Select id={`time-picker-minutes-${id}`}
+                        name={`time-picker-minutes-${name}`}
                         className="time-picker__minutes"
                         value={value.getMinutes()}
                         options={this.minutes}
@@ -72,7 +72,7 @@ class TimePicker extends FormElement {
                             placeholder="--"
                             onChange={(e)=>this.onChange(e, 'ampm')}/>
                 }
-            </span>
+            </div>
         )
     }
 
