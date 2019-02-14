@@ -1,0 +1,15 @@
+.rc-slider-track{
+    background-color: var(--color-primary-bg);
+    border-color: var(--color-primary-bg);
+}
+
+.rc-slider-handle{
+    border-color: var(--color-primary-bg);
+    &:hover{
+        border-color: var(--color-primary-dark);
+    }
+    &:focus{
+        border-color: var(--color-primary-dark);
+        box-shadow: none;
+    }
+}

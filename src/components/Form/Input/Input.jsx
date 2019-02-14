@@ -12,18 +12,20 @@ export class Input extends FormElement {
 
     render() {
         const {
-            id, name, type, tabIndex, autoCapitalize, className, placeholder, disabled,
+            id, name, type, tabIndex, autoCapitalize, className, style, placeholder, disabled,
             label, required, index,
             onBlur, onKeyDown
         } = this.props,
-        {value} = this.state;
+        {ref, value} = this.state;
         return (
             <Fragment>
                 {label && <Label htmlFor={id} required={required}>{label}</Label>}
                 <input
                     name={name}
                     id={id}
+                    ref={ref}
                     className={`form-control ${className}`}
+                    style={style}
                     index={index}
                     type={type}
                     placeholder={placeholder}

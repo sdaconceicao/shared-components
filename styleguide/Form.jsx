@@ -11,6 +11,7 @@ class FormStyleguide extends Component{
                 {label: 'Eggs Cracked', value: 'eggs'},
                 {label: 'Ham', value: 'ham'}
             ],
+            slider: 42,
             color: '#ff0000',
             textInput: 'text input',
             textArea: 'text area',
@@ -32,7 +33,7 @@ class FormStyleguide extends Component{
     }
 
     render(){
-        const {options, checkbox, checkboxList, radioList, textInput, textArea, color, richtText, date, dateTime, time, file, select, autocomplete} = this.state;
+        const {options, checkbox, checkboxList, slider, radioList, textInput, textArea, color, richtText, date, dateTime, time, file, select, autocomplete} = this.state;
         return (
             <Form onSubmit={this.onSubmit}>
                 <Forms.Input id="textinput" name="textInput" type="input" label="Text Input" value={textInput}/>
@@ -49,6 +50,7 @@ class FormStyleguide extends Component{
                 <Forms.DateTimePicker id="dateTimePicker" name="dateTime"  value={dateTime}/>
                 <Forms.TimePicker id="timePicker" name="time" value={time} />
                 <Forms.DatePicker id="datePicker" name="date" value={date}/>
+                <Forms.SliderDropdown id="slider" name="slider" value={slider} label={"Slider dropdown"}/>
                 <Forms.Checkbox id="checkbox" name="checkbox" checked={checkbox} value="checkbox1" label="Checkbox 1" />
                 <Forms.Select id="select-autocomplete" name="autocomplete" add={true} options={options} value={autocomplete}/>
                 <Forms.Select id="select-one" name="select" options={options} value={select}/>

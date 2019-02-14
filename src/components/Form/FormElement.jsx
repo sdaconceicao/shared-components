@@ -1,10 +1,11 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 
 /** Abstract FormElement class used to setup forms for usage within Form component */
 export class FormElement extends Component {
 
     state = {
-        value: this.props.value
+        value: this.props.value,
+        ref: React.createRef()
     };
 
     componentDidMount(){
