@@ -1,5 +1,8 @@
 ol, ul {
-    li > *{
-        vertical-align: top;
+    li {
+        margin: .25rem 0;
+        & > * {
+            vertical-align: top;
+        }
     }
 }
