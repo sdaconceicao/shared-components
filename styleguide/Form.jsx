@@ -37,7 +37,7 @@ class FormStyleguide extends Component{
         return (
             <Form onSubmit={this.onSubmit}>
                 <Forms.Input id="textinput" name="textInput" type="input" value={textInput}/>
-                <Forms.Textarea id="textarea" name="textArea" type="input" value={textArea} label="text" />
+                <Forms.Textarea id="textarea" name="textArea" type="input" value={textArea} label="text" wrapper={true} required={true}/>
                 <Forms.RichTextEditor id="richtext" name="richtext" value={richtText}/>
                 <Forms.FilePicker id="file"
                                   name="file"

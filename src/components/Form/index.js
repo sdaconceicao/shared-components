@@ -7,6 +7,7 @@ export DateTimePicker from './DateTimePicker';
 export Fieldset from './Fieldset';
 export FilePicker from './FilePicker';
 export Form from './Form';
+export FormElement, {FormElementWrapper} from './FormElement';
 export ImagePicker from './ImagePicker';
 export Input from './Input';
 export Label from './Label';

@@ -10,6 +10,7 @@ export class FormElement extends Component {
 
     componentDidMount(){
         this.props.addFormElement && this.props.addFormElement(this);
+
     }
 
     componentWillUnmount(){

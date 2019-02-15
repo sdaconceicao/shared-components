@@ -31,7 +31,6 @@ export class ImagePicker extends FormElement {
 
         return (
             <div className={`image-picker ${className}`}>
-                {label && <Label required={required}>{label}</Label>}
                 <div className="image-picker__preview">
                     <PlaceholderImage src={value} index={value} className="image-picker__preview-image"/>
                 </div>
