@@ -5,6 +5,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        border: 1px solid var(--color-input-hover-border);
         border-radius: var(--input-radius);
         background-color: var(--color-input-hover-bg);
     }
