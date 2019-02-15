@@ -5,7 +5,6 @@ import FaTrash from 'react-icons/lib/fa/trash';
 
 import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
-import Label from '../Label';
 import Button from '../Button';
 import FilePicker from '../FilePicker';
 import {PlaceholderImage} from "../../Image";
@@ -21,30 +20,37 @@ export class ImagePicker extends FormElement {
         onChange && onChange(value);
     };
 
+    onImageLoad = (loadedImage) =>{
+        this.setState({width: loadedImage.naturalWidth, height: loadedImage.naturalHeight});
+    };
+
     onRemove = () =>{
         this.setState({value: undefined});
     };
 
     render() {
-        const {id, name, tabIndex, className, buttonClassName, disabled, accepts, label, required, index} = this.props,
+        const {id, name, tabIndex, className, buttonClassName, disabled, accepts, index} = this.props,
             {value} = this.state;
 
         return (
             <div className={`image-picker ${className}`}>
                 <div className="image-picker__preview">
-                    <PlaceholderImage src={value} index={value} className="image-picker__preview-image"/>
+                    <PlaceholderImage src={value}
+                                      className="image-picker__preview-image"
+                                      onLoad={this.onImageLoad}
+                    />
                 </div>
                 {!value &&
                         <FilePicker
-                        name={name}
-                        id={id}
-                        index={index}
-                        className="image-picker__file-picker"
-                        buttonClassName={buttonClassName}
-                        accepts={accepts}
-                        disabled={disabled}
-                        tabIndex={tabIndex}
-                        onChange={this.onChange}/>
+                            name={name}
+                            id={id}
+                            index={index}
+                            className="image-picker__file-picker"
+                            buttonClassName={buttonClassName}
+                            accepts={accepts}
+                            disabled={disabled}
+                            tabIndex={tabIndex}
+                            onChange={this.onChange}/>
                 }
                 {value &&
                     <Button className={`image-picker__remove ${buttonClassName}`}

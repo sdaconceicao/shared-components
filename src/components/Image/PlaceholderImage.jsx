@@ -1,14 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import * as spinner from './spinner.gif';
 import * as image from './placeholder.png';
 
 export class PlaceholderImage extends Component {
 
     state = {
         loading: true,
-        placeholderSrc: this.props.placeholder === 'spinner' ? spinner.default : image.default
+        placeholderSrc: image.default
     };
 
     loadedImage = React.createRef();
