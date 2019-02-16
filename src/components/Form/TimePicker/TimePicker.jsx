@@ -98,6 +98,7 @@ TimePicker.defaultProps = {
     placeholder: '',
     className: '',
     mode: '12',
+    value: new Date(),
     required: false
 };
 

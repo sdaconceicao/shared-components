@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "module": "src/index.js",
   "scripts": {
-    "start": "node scripts/start.js --mocks=true",
+    "storybook": "start-storybook -p 9001 -c ./storybook",
     "build": "node scripts/build.js",
     "test": "mocha --reporter progress config/mocha.config.js src/**/*.test.js ",
     "test:watch": "npm run test -- --watch",
@@ -13,6 +13,9 @@
     "quality": "plato -r -x '.test.js|.mock.js' -d quality src "
   },
   "devDependencies": {
+    "@storybook/addon-info": "^3.4.0",
+    "@storybook/addon-knobs": "^3.4.0",
+    "@storybook/react": "^3.4.0",
     "autoprefixer": "6.7.2",
     "axios": "^0.18.0",
     "babel-core": "6.26.0",
