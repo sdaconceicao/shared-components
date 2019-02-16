@@ -1,63 +1,16 @@
-import React, {Component, Fragment} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import * as image from './placeholder.png';
 
-export class PlaceholderImage extends Component {
+export const PlaceholderImage = ({className, alt}) => (
+    <img className={`placeholder ${className}`} src={image.default} alt={alt}/>
+);
 
-    state = {
-        loading: true,
-        placeholderSrc: image.default
-    };
-
-    loadedImage = React.createRef();
-
-    onLoad = () => {
-        this.setState({
-            loading: false,
-            src: this.props.src,
-            width: this.loadedImage.current.naturalWidth,
-            height: this.loadedImage.current.naturalHeight,
-            orientation: this.loadedImage.current.naturalWidth > this.loadedImage.current.naturalHeight
-                ? 'landscape'
-                : 'portrait'
-        });
-        if (this.props.onLoad) {
-            this.props.onLoad(this.loadedImage.current);
-        }
-    };
-
-    componentDidUpdate(prevProps){
-        if (prevProps.src !== this.props.src){
-            this.setState({loading: true});
-        }
-    };
-
-    render() {
-        const {className, src, alt, style} = this.props,
-            {orientation, loading, placeholderSrc} = this.state;
-
-        return (
-            <Fragment>
-                {loading &&
-                    <img key={this.state.src} className={`${className}`} src={placeholderSrc} alt={alt}/>
-                }
-                <img className={`${className} ${orientation} ${loading ? 'd-none' : ''}`}
-                     onLoad={this.onLoad}
-                     ref={this.loadedImage}
-                     src={src}
-                     style={style}
-                     alt={alt}/>
-            </Fragment>
-        );
-    }
-}
 
 PlaceholderImage.propTypes = {
     className: PropTypes.string,
-    src: PropTypes.string,
-    alt: PropTypes.string,
-    onLoad: PropTypes.func
+    alt: PropTypes.string
 };
 
 PlaceholderImage.defaultProps = {

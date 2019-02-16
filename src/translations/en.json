@@ -2,6 +2,10 @@
     "common.ok": "Ok",
     "common.cancel": "Cancel",
     "datePicker.title": "Pick a date",
-    "timePicker.title": "Pick a time",
-    "file.button": "Upload"
+    "file.button": "Upload",
+    "image.make": "Make",
+    "image.dateTaken": "Date Taken",
+    "image.model": "Model",
+    "image.dimensions": "Dimensions",
+    "timePicker.title": "Pick a time"
 }

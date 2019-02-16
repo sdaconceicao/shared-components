@@ -7,7 +7,7 @@ import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
 import Button from '../Button';
 import FilePicker from '../FilePicker';
-import {PlaceholderImage} from "../../Image";
+import Image, {ImageMeta} from "../../Image";
 
 import './ImagePicker.scss';
 
@@ -21,42 +21,42 @@ export class ImagePicker extends FormElement {
     };
 
     onImageLoad = (loadedImage) =>{
-        this.setState({width: loadedImage.naturalWidth, height: loadedImage.naturalHeight});
+        this.setState({loadedImage});
     };
 
     onRemove = () =>{
-        this.setState({value: undefined});
+        this.setState({value: undefined, loadedImage: undefined});
     };
 
     render() {
-        const {id, name, tabIndex, className, buttonClassName, disabled, accepts, index} = this.props,
-            {value} = this.state;
-
+        const {id, name, tabIndex, className, buttonClassName, disabled, accepts, showMeta, index} = this.props,
+            {value, loadedImage} = this.state;
         return (
-            <div className={`image-picker ${className}`}>
+            <div className={`image-picker ${className} ${value && showMeta ? 'image-picker--meta-shown' : ''}`}>
                 <div className="image-picker__preview">
-                    <PlaceholderImage src={value}
-                                      className="image-picker__preview-image"
-                                      onLoad={this.onImageLoad}
-                    />
+                    <Image src={value}
+                          className="image-picker__preview-image"
+                          onLoad={this.onImageLoad} />
                 </div>
                 {!value &&
-                        <FilePicker
-                            name={name}
-                            id={id}
-                            index={index}
-                            className="image-picker__file-picker"
-                            buttonClassName={buttonClassName}
-                            accepts={accepts}
-                            disabled={disabled}
-                            tabIndex={tabIndex}
-                            onChange={this.onChange}/>
+                    <FilePicker
+                        name={name}
+                        id={id}
+                        index={index}
+                        className="image-picker__file-picker"
+                        buttonClassName={buttonClassName}
+                        accepts={accepts}
+                        disabled={disabled}
+                        tabIndex={tabIndex}
+                        onChange={this.onChange}/>
+                }
+                {loadedImage && showMeta &&
+                    <ImageMeta className={'image-picker__meta'} image={loadedImage}/>
                 }
                 {value &&
                     <Button className={`image-picker__remove ${buttonClassName}`}
-                            onClick={this.onRemove}><FaTrash/></Button>
+                        onClick={this.onRemove}><FaTrash/></Button>
                 }
-
             </div>
         );
     }
@@ -73,6 +73,7 @@ ImagePicker.propTypes = {
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
+    showMeta: PropTypes.bool,
     onChange: PropTypes.func
 };
 
@@ -81,6 +82,7 @@ ImagePicker.defaultProps = {
     disabled: false,
     className: '',
     required: false,
+    showMeta: true,
     children: <FormattedMessage id='file.button'/>
 };
 
