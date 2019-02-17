@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import {FormContext} from './FormContext';
 
+import "./Form.scss";
+
 export class Form extends Component {
 
     elements = [];
@@ -36,13 +38,13 @@ export class Form extends Component {
     };
 
     render (){
-        const {children} = this.props;
+        const {children, className} = this.props;
         return (
             <FormContext.Provider value={{
                     addFormElement: this.addFormElement,
                     removeFormElement: this.removeFormElement
                 }}>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} className={`form ${className}`}>
                     {children}
                 </form>
             </FormContext.Provider>
@@ -52,6 +54,7 @@ export class Form extends Component {
 
 Form.propTypes = {
     children: PropTypes.array.isRequired,
+    className: PropTypes.string,
     onSubmit: PropTypes.func.isRequired
 };
 

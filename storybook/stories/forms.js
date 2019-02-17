@@ -1,8 +1,10 @@
 import React from 'react';
 import {storiesOf} from "@storybook/react";
 import { withKnobs, boolean, number } from '@storybook/addon-knobs';
+import { withDocs } from 'storybook-readme';
 
-import {Forms} from "../../src/index";
+import {Form, Forms} from "../../src/index";
+import FormReadme from '../../src/components/Form/README.md';
 
 const stories = storiesOf('Form', module);
 
@@ -12,8 +14,24 @@ const options = [
     {label: "Ham", value: "ham"}
 ];
 
+const withCustomPreview = withDocs({
+    PreviewComponent: ({ children }) => (
+        <div style={{
+            padding: '0'
+        }}>{children}</div>
+    )
+});
+
 stories
     .addDecorator(withKnobs)
+    .add('Form', withCustomPreview(FormReadme, () => (
+        <Form onSubmit={(results)=>{console.log("Returned", results)}}>
+            <Forms.Input id="input" name="input"
+                         disabled={boolean("Disabled", false)}
+                         label="Text Input" wrapper={true} required={true}/>
+            <Forms.Button type="submit">Save</Forms.Button>
+        </Form>
+    )))
     .add('Input', ()=>(
         <Forms.Input id="input" name="input"
                      disabled={boolean("Disabled", false)}
