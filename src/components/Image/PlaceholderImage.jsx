@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as image from './placeholder.png';
 
 export const PlaceholderImage = ({className, alt}) => (
-    <img className={`placeholder ${className}`} src={image.default} alt={alt}/>
+    <img className={`placeholder ${className}`} src={image} alt={alt}/>
 );
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { setDefaults } from '@storybook/addon-info';
+import { setDefaults, withInfo } from '@storybook/addon-info';
 import { configure, addDecorator } from '@storybook/react';
 import * as enMessage from "../src/translations/en";
 
@@ -15,9 +15,10 @@ const IntlDecorator = (storyFn) => (
 );
 
 setDefaults({
-    header: true,
-    inline: false
+    header: false,
+    inline: true
 });
 
+addDecorator(withInfo);
 addDecorator(IntlDecorator);
 configure(loadStories, module);
