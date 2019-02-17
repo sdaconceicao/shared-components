@@ -15,8 +15,8 @@ const IntlDecorator = (storyFn) => (
 );
 
 setDefaults({
-    header: false,
-    inline: true
+    header: true,
+    inline: false
 });
 
 addDecorator(IntlDecorator);
