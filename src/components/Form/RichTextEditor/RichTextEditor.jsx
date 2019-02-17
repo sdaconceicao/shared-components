@@ -32,11 +32,12 @@ export class RichTextEditor extends FormElement {
     }
 
     render() {
-        const {id, className, tabIndex, toolbar} = this.props,
+        const {id, className, tabIndex, toolbar, disabled} = this.props,
             {editorState} = this.state;
         return (
             <Editor id={id}
                     wrapperClassName={`richTextEditor ${className}`}
+                    disabled={disabled}
                     tabIndex={tabIndex}
                     editorState={editorState}
                     toolbar={toolbar}
@@ -68,6 +69,5 @@ RichTextEditor.defaultProps = {
     }
 
 };
-
 
 export default withForm(RichTextEditor);

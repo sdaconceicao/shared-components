@@ -15,36 +15,66 @@ const options = [
 stories
     .addDecorator(withKnobs)
     .add('Input', ()=>(
-        <Forms.Input disabled={boolean("Disabled", false)}
+        <Forms.Input id="input" name="input"
+                     disabled={boolean("Disabled", false)}
                      label="Text Input" wrapper={true} required={true}/>
     ))
     .add('Textarea', ()=>(
-        <Forms.Textarea disabled={boolean("Disabled", false)}
+        <Forms.Textarea id="textarea" name="textarea"
+                        disabled={boolean("Disabled", false)}
                         maxLength={number("Max", 100)}
                         label="Textarea"  wrapper={true} required={true}/>
     ))
     .add('Rich Text Editor', ()=>(
-        <Forms.RichTextEditor disabled={boolean("Disabled", false)}
-                        label="Rich Text Editor" wrapper={true} required={true}/>
+        <Forms.RichTextEditor id="richtexteditor" name="richtexteditor"
+                              disabled={boolean("Disabled", false)}
+                              label="Rich Text Editor" wrapper={true} required={true}/>
     ))
     .add('Select', ()=>(
-        <Forms.Select
+        <Forms.Select id="select" name="select"
             options={options}
             disabled={boolean("Disabled", false)}
             add={boolean('Add', true)} label="Select" wrapper={true} required={true}/>
     ))
     .add('Date Picker', ()=>(
-        <Forms.DatePicker
+        <Forms.DatePicker id="datepicker" name="datepicker"
             disabled={boolean("Disabled", false)}
             label="Date Picker" wrapper={true} required={true}/>
     ))
+    .add('Time Picker', ()=>(
+        <Forms.TimePicker id="timepicker" name="timepicker"
+            disabled={boolean("Disabled", false)}
+            label="Date Picker" wrapper={true} required={true}/>
+    ))
+    .add('Date/Time Picker', ()=>(
+        <Forms.DateTimePicker id="datetimepicker" name="datetimepicker"
+            disabled={boolean("Disabled", false)}
+            label="Date Picker" wrapper={true} required={true}/>
+    ))
+    .add('File Picker', ()=>(
+        <Forms.FilePicker  id="filepicker" name="filepicker"
+                            disabled={boolean("Disabled", false)}
+                            label="File Picker" wrapper={true} required={true}/>
+    ))
+    .add('Image Picker', ()=>(
+        <Forms.ImagePicker  id="imagepicker" name="imagepicker"
+                            disabled={boolean("Disabled", false)}
+                            label="Image Picker" wrapper={true} required={true}/>
+    ))
+    .add('Color Picker', ()=>(
+        <Forms.ColorPicker  id="colorpicker" name="colorpicker"
+                            disabled={boolean("Disabled", false)}
+                            label="Color Picker" wrapper={true} required={true}/>
+    ))
     .add('Checkbox List', ()=>(
-        <Forms.CheckboxList options={options}
+        <Forms.CheckboxList id="checkboxlist" name="checkboxlist"
+                            options={options}
                             disabled={boolean("Disabled", false)}
                             label="Checkbox List" wrapper={true} required={true}/>
     ))
     .add('Radio List', ()=>(
-        <Forms.RadioList options={options}
+        <Forms.RadioList id="radiolist" name="radiolist"
+                         options={options}
                          disabled={boolean("Disabled", false)}
                          label="Radio List" wrapper={true} required={true}/>
     ))
