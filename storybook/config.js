@@ -1,6 +1,6 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { setDefaults, withInfo } from '@storybook/addon-info';
+import { setDefaults } from '@storybook/addon-info';
 import { withOptions } from '@storybook/addon-options';
 import { configure, addDecorator } from '@storybook/react';
 import { themes } from '@storybook/components';
@@ -23,7 +23,6 @@ setDefaults({
     inline: true
 });
 
-addDecorator(withInfo);
 addDecorator(IntlDecorator);
 addDecorator(
     withOptions({

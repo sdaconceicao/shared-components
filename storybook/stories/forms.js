@@ -2,6 +2,7 @@ import React from 'react';
 import {storiesOf} from "@storybook/react";
 import { withKnobs, boolean, number } from '@storybook/addon-knobs';
 import { withDocs } from 'storybook-readme';
+import { withInfo } from '@storybook/addon-info';
 
 import {Form, Button, Input as FormInput,
     UncontrolledInput as Input, UncontrolledTextarea as Textarea,
@@ -13,7 +14,8 @@ import {Form, Button, Input as FormInput,
 
 import FormReadme from '../../src/components/Form/README.md';
 
-const stories = storiesOf('Form', module);
+export const formStories = storiesOf('Form', module);
+export const elementStories = storiesOf('Form/Elements');
 
 const options = [
     {label: "Bacon", value: "bacon" },
@@ -29,16 +31,22 @@ const withCustomPreview = withDocs({
     )
 });
 
-stories
+formStories
     .addDecorator(withKnobs)
-    .add('Form', withCustomPreview(FormReadme, () => (
+    .addDecorator(withInfo)
+    .addDecorator(withCustomPreview(FormReadme))
+    .add('Introduction', () => (
         <Form onSubmit={(results)=>{console.log("Returned", results)}}>
             <FormInput id="input" name="input"
                          disabled={boolean("Disabled", false)}
                          label="Text Input" wrapper={true} required={true}/>
             <Button type="submit">Save</Button>
         </Form>
-    )))
+    ));
+
+elementStories
+    .addDecorator(withKnobs)
+    .addDecorator(withInfo)
     .add('Input', ()=>(
         <div className="form-element">
             <Input id="input" name="input"
@@ -128,5 +136,3 @@ stories
         </div>
     ))
 ;
-
-export default stories;
