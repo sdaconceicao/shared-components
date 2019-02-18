@@ -13,7 +13,7 @@ import Popover from "../../Popover";
 import TimePicker from "../TimePicker/TimePicker";
 
 /** Date/Time Picker input component with optional label */
-class DateTimePicker extends FormElement {
+export class DateTimePicker extends FormElement {
 
     state = {
         value: this.props.value,

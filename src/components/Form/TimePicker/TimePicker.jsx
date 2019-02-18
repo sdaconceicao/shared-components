@@ -10,7 +10,7 @@ import {convertTimeByAmPm, getHourFromDateAndMode, getHourValueByMode} from './T
 import './TimePicker.scss';
 
 /** Timepicker input component with optional label component */
-class TimePicker extends FormElement {
+export class TimePicker extends FormElement {
 
     state = {
         value: this.props.value

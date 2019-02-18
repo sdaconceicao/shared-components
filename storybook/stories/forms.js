@@ -3,7 +3,14 @@ import {storiesOf} from "@storybook/react";
 import { withKnobs, boolean, number } from '@storybook/addon-knobs';
 import { withDocs } from 'storybook-readme';
 
-import {Form, Forms} from "../../src/index";
+import {Form, Button, Input as FormInput,
+    UncontrolledInput as Input, UncontrolledTextarea as Textarea,
+    UncontrolledRichTextEditor as RichTextEditor, UncontrolledSelect as Select,
+    UncontrolledCheckboxList as CheckboxList, UncontrolledRadioList as RadioList,
+    UncontrolledImagePicker as ImagePicker, UncontrolledFilePicker as FilePicker,
+    UncontrolledColorPicker as ColorPicker, UncontrolledDatePicker as DatePicker,
+    UncontrolledDateTimePicker as DateTimePicker, UncontrolledTimePicker as TimePicker} from "../../src/index";
+
 import FormReadme from '../../src/components/Form/README.md';
 
 const stories = storiesOf('Form', module);
@@ -26,75 +33,99 @@ stories
     .addDecorator(withKnobs)
     .add('Form', withCustomPreview(FormReadme, () => (
         <Form onSubmit={(results)=>{console.log("Returned", results)}}>
-            <Forms.Input id="input" name="input"
+            <FormInput id="input" name="input"
                          disabled={boolean("Disabled", false)}
                          label="Text Input" wrapper={true} required={true}/>
-            <Forms.Button type="submit">Save</Forms.Button>
+            <Button type="submit">Save</Button>
         </Form>
     )))
     .add('Input', ()=>(
-        <Forms.Input id="input" name="input"
+        <div className="form-element">
+            <Input id="input" name="input"
                      disabled={boolean("Disabled", false)}
                      label="Text Input" wrapper={true} required={true}/>
+        </div>
     ))
     .add('Textarea', ()=>(
-        <Forms.Textarea id="textarea" name="textarea"
+        <div className="form-element">
+            <Textarea id="textarea" name="textarea"
                         disabled={boolean("Disabled", false)}
                         maxLength={number("Max", 100)}
                         label="Textarea"  wrapper={true} required={true}/>
+        </div>
     ))
     .add('Rich Text Editor', ()=>(
-        <Forms.RichTextEditor id="richtexteditor" name="richtexteditor"
+        <div className="form-element">
+            <RichTextEditor id="richtexteditor" name="richtexteditor"
                               disabled={boolean("Disabled", false)}
                               label="Rich Text Editor" wrapper={true} required={true}/>
+        </div>
     ))
     .add('Select', ()=>(
-        <Forms.Select id="select" name="select"
-            options={options}
-            disabled={boolean("Disabled", false)}
-            add={boolean('Add', true)} label="Select" wrapper={true} required={true}/>
+        <div className="form-element">
+            <Select id="select" name="select"
+                options={options}
+                disabled={boolean("Disabled", false)}
+                add={boolean('Add', true)} label="Select" wrapper={true} required={true}/>
+        </div>
     ))
     .add('Date Picker', ()=>(
-        <Forms.DatePicker id="datepicker" name="datepicker"
+        <div className="form-element">
+            <DatePicker id="datepicker" name="datepicker"
             disabled={boolean("Disabled", false)}
             label="Date Picker" wrapper={true} required={true}/>
+        </div>
     ))
     .add('Time Picker', ()=>(
-        <Forms.TimePicker id="timepicker" name="timepicker"
-            disabled={boolean("Disabled", false)}
-            label="Date Picker" wrapper={true} required={true}/>
+        <div className="form-element">
+            <TimePicker id="timepicker" name="timepicker"
+                disabled={boolean("Disabled", false)}
+                label="Date Picker" wrapper={true} required={true}/>
+        </div>
     ))
     .add('Date/Time Picker', ()=>(
-        <Forms.DateTimePicker id="datetimepicker" name="datetimepicker"
-            disabled={boolean("Disabled", false)}
-            label="Date Picker" wrapper={true} required={true}/>
+        <div className="form-element">
+            <DateTimePicker id="datetimepicker" name="datetimepicker"
+                disabled={boolean("Disabled", false)}
+                label="Date Picker" wrapper={true} required={true}/>
+        </div>
     ))
     .add('File Picker', ()=>(
-        <Forms.FilePicker  id="filepicker" name="filepicker"
+        <div className="form-element">
+            <FilePicker  id="filepicker" name="filepicker"
                             disabled={boolean("Disabled", false)}
                             label="File Picker" wrapper={true} required={true}/>
+        </div>
     ))
     .add('Image Picker', ()=>(
-        <Forms.ImagePicker  id="imagepicker" name="imagepicker"
+        <div className="form-element">
+            <ImagePicker  id="imagepicker" name="imagepicker"
                             disabled={boolean("Disabled", false)}
                             label="Image Picker" wrapper={true} required={true}/>
+        </div>
     ))
     .add('Color Picker', ()=>(
-        <Forms.ColorPicker  id="colorpicker" name="colorpicker"
+        <div className="form-element">
+            <ColorPicker  id="colorpicker" name="colorpicker"
                             disabled={boolean("Disabled", false)}
                             label="Color Picker" wrapper={true} required={true}/>
+        </div>
     ))
     .add('Checkbox List', ()=>(
-        <Forms.CheckboxList id="checkboxlist" name="checkboxlist"
+        <div className="form-element">
+            <CheckboxList id="checkboxlist" name="checkboxlist"
                             options={options}
                             disabled={boolean("Disabled", false)}
                             label="Checkbox List" wrapper={true} required={true}/>
+        </div>
     ))
     .add('Radio List', ()=>(
-        <Forms.RadioList id="radiolist" name="radiolist"
+        <div className="form-element">
+            <RadioList id="radiolist" name="radiolist"
                          options={options}
                          disabled={boolean("Disabled", false)}
                          label="Radio List" wrapper={true} required={true}/>
+        </div>
     ))
 ;
 

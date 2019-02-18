@@ -1,22 +1,22 @@
 export Button from './Button';
 export Checkbox from './Checkbox';
-export CheckboxList from './Checkbox/CheckboxList';
-export ColorPicker from './ColorPicker';
-export DatePicker from './DatePicker';
-export DateTimePicker from './DateTimePicker';
+export CheckboxList, {CheckboxList as UncontrolledCheckboxList} from './Checkbox/CheckboxList';
+export ColorPicker, {ColorPicker as UncontrolledColorPicker} from './ColorPicker';
+export DatePicker, {DatePicker as UncontrolledDatePicker} from './DatePicker';
+export DateTimePicker, {DateTimePicker as UncontrolledDateTimePicker}  from './DateTimePicker';
 export Fieldset from './Fieldset';
-export FilePicker from './FilePicker';
+export FilePicker, {FilePicker as UncontrolledFilePicker}  from './FilePicker';
 export Form from './Form';
 export FormElement, {FormElementWrapper} from './FormElement';
-export ImagePicker from './ImagePicker';
-export Input from './Input';
+export ImagePicker, {ImagePicker as UncontrolledImagePicker}  from './ImagePicker';
+export Input, {Input as UncontrolledInput} from './Input';
 export Label from './Label';
-export Radio from './Radio';
-export RadioList from './Radio/RadioList';
-export RichTextEditor from './RichTextEditor';
-export Select from './Select';
+export Radio, {Radio as UncontrolledRadio}from './Radio';
+export RadioList, {RadioList as UncontrolledRadioList} from './Radio/RadioList';
+export RichTextEditor, {RichTextEditor as UncontrolledRichTextEditor} from './RichTextEditor';
+export Select, {Select as UncontrolledSelect} from './Select';
 export {Slider, SliderDropdown} from './Slider'
-export Textarea from './Textarea';
-export TimePicker from './TimePicker';
+export Textarea, {Textarea as UncontrolledTextarea} from './Textarea';
+export TimePicker, {TimePicker as UncontrolledTimePicker} from './TimePicker';
 
 export default from './Form';

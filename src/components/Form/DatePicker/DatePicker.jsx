@@ -11,8 +11,7 @@ import DatePickerDialog from './DatePickerDialog';
 
 import './DatePicker.scss';
 
-
-class DatePicker extends FormElement {
+export class DatePicker extends FormElement {
 
     state = {
         value: this.props.value,

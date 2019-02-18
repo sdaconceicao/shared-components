@@ -7,7 +7,7 @@ import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
 import Button from '../Button';
 import FilePicker from '../FilePicker';
-import Image, {ImageMeta} from "../../Image";
+import {Image, ImageMeta} from "../../Image";
 
 import './ImagePicker.scss';
 
