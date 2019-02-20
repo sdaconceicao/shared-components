@@ -1,6 +1,7 @@
 .form-control{
     height: var(--input-height);
     border-color: var(--color-input-border);
+    background-color: var(--color-input-textfield-bg);
     &:focus{
         border-color: var(--color-input-border);
         box-shadow: none;

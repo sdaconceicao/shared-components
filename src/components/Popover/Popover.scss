@@ -2,3 +2,13 @@
     background-color: var(--color-primary-bg);
     color: var(--color-primary-text);
 }
+
+.bs-popover-left > .arrow::after,
+.bs-popover-auto[x-placement^="left"] > .arrow::after{
+    border-left-color: var(--color-primary-bg);
+}
+
+.bs-popover-bottom > .arrow::after,
+.bs-popover-auto[x-placement^="bottom"] > .arrow::after {
+    border-bottom-color: var(--color-primary-bg);
+}

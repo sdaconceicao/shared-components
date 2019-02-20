@@ -40,7 +40,7 @@ export class Select extends FormElement {
                         id={id}
                         name={name}
                         classNamePrefix={`styled-select`}
-                        className={className}
+                        className={`styled-select-wrapper ${className}`}
                         tabIndex={tabIndex}
                         disabled={disabled}
                         isClearable
@@ -58,7 +58,7 @@ export class Select extends FormElement {
                         id={id}
                         name={name}
                         classNamePrefix="styled-select"
-                        className={className}
+                        className={`styled-select-wrapper ${className}`}
                         tabIndex={tabIndex}
                         disabled={disabled}
                         isSearchable={autocomplete}

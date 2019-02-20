@@ -22,7 +22,7 @@ export class RadioList extends FormElement{
             {value} = this.state;
 
         return (
-            <ul className={`radio-list ${className}`}>
+            <ul className={`radio-list list-style--none ${className}`}>
                 {options && options.map((option, index)=>{
                     return (
                         <li key={index} className="checkbox-list__item">

@@ -28,7 +28,7 @@ export class CheckboxList extends FormElement{
         const {name, className, options, checkedIcon, uncheckedIcon, value} = this.props;
 
         return (
-            <ul className={`checkbox-list ${className}`}>
+            <ul className={`checkbox-list list-style--none ${className}`}>
                 {options && options.map((option, index)=>(
                     <li key={index} className="checkbox-list__item">
                         <Checkbox name={option.label}
