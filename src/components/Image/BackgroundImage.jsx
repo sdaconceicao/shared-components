@@ -36,7 +36,6 @@ export class BackgroundImage extends Component {
     render() {
         const {className, src, alt, style, children} = this.props,
             {orientation, loading} = this.state;
-        console.log("SRC",loading, placeholder);
         return (
             <Fragment>
                 <div className={`background-image ${orientation} ${loading ? 'placeholder' : ''} ${className}`}
