@@ -29,6 +29,9 @@
         .btn{
             height: calc(var(--input-height) - .5rem);
         }
+        &__indicator{
+            height: calc(var(--input-height) - 1.1rem);
+        }
     }
 }
 .rdw-editor-main{
