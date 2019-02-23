@@ -2,6 +2,7 @@
     height: var(--input-height);
     border-color: var(--color-input-border);
     background-color: var(--color-input-textfield-bg);
+    padding: 0 .5rem;
     &:focus{
         border-color: var(--color-input-border);
         box-shadow: none;
