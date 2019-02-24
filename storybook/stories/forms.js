@@ -10,7 +10,9 @@ import {Form, Button, Input as FormInput,
     UncontrolledCheckboxList as CheckboxList, UncontrolledRadioList as RadioList,
     UncontrolledImagePicker as ImagePicker, UncontrolledFilePicker as FilePicker,
     UncontrolledColorPicker as ColorPicker, UncontrolledDatePicker as DatePicker,
-    UncontrolledDateTimePicker as DateTimePicker, UncontrolledTimePicker as TimePicker} from "../../src/index";
+    UncontrolledDateTimePicker as DateTimePicker, UncontrolledTimePicker as TimePicker,
+    UncontrolledTags as Tags
+} from "../../src/index";
 
 import FormReadme from '../../src/components/Form/README.md';
 
@@ -22,6 +24,8 @@ const options = [
     {label: "Eggs", value: "eggs"},
     {label: "Ham", value: "ham"}
 ];
+
+const tags = ['breakfast', 'tasty'];
 
 const withCustomPreview = withDocs({
     PreviewComponent: ({ children }) => (
@@ -40,6 +44,11 @@ formStories
             <FormInput id="input" name="input"
                          disabled={boolean("Disabled", false)}
                          label="Text Input" wrapper={true} required={true}/>
+            <Tags id="tags" name="tags"
+                  value={tags}
+                  editable={true}
+                  disabled={boolean("Disabled", false)}
+                  label="Tags" wrapper={true} required={true}/>
             <Button type="submit">Save</Button>
         </Form>
     ));
@@ -133,6 +142,15 @@ elementStories
                          options={options}
                          disabled={boolean("Disabled", false)}
                          label="Radio List" wrapper={true} required={true}/>
+        </div>
+    ))
+    .add('Tags', ()=>(
+        <div className="form-element">
+            <Tags id="tags" name="tags"
+                       value={tags}
+                       editable={true}
+                       disabled={boolean("Disabled", false)}
+                       label="Tags" wrapper={true} required={true}/>
         </div>
     ))
 ;

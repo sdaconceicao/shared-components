@@ -16,6 +16,7 @@ export RadioList, {RadioList as UncontrolledRadioList} from './Radio/RadioList';
 export RichTextEditor, {RichTextEditor as UncontrolledRichTextEditor} from './RichTextEditor';
 export Select, {Select as UncontrolledSelect} from './Select';
 export {Slider, SliderDropdown} from './Slider'
+export Tags, {Tags as UncontrolledTags, Tag, TagsList} from './Tags';
 export Textarea, {Textarea as UncontrolledTextarea} from './Textarea';
 export TimePicker, {TimePicker as UncontrolledTimePicker} from './TimePicker';
 

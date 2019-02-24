@@ -1,0 +1,20 @@
+.tag{
+    & + .tag{
+        margin-left: .5rem;
+    }
+    &__content{
+        margin-top: .1rem;
+        margin-right: .2rem;
+        display: inline-block;
+    }
+    .btn{
+        height: 1rem;
+        width: 1rem;
+        padding: 0;
+        svg{
+            vertical-align: top!important;
+            margin-top: .05rem;
+            font-size: .8rem;
+        }
+    }
+}
