@@ -38,7 +38,7 @@ export class DateTimePicker extends FormElement {
     };
 
     render(){
-        const { id, name, tabIndex, className, placeholder,
+        const { id, name, tabIndex, className, placeholder, buttonClassName,
                 minDate, maxDate,
                 onBlur, onKeyDown} = this.props,
             {value, prettyValue, btnTarget} = this.state;
@@ -72,7 +72,7 @@ export class DateTimePicker extends FormElement {
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
                 <Button id={btnTarget}
-                        className="with-input"><FaCalendar/></Button>
+                        className={`with-input ${buttonClassName}`}><FaCalendar/></Button>
             </div>
         )
     }
@@ -83,6 +83,7 @@ DateTimePicker.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
+    buttonClassName: PropTypes.string,
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
@@ -103,6 +104,7 @@ DateTimePicker.defaultProps = {
     tabIndex: 1,
     placeholder: '',
     className: '',
+    buttonClassName: '',
     value: new Date(),
     format: 'MMMM Do YYYY h:mm a',
     required: false

@@ -43,7 +43,7 @@ export class Tags extends FormElement {
     };
 
     render() {
-        const {id, name, tabIndex, autoCapitalize, className, style, placeholder, disabled, index, editable} = this.props,
+        const {id, name, tabIndex, buttonClassName, autoCapitalize, className, style, placeholder, disabled, index, editable} = this.props,
             {inputValue, value} = this.state;
         return (
             <div className="tags">
@@ -60,7 +60,7 @@ export class Tags extends FormElement {
                     onChange={this.handleTagInput}
                     onKeyDown={this.handleTagEnter}
                     tabIndex={tabIndex}/>
-                <Button className="with-input" onClick={this.handleAddTag}><FaPlus/></Button>
+                <Button className={`with-input ${buttonClassName}`} onClick={this.handleAddTag}><FaPlus/></Button>
                 <TagContext.Provider value={{editable: editable, onRemove: this.handleRemoveTag}}>
                     <TagList tags={value}/>
                 </TagContext.Provider>
@@ -74,6 +74,7 @@ Tags.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     className: PropTypes.string,
+    buttonClassName: PropTypes.string,
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
@@ -93,6 +94,7 @@ Tags.defaultProps = {
     placeholder: '',
     disabled: false,
     className: '',
+    buttonClassName: '',
     autoCapitalize: 'none',
     required: false
 };

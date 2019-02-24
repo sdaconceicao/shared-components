@@ -29,7 +29,7 @@ export class DatePicker extends FormElement {
     };
 
     render(){
-        const { id, name, tabIndex, className, placeholder,
+        const { id, name, tabIndex, className, placeholder, buttonClassName,
                 minDate, maxDate,
                 onBlur, onKeyDown} = this.props,
             {value, prettyValue, btnTarget} = this.state;
@@ -48,7 +48,7 @@ export class DatePicker extends FormElement {
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}/>
                 <Button id={btnTarget}
-                        className="with-input"><FaCalendar/></Button>
+                        className={`with-input ${buttonClassName}`}><FaCalendar/></Button>
                 <DatePickerDialog
                     onChange={this.onChangeDate}
                     value={value}
@@ -65,6 +65,7 @@ DatePicker.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
+    buttonClassName: PropTypes.string,
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
@@ -85,6 +86,7 @@ DatePicker.defaultProps = {
     tabIndex: 1,
     placeholder: '',
     className: '',
+    buttonClassName: '',
     required: false,
     value: new Date(),
     format: 'MMMM Do YYYY',
