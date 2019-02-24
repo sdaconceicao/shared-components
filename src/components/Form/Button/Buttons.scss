@@ -6,6 +6,13 @@
     height: var(--input-height);
     line-height: var(--input-height);
     vertical-align: top;
+    & + .btn{
+        margin-left: .5rem;
+    }
+    &.no-style, &.no-style:hover{
+        background-color: transparent;
+        border: none;
+    }
     &:hover{
         background-color: var(--color-input-hover-button);
         color: var(--color-input-hover-text);

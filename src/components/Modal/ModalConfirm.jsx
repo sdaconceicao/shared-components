@@ -3,28 +3,24 @@ import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
 import {FormattedMessage} from 'react-intl';
 
-import Button from '../Form/Button/Button';
+import Button from '../Form/Button';
 
 import './Modal.scss';
 
 /** Modal confirm component with promise response */
 export class ModalConfirm extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.onConfirm = this.onConfirm.bind(this);
-        this.onCancel = this.onCancel.bind(this);
-        this.state = {modal: true};
-    }
 
-    onConfirm(){
+    state = {modal: true};
+
+    onConfirm = () =>{
         this.props.resolve(true);
         this.setState({modal: false});
-    }
+    };
 
-    onCancel(){
+    onCancel = () =>{
         this.props.resolve(false);
         this.setState({modal: false});
-    }
+    };
 
     render () {
         const {title, confirmText, cancelText, children} = this.props;
@@ -39,8 +35,8 @@ export class ModalConfirm extends Component {
                     <div className="modal-content-body">
                         {children}
                     </div>
-                    <ModalFooter>
-                        <Button className="modal-confirm" onClick={this.onConfirm}>{confirmText}</Button>
+                    <ModalFooter className="modal-confirm-footer">
+                        <Button className="modal-confirm primary" onClick={this.onConfirm}>{confirmText}</Button>
                         <Button className="modal-cancel" onClick={this.onCancel}>{cancelText}</Button>
                     </ModalFooter>
                 </ModalBody>
@@ -53,7 +49,8 @@ ModalConfirm.propTypes = {
     title: PropTypes.string,
     children: PropTypes.object.isRequired,
     cancelText: PropTypes.object,
-    confirmText: PropTypes.object
+    confirmText: PropTypes.object,
+    resolve: PropTypes.func.isRequired
 };
 
 ModalConfirm.defaultProps = {

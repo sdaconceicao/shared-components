@@ -21,6 +21,7 @@
     }
     .modal-title {
         width: 100%;
+        font-size: 1.3rem;
         svg+span {
             margin-top: -.25rem;
             display: inline-block;
@@ -43,9 +44,10 @@
         background-color: var(--color-main-bg);
         margin-left: -.5rem;
         margin-right: -.5rem;
-        padding: 0;
     }
-
+    .modal-confirm-footer .btn{
+        width: 50%;
+    }
 }
 
 .modal-open{
