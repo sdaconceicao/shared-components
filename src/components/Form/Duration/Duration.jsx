@@ -49,7 +49,7 @@ export class Duration extends FormElement {
                         value={hours}
                         options={this.hours}
                         tabIndex={tabIndex}
-                        placeholder="---------------"
+                        placeholder="-----------"
                         onChange={(e)=>this.onChange(e, 'hours')}/>
                 <Select id={`duration-minutes-${id}`}
                         name={`duration-minutes-${name}`}
@@ -57,7 +57,7 @@ export class Duration extends FormElement {
                         value={minutes}
                         options={this.minutes}
                         tabIndex={tabIndex + .1}
-                        placeholder="---------------"
+                        placeholder="-----------"
                         onChange={(e)=>this.onChange(e, 'minutes')}/>
             </div>
         )
