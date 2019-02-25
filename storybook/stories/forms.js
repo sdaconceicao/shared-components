@@ -11,7 +11,7 @@ import {Form, Button, Input as FormInput,
     UncontrolledImagePicker as ImagePicker, UncontrolledFilePicker as FilePicker,
     UncontrolledColorPicker as ColorPicker, UncontrolledDatePicker as DatePicker,
     UncontrolledDateTimePicker as DateTimePicker, UncontrolledTimePicker as TimePicker,
-    UncontrolledTags as Tags
+    UncontrolledTags as Tags, UncontrolledDuration as Duration
 } from "../../src/index";
 
 import FormReadme from '../../src/components/Form/README.md';
@@ -25,7 +25,8 @@ const options = [
     {label: "Ham", value: "ham"}
 ];
 
-const tags = ['breakfast', 'tasty'];
+const tags = ['breakfast', 'tasty'],
+    duration = 5;
 
 const withCustomPreview = withDocs({
     PreviewComponent: ({ children }) => (
@@ -105,6 +106,14 @@ elementStories
             <DateTimePicker id="datetimepicker" name="datetimepicker"
                 disabled={boolean("Disabled", false)}
                 label="Date Picker" wrapper={true} required={true}/>
+        </div>
+    ))
+    .add('Duration', ()=>(
+        <div className="form-element">
+            <Duration id="duration" name="duration"
+                  value={duration}
+                  disabled={boolean("Disabled", false)}
+                  label="Duration" wrapper={true} required={true}/>
         </div>
     ))
     .add('File Picker', ()=>(
