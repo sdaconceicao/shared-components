@@ -56,7 +56,7 @@ Image.propTypes = {
     src: PropTypes.string.isRequired,
     alt: PropTypes.string,
     onLoad: PropTypes.func,
-    placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.bool])
+    placeholder: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.bool])
 };
 
 Image.defaultProps = {

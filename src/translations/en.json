@@ -2,6 +2,8 @@
     "common.ok": "Ok",
     "common.cancel": "Cancel",
     "datePicker.title": "Pick a date",
+    "duration.hours": "Hours",
+    "duration.minutes": "Minutes",
     "file.button": "Upload",
     "image.make": "Make",
     "image.dateTaken": "Date Taken",

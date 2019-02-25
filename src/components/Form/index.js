@@ -4,7 +4,7 @@ export CheckboxList, {CheckboxList as UncontrolledCheckboxList} from './Checkbox
 export ColorPicker, {ColorPicker as UncontrolledColorPicker} from './ColorPicker';
 export DatePicker, {DatePicker as UncontrolledDatePicker} from './DatePicker';
 export DateTimePicker, {DateTimePicker as UncontrolledDateTimePicker}  from './DateTimePicker';
-export Duration, {Duration as UncontrolledDuration} from './Duration';
+export Duration, {Duration as UncontrolledDuration, DurationView} from './Duration';
 export Fieldset from './Fieldset';
 export FilePicker, {FilePicker as UncontrolledFilePicker}  from './FilePicker';
 export Form from './Form';
