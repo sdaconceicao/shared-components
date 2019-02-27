@@ -53,7 +53,7 @@ export class Image extends Component {
 
 Image.propTypes = {
     className: PropTypes.string,
-    src: PropTypes.string.isRequired,
+    src: PropTypes.string,
     alt: PropTypes.string,
     onLoad: PropTypes.func,
     placeholder: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.bool])

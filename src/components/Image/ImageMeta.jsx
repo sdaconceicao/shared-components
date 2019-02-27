@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
 import PropTypes from 'prop-types';
 import {FormattedMessage} from 'react-intl';
+import moment from 'moment';
 
 import {getMetaDataFromImage} from "./Image.util";
 
@@ -8,10 +9,12 @@ import './ImageMeta.scss';
 
 export class ImageMeta extends Component{
 
-    state = {};
+    state = {
+        meta: this.props.meta
+    };
 
     componentDidMount(){
-        getMetaDataFromImage(this.props.image).then((meta)=>{
+        this.props.image && getMetaDataFromImage(this.props.image).then((meta)=>{
            this.setState({meta});
         });
     }
@@ -21,29 +24,29 @@ export class ImageMeta extends Component{
             {meta} = this.state;
         if (!meta) return null;
         return (
-            <ul className={`image-meta ${className}`}>
+            <ul className={`image-meta list-style--none ${className}`}>
+                <li className="image-meta__list-item">
+                    <label className="image-meta__label"><FormattedMessage id="image.dimensions"/></label>
+                    {meta.width} x {meta.height}
+                </li>
                 {meta.Make &&
-                    <li>
-                        <label><FormattedMessage id="image.make"/></label>
+                    <li className="image-meta__list-item">
+                        <label className="image-meta__label"><FormattedMessage id="image.make"/></label>
                         {meta.Make}
                     </li>
                 }
                 {meta.Model &&
-                <li>
-                    <label><FormattedMessage id="image.model"/></label>
-                    {meta.Model}
-                </li>
-                }
-                {meta.DateTime &&
-                    <li>
-                        <label><FormattedMessage id="image.date"/></label>
-                        {meta.DateTime}
+                    <li className="image-meta__list-item">
+                        <label className="image-meta__label"><FormattedMessage id="image.model"/></label>
+                        {meta.Model}
                     </li>
                 }
-                <li>
-                    <label><FormattedMessage id="image.dimensions"/></label>
-                    {meta.width} x {meta.height}
-                </li>
+                {meta.dateTaken &&
+                    <li className="image-meta__list-item">
+                        <label className="image-meta__label"><FormattedMessage id="image.dateTaken"/></label>
+                        {moment(meta.dateTaken).format('MMM Do YYYY, h:mm A') }
+                    </li>
+                }
             </ul>
         );
     }
@@ -51,7 +54,8 @@ export class ImageMeta extends Component{
 
 ImageMeta.propTypes = {
     className: PropTypes.string,
-    image: PropTypes.object
+    image: PropTypes.object,
+    meta: PropTypes.object
 };
 
 ImageMeta.defaultProps = {

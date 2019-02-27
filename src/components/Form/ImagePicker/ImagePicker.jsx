@@ -37,6 +37,10 @@ export class ImagePicker extends FormElement {
                     <Image src={value}
                           className="image-picker__preview-image"
                           onLoad={this.onImageLoad} />
+                    {value &&
+                        <Button className={`image-picker__remove ${buttonClassName}`}
+                            onClick={this.onRemove}><FaTrash/></Button>
+                    }
                 </div>
                 {!value &&
                     <FilePicker
@@ -53,10 +57,7 @@ export class ImagePicker extends FormElement {
                 {loadedImage && showMeta &&
                     <ImageMeta className={'image-picker__meta'} image={loadedImage}/>
                 }
-                {value &&
-                    <Button className={`image-picker__remove ${buttonClassName}`}
-                        onClick={this.onRemove}><FaTrash/></Button>
-                }
+
             </div>
         );
     }
