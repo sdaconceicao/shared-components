@@ -87,6 +87,7 @@
     "draftjs-to-html": "^0.8.4",
     "exif-js": "^2.3.0",
     "moment-timezone": "^0.5.23",
+    "piexifjs": "^1.0.4",
     "rc-slider": "^8.6.5",
     "react": "^16.7.0",
     "react-calendar": "^2.18.1",

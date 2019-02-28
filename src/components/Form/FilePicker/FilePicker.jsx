@@ -8,19 +8,28 @@ import Label from '../Label';
 import Button from '../Button'
 
 import './FilePicker.scss';
+import {correctImageOrientation} from "../../Image/Image.util";
 
 /** File Picker component with optional label */
 export class FilePicker extends FormElement {
 
     onChange = (e) =>{
         const {onChange} = this.props,
-            reader = new FileReader();
+            reader = new FileReader(),
+            filename = e.target.files[0].name,
+            extension = filename.split('.').pop().toLowerCase();
 
         reader.onload = (event) => {
-            this.setState({value: event.target.result});
-            onChange && onChange(event.target.result);
+            if (['jpeg', 'jpg'].includes(extension)){
+                correctImageOrientation(event.target.result).then(value=>{
+                    this.setState({value});
+                    onChange && onChange(value);
+                });
+            } else {
+                this.setState({value: event.target.result});
+                onChange && onChange(event.target.result, filename);
+            }
         };
-
         reader.readAsDataURL(e.target.files[0]);
     };
 

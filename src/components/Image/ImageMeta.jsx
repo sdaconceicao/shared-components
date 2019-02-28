@@ -15,6 +15,7 @@ export class ImageMeta extends Component{
 
     componentDidMount(){
         this.props.image && getMetaDataFromImage(this.props.image).then((meta)=>{
+            console.log("META", meta);
            this.setState({meta});
         });
     }
