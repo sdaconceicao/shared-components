@@ -13,12 +13,23 @@
         background-color: transparent;
         border: none;
     }
+    &.with-input{
+        width: 2rem;
+        vertical-align: top;
+        border-radius: 0 var(--input-radius) var(--input-radius) 0;
+    }
+    &.block{
+        width: 100%;
+        display: block;
+    }
+    svg {
+        margin-top: -.2rem;
+    }
     &:hover{
         background-color: var(--color-input-hover-button);
         color: var(--color-input-hover-text);
         border-color: var(--color-input-hover-border);
     }
-
     &.primary{
         background-color: var(--color-primary-bg);
         color: var(--color-primary-text);
@@ -79,14 +90,7 @@
             }
         }
     }
-    &.with-input{
-        width: 2rem;
-        vertical-align: top;
-        border-radius: 0 var(--input-radius) var(--input-radius) 0;
-    }
-    svg {
-        margin-top: -.2rem;
-    }
+
 }
 
 .btn-group{
