@@ -32,7 +32,7 @@ export class ImagePicker extends FormElement {
         const {id, name, tabIndex, className, buttonClassName, disabled, accepts, showMeta, index} = this.props,
             {value, loadedImage} = this.state;
         return (
-            <div className={`image-picker ${className} ${value && showMeta ? 'image-picker--meta-shown' : ''}`}>
+            <div className={`image-picker ${className} ${value ? 'image-picker--image-loaded' : ''} ${value && showMeta ? 'image-picker--meta-shown' : ''}`}>
                 <div className="image-picker__preview">
                     <Image src={value}
                           className="image-picker__preview-image"
