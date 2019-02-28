@@ -1,7 +1,9 @@
 .tag{
-    & + .tag{
-        margin-left: .5rem;
+    margin-right: .5rem;
+    & + .tag:last-child{
+        margin-right: 0;
     }
+
     &__content{
         margin-top: .1rem;
         margin-right: .2rem;

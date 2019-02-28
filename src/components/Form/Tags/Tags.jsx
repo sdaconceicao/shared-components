@@ -24,7 +24,9 @@ export class Tags extends FormElement {
     };
 
     handleTagEnter = (e) =>{
+
         if(e.keyCode == 13){
+            e.preventDefault();
             this.handleAddTag();
         }
     };
