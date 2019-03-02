@@ -5,6 +5,7 @@
  * @returns array
  */
 export function addIdsToArrayElements(array){
+    if(!array) return null;
     return array.map(value => {
         return { value, key: Math.floor(Math.random() * 1000+1) };
     });
