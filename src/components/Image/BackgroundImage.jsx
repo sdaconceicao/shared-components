@@ -55,7 +55,7 @@ export class BackgroundImage extends Component {
 
 BackgroundImage.propTypes = {
     className: PropTypes.string,
-    src: PropTypes.string.isRequired,
+    src: PropTypes.string,
     alt: PropTypes.string,
     onLoad: PropTypes.func,
     placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.bool])
