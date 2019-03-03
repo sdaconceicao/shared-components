@@ -26,11 +26,24 @@ export class Form extends Component {
         e.preventDefault();
         const results = {};
         this.elements.map(element=>{
-            if(!isNaN(element.props.index)){  //index indicates result is an array
-                if (!results[element.props.name]) results[element.props.name] = [];
-                results[element.props.name][element.props.index] = element.getValue();
+            const {name, index} = element.props;
+            if(!isNaN(index)){  //index indicates result is an array
+
+                if(name.indexOf('.') !== -1){
+                    const object = name.split('.'),
+                        parent = object[0],
+                        value = object[1];
+
+                    if (!results[parent]) results[parent] = [];
+                    if (!results[parent][index]) results[parent][index] = {};
+                    results[parent][index][value] = element.getValue();
+                } else {
+                    if (!results[name]) results[name] = [];
+                    results[name][index] = element.getValue();
+                }
+
             } else {
-                results[element.props.name] = element.getValue();
+                results[name] = element.getValue();
             }
 
         });
