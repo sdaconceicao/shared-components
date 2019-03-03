@@ -7,7 +7,7 @@ import {withTags} from "./TagContext";
 export const TagsList = ({tags}) => (
     <div className='tags-list'>
         {tags && tags.map(tag=>{
-            return <Tag key={tag}>{tag}</Tag>
+            return <Tag key={tag.id}>{tag.value}</Tag>
         })}
     </div>
 );

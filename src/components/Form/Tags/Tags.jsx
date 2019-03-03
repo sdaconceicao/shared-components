@@ -24,7 +24,6 @@ export class Tags extends FormElement {
     };
 
     handleTagEnter = (e) =>{
-
         if(e.keyCode == 13){
             e.preventDefault();
             this.handleAddTag();
@@ -35,7 +34,7 @@ export class Tags extends FormElement {
         const {value, inputValue} = this.state,
             newTags = inputValue.split(',');
         newTags.map(tag=>{
-           value.push(tag);
+           value.push({id: `temp-${Math.floor(Math.random() * 1000+1)}`, value: tag});
         });
         this.setState({value, inputValue: ''});
     };
@@ -43,6 +42,15 @@ export class Tags extends FormElement {
     handleRemoveTag = (tag) =>{
         this.setState({value: this.state.value.filter(value => value !==tag)});
     };
+
+    getValue(){
+        const {value} = this.state,
+            cleanValue = JSON.parse(JSON.stringify(value));
+        cleanValue.map(tag=>{
+           if (isNaN(tag.id)) delete tag.id; //remove temporary ids for save
+        });
+        return cleanValue;
+    }
 
     render() {
         const {id, name, tabIndex, buttonClassName, autoCapitalize, className, style, placeholder, disabled, index, editable} = this.props,
