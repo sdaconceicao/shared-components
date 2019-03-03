@@ -46,7 +46,7 @@ export class ModalConfirm extends Component {
 }
 
 ModalConfirm.propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     children: PropTypes.object.isRequired,
     cancelText: PropTypes.object,
     confirmText: PropTypes.object,
