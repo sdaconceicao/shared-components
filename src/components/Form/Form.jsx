@@ -45,7 +45,6 @@ export class Form extends Component {
             } else {
                 results[name] = element.getValue();
             }
-
         });
         this.props.onSubmit(results);
     };

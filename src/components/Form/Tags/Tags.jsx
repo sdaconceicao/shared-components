@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FaPlus from 'react-icons/lib/fa/plus-square';
 
-import {FormContext, withForm} from '../FormContext';
+import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
 import {Input} from '../Input';
 import Button from '../Button';
@@ -34,13 +34,13 @@ export class Tags extends FormElement {
         const {value, inputValue} = this.state,
             newTags = inputValue.split(',');
         newTags.map(tag=>{
-           value.push({id: `temp-${Math.floor(Math.random() * 1000+1)}`, value: tag});
+           value.push({id: `temp-${Math.floor(Math.random() * 1000+1)}`, name: tag});
         });
         this.setState({value, inputValue: ''});
     };
 
     handleRemoveTag = (tag) =>{
-        this.setState({value: this.state.value.filter(value => value !==tag)});
+        this.setState({value: this.state.value.filter(value => value.name !==tag)});
     };
 
     getValue(){
