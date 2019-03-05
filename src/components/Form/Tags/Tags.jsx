@@ -11,7 +11,7 @@ import {TagContext} from "./TagContext";
 
 import './Tags.scss';
 
-/** Text Input component with optional label */
+/** Tagging component with optional label */
 export class Tags extends FormElement {
 
     state = {
