@@ -34,7 +34,7 @@ export class Tags extends FormElement {
         const {value, inputValue} = this.state,
             newTags = inputValue.split(',');
         newTags.map(tag=>{
-           value.push({id: `temp-${Math.floor(Math.random() * 1000+1)}`, name: tag});
+           value.push({id: `temp-${Math.floor(Math.random() * 1000+1)}`, name: tag.trim()});
         });
         this.setState({value, inputValue: ''});
     };
