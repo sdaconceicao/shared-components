@@ -14,12 +14,13 @@ import {correctImageOrientation} from "../../Image/Image.util";
 export class FilePicker extends FormElement {
 
     onChange = (e) =>{
-        const {onChange} = this.props,
+        const {onChange, onSelect} = this.props,
             reader = new FileReader(),
             filename = e.target.files[0].name,
             extension = filename.split('.').pop().toLowerCase();
 
         reader.onload = (event) => {
+            onSelect && onSelect(event.target.result);
             if (['jpeg', 'jpg'].includes(extension)){
                 correctImageOrientation(event.target.result).then(value=>{
                     this.setState({value});

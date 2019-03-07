@@ -14,10 +14,19 @@ import './ImagePicker.scss';
 /** Image Picker component with optional label */
 export class ImagePicker extends FormElement {
 
+    state = {
+        loading: false,
+        value: this.props.value
+    };
+
     onChange = (value) =>{
         const {onChange} = this.props;
-        this.setState({value});
+        this.setState({value, loading: false});
         onChange && onChange(value);
+    };
+
+    onSelect = () =>{
+        this.setState({loading: true});
     };
 
     onImageLoad = (loadedImage) =>{
@@ -29,10 +38,12 @@ export class ImagePicker extends FormElement {
     };
 
     render() {
-        const {id, name, tabIndex, className, buttonClassName, disabled, accepts, showMeta, index} = this.props,
-            {value, loadedImage} = this.state;
+        const {id, name, layout, tabIndex, className, buttonClassName, disabled, accepts, showMeta, index} = this.props,
+            {value, loading, loadedImage} = this.state;
         return (
-            <div className={`image-picker ${className} ${value ? 'image-picker--image-loaded' : ''} ${value && showMeta ? 'image-picker--meta-shown' : ''}`}>
+            <div className={`image-picker ${layout}
+                                ${className} ${value ? 'image-picker--image-loaded' : ''}
+                                ${value && showMeta ? 'image-picker--meta-shown' : ''}`}>
                 <div className="image-picker__preview">
                     <Image src={value}
                           className="image-picker__preview-image"
@@ -52,7 +63,9 @@ export class ImagePicker extends FormElement {
                         accepts={accepts}
                         disabled={disabled}
                         tabIndex={tabIndex}
-                        onChange={this.onChange}/>
+                        children={loading ? <FormattedMessage id='file.loading'/> : <FormattedMessage id='file.button'/>}
+                        onSelect={this.onSelect}
+                        onChange={this.onChange} />
                 }
                 {loadedImage && showMeta &&
                     <ImageMeta className={'image-picker__meta'} image={loadedImage}/>
@@ -71,6 +84,7 @@ ImagePicker.propTypes = {
     disabled: PropTypes.bool,
     tabIndex: PropTypes.number.isRequired,
     accepts: PropTypes.string,
+    layout: PropTypes.string,
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,
@@ -84,6 +98,7 @@ ImagePicker.defaultProps = {
     className: '',
     required: false,
     showMeta: true,
+    layout: 'vertical',
     children: <FormattedMessage id='file.button'/>
 };
 

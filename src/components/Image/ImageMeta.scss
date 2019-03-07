@@ -3,6 +3,7 @@
     padding: 0;
     &__list-item{
         padding: .25rem .75rem;
+        margin: 0;
         border-bottom: 1px solid var(--color-input-border);
         &:last-child {
             border-bottom: none;
@@ -11,5 +12,6 @@
     &__label{
         font-weight: bold;
         width: 100px;
+        margin-bottom: 0;
     }
 }

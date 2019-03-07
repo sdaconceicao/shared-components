@@ -6,7 +6,7 @@ import PlaceholderImage from './PlaceholderImage';
 export class Image extends Component {
 
     state = {
-        loading: true
+        loading: this.props.src ? true : false
     };
 
     loadedImage = React.createRef();
@@ -39,8 +39,8 @@ export class Image extends Component {
 
         return (
             <Fragment>
-                {loading && placeholder && placeholder({alt, className})}
-                <img className={`${className} ${orientation} ${loading ? 'd-none' : ''}`}
+                {(loading || !src) && placeholder && placeholder({alt, className})}
+                <img className={`${className} ${orientation} ${loading || !src ? 'd-none' : ''}`}
                      onLoad={this.onLoad}
                      ref={this.loadedImage}
                      src={src}

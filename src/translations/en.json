@@ -5,6 +5,7 @@
     "duration.hours": "Hours",
     "duration.minutes": "Minutes",
     "file.button": "Upload",
+    "file.loading": "Loading...",
     "image.make": "Make",
     "image.dateTaken": "Date Taken",
     "image.model": "Model",
