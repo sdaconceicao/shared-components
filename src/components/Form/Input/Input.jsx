@@ -11,7 +11,7 @@ export class Input extends FormElement {
 
     render() {
         const {
-            id, name, type, tabIndex, autoCapitalize, className, style, placeholder, disabled, index,
+            id, name, type, tabIndex, autoCapitalize, className, style, placeholder, disabled, index, maxLength,
             onBlur, onKeyDown
         } = this.props,
         {ref, value} = this.state;
@@ -28,6 +28,7 @@ export class Input extends FormElement {
                 disabled={disabled}
                 value={value}
                 autoCapitalize={autoCapitalize}
+                maxLength={maxLength}
                 onKeyDown={onKeyDown}
                 tabIndex={tabIndex}
                 onChange={(e) => this.onChange({...e, value: e.target.value}, name, index)}
@@ -49,6 +50,7 @@ Input.propTypes = {
     type: PropTypes.string.isRequired,
     /** Controls whether first character input is automatically capitalized */
     autoCapitalize: PropTypes.string,
+    maxLength: PropTypes.number,
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func
