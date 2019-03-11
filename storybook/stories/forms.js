@@ -16,7 +16,7 @@ import {Form, Button, Input as FormInput,
 
 import FormReadme from '../../src/components/Form/README.md';
 
-export const formStories = storiesOf('Form', module);
+export const formStories = storiesOf('Form');
 export const elementStories = storiesOf('Form/Elements');
 
 const options = [

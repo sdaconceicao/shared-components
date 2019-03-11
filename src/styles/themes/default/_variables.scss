@@ -6,10 +6,16 @@
 
     --color-success: #5CBA5C;
     --color-success-dark: #448744;
+    --color-success-light: #78ed78;
     --color-warning: #F0D540;
     --color-warning-dark: #907f28;
+    --color-warning-light: #fffe5e;
     --color-error: #df3e43;
     --color-error-dark: #762427;
+    --color-error-light: #c49791;
+    --color-info: #2a7bca;
+    --color-info-dark: #1a4171;
+    --color-info-light: #63cfff;
 
     --color-white: #fff;
     --color-lightest: #f1f1f1;
@@ -53,16 +59,6 @@
     --color-input-hover-button: var(--color-medium);
     --color-input-hover-text: var(--color-dark);
     --color-input-hover-border: var(--color-medium-dark);
-
-    --color-success-bg: var(--color-success);
-    --color-success-border: var(--color-success-dark);
-    --color-success-text: var(--color-success-dark);
-    --color-warning-bg: var(--color-warning );
-    --color-warning-border: var(--color-warning-dark);
-    --color-warning-text: var(--color-warning-dark);
-    --color-error-bg: var(--color-error);
-    --color-error-border: var(--color-error-dark);
-    --color-error-text: var(--color-error-dark);
 }
 
 

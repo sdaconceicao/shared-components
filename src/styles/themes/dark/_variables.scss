@@ -4,12 +4,19 @@
     --input-radius: .25rem;
     --input-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
-    --color-success: #387a38;
+    --color-success: #439843;
     --color-success-dark: #2c572c;
+    --color-success-light: #60bf60;
     --color-warning: #d08e50;
-    --color-warning-dark: #905515;
-    --color-error: #b46060;
+    --color-warning-dark: #764612;
+    --color-warning-light: #f79722;
+    --color-error: #de4045;
     --color-error-dark: #762427;
+    --color-error-light: #d16f6f;
+    --color-info: #2a7bca;
+    --color-info-dark: #1a4171;
+    --color-info-light: #63cfff;
+
 
     --color-white: #fff;
     --color-light: #E9EEF1;
@@ -20,7 +27,8 @@
     --color-black: #000000;
 
     --color-primary: #ca1b12;
-    --color-primary-dark: #71050f;
+    --color-primary-dark: #57040c;
+    --color-primary-light: #cb4947;
     --color-secondary: #CCCCCC;
     --color-secondary-dark: #9a9a9a;
     --color-tertiary: #6c716e;

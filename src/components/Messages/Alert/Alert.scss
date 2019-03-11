@@ -1,0 +1,30 @@
+.alert{
+    border-radius: var(--input-radius);
+    padding: 1rem;
+    margin: .5rem 0;
+    &--success{
+        background-color: var(--color-success-light);
+        border: 1px solid var(--color-success-dark);
+        color: var(--color-success-dark);
+    }
+    &--warning{
+        background-color: var(--color-warning-light);
+        border: 1px solid var(--color-warning-dark);
+        color: var(--color-warning-dark);
+    }
+    &--error{
+        background-color: var(--color-error-light);
+        border: 1px solid var(--color-error-dark);
+        color: var(--color-error-dark);
+    }
+    &--info{
+        background-color: var(--color-info-light);
+        border: 1px solid var(--color-info-dark);
+        color: var(--color-info-dark);
+    }
+    &--branded{
+        background-color: var(--color-primary-light);
+        border: 1px solid var(--color-primary-dark);
+        color: var(--color-primary-dark);
+    }
+}

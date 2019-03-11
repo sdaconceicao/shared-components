@@ -6,3 +6,4 @@ import '../../src/styles/themes/dark/index.scss';
 import {formStories, elementStories} from "./forms";
 import imageStories from './image';
 import loaderStories from './loaders';
+import messageStories from './messages';
