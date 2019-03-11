@@ -8,12 +8,10 @@ import {Alert} from "../../src/index";
 export const messageStories = storiesOf('Messages', module);
 const alertStories = storiesOf('Messages/Alerts');
 
-messageStories
+alertStories
     .addDecorator(withInfo)
     .addDecorator(withKnobs)
-;
-
-alertStories.add('Error', ()=>(
+    .add('Error', ()=>(
         <Alert type="error">
             Error Message
         </Alert>
