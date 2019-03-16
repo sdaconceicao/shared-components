@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {FormattedMessage} from 'react-intl';
 
 /** Abstract FormElement class used to setup forms for usage within Form component */
 export class FormElement extends Component {
@@ -10,7 +11,6 @@ export class FormElement extends Component {
 
     componentDidMount(){
         this.props.addFormElement && this.props.addFormElement(this);
-
     }
 
     componentWillUnmount(){
@@ -33,6 +33,28 @@ export class FormElement extends Component {
         return this.state.value;
     }
 
+    doValidate(){
+        return new Promise(resolve=>{
+            const {required, name} = this.props,
+                errors = [];
+            if(required && !this.getValue()){
+                errors.push({
+                    type: required,
+                    value: <FormattedMessage id='form.fieldRequired' values={{name}}/>
+                });
+            }
+
+            if(errors.length > 0){
+                this.setState({errors}, ()=>{
+                    resolve(false);
+                });
+            } else {
+                this.setState({errors: null}, ()=>{
+                    resolve(true);
+                });
+            }
+        });
+    }
 };
 
 export default FormElement;

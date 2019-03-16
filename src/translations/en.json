@@ -6,6 +6,7 @@
     "duration.minutes": "Minutes",
     "file.button": "Upload",
     "file.loading": "Loading...",
+    "form.fieldRequired": "{name} is required",
     "image.make": "Make",
     "image.dateTaken": "Date Taken",
     "image.model": "Model",
