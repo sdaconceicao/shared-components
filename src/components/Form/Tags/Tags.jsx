@@ -43,6 +43,19 @@ export class Tags extends FormElement {
         this.setState({value: this.state.value.filter(value => value.name !==tag)});
     };
 
+    shouldComponentUpdate(nextProps, nextState){
+        const shouldUpdate = super.shouldComponentUpdate(nextProps, nextState);
+        if (!shouldUpdate){
+            if(this.state.inputValue !== nextState.inputValue){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
+
     getValue(){
         const {value} = this.state,
             cleanValue = JSON.parse(JSON.stringify(value));

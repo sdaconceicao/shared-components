@@ -12,14 +12,14 @@ export class Textarea extends FormElement{
 
     render() {
         const {id, name, type, tabIndex, minRows, maxLength, placeholder, className, disabled, onBlur} = this.props,
-            {value} = this.state;
+            {value, errors} = this.state;
 
         return <TextAreaAutosize
             id={id}
             type={type}
             name={name}
             minRows={minRows}
-            className={`form-control textarea ${className}`}
+            className={`form-control textarea ${className} ${errors ? 'error' : ''}`}
             disabled={disabled}
             placeholder={placeholder}
             value={value}

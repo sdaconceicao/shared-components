@@ -34,6 +34,19 @@ export class FilePicker extends FormElement {
         reader.readAsDataURL(e.target.files[0]);
     };
 
+    shouldComponentUpdate(nextProps, nextState){
+        const shouldUpdate = super.shouldComponentUpdate(nextProps, nextState);
+        if (!shouldUpdate){
+            if(this.props.children !== nextProps.children){
+                return true;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
+    }
+
     render() {
         const {id, name, tabIndex, className, buttonClassName, disabled, accepts, index, children:buttonText, render} = this.props,
             {value} = this.state;

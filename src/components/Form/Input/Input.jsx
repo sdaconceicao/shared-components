@@ -14,13 +14,13 @@ export class Input extends FormElement {
             id, name, type, tabIndex, autoCapitalize, className, style, placeholder, disabled, index, maxLength,
             onBlur, onKeyDown
         } = this.props,
-        {ref, value} = this.state;
+        {ref, value, errors} = this.state;
         return (
             <input
                 name={name}
                 id={id}
                 ref={ref}
-                className={`form-control ${className}`}
+                className={`form-control ${className} ${errors ? 'error' : ''}`}
                 style={style}
                 index={index}
                 type={type}

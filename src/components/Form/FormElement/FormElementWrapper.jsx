@@ -5,8 +5,8 @@ import Label from "../Label";
 
 import './FormElementWrapper.scss';
 
-export const FormElementWrapper = ({children, label, id, required}) => (
-    <div className={'form-element'}>
+export const FormElementWrapper = ({children, label, id, required, errors}) => (
+    <div className={`form-element ${errors ? 'error' : ''}`}>
         {label && <Label htmlFor={id} required={required}>{label}</Label>}
         {children}
     </div>

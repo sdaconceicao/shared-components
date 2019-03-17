@@ -74,7 +74,7 @@ export class Form extends Component {
                 <form onSubmit={this.onSubmit} className={`form ${className}`}>
                     <Fragment>
                         {errors && errors.length > 0 &&
-                            <Alert>
+                            <Alert type="error">
                                 <ul>
                                 {errors.map((error, index)=>(
                                     <li key={index}>{error.value}</li>
@@ -91,7 +91,7 @@ export class Form extends Component {
 }
 
 Form.propTypes = {
-    children: PropTypes.array.isRequired,
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
     className: PropTypes.string,
     onSubmit: PropTypes.func.isRequired
 };

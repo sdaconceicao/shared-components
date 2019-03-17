@@ -33,6 +33,9 @@
             height: calc(var(--input-height) - 1.1rem);
         }
     }
+    .error & {
+        border-color: var(--color-error);
+    }
 }
 .rdw-editor-main{
     background-color: var(--color-input-textfield-bg);
@@ -40,6 +43,9 @@
     border-radius: 0 0 var(--input-radius) var(--input-radius);
     border-top: none;
     padding: 0 1rem;
+    .error & {
+        border-color: var(--color-error);
+    }
 
 }
 
@@ -115,4 +121,3 @@
     background-color: var(--color-input-hover-button);
     color: var(--color-input-hover-text);
 }
-

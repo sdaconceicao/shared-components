@@ -14,6 +14,20 @@ export class ColorPicker extends FormElement {
         value: this.props.value
     };
 
+    shouldComponentUpdate(nextProps, nextState){
+        const shouldUpdate = super.shouldComponentUpdate(nextProps, nextState);
+        if (!shouldUpdate){
+            if(this.props.value !== nextProps.value
+                || this.state.open !== nextState.open){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
+
     onToggle = () =>{
         this.setState({open: !this.state.open});
     };

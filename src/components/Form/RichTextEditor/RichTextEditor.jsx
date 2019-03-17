@@ -27,16 +27,32 @@ export class RichTextEditor extends FormElement {
         });
     };
 
+    shouldComponentUpdate(nextProps, nextState){
+        const shouldUpdate = super.shouldComponentUpdate(nextProps, nextState);
+        if (!shouldUpdate){
+            if(this.state.editorState !== nextState.editorState){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
+
     getValue(){
-        return  draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
+        const html = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
+        return html.trim() === "<p></p>"
+            ? null
+            : html;
     }
 
     render() {
         const {id, className, tabIndex, toolbar, disabled} = this.props,
-            {editorState} = this.state;
+            {editorState, errors} = this.state;
         return (
             <Editor id={id}
-                    wrapperClassName={`richTextEditor ${className}`}
+                    wrapperClassName={`richTextEditor ${className} ${errors ? 'error' : ''}`}
                     disabled={disabled}
                     tabIndex={tabIndex}
                     editorState={editorState}

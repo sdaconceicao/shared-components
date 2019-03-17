@@ -5,4 +5,8 @@
         display: inline-block;
         border-radius: var(--radius-input) 0 0 var(--radius-input);
     }
+
+    &.error{
+        border-color: var(--color-error);
+    }
 }

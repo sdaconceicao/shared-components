@@ -18,6 +18,20 @@ export class Radio extends FormElement{
         return null;
     }
 
+    shouldComponentUpdate(nextProps, nextState){
+        const shouldUpdate = super.shouldComponentUpdate(nextProps, nextState);
+        if (!shouldUpdate){
+            if(this.props.checked !== nextProps.checked
+                || this.state.checked !== nextState.checked){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
+
     onChange = (e) =>{
         this.setState({checked: e.target.checked});
         this.props.onChange && this.props.onChange({
