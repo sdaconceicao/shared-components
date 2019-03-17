@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {FormattedMessage} from 'react-intl';
 import FaTrash from 'react-icons/lib/fa/trash';
 
+import {Spinner} from '../../Loaders';
 import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
 import Button from '../Button';
@@ -77,7 +78,7 @@ export class ImagePicker extends FormElement {
                         accepts={accepts}
                         disabled={disabled}
                         tabIndex={tabIndex}
-                        children={loading ? <FormattedMessage id='file.loading'/> : <FormattedMessage id='file.button'/>}
+                        children={loading ? <Spinner size="xs"/> : <FormattedMessage id='file.button'/>}
                         onSelect={this.onSelect}
                         onChange={this.onChange} />
                 }

@@ -75,9 +75,9 @@ export class Form extends Component {
                     <Fragment>
                         {errors && errors.length > 0 &&
                             <Alert type="error">
-                                <ul>
+                                <ul className="alert__list">
                                 {errors.map((error, index)=>(
-                                    <li key={index}>{error.value}</li>
+                                    <li className="alert__list-item" key={index}>{error.value}</li>
                                 ))}
                                 </ul>
                             </Alert>

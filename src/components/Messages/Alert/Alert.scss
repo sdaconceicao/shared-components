@@ -1,7 +1,10 @@
 .alert{
     border-radius: var(--input-radius);
-    padding: 1rem;
+    padding: .5rem;
     margin: .5rem 0;
+    &__list{
+        margin: 0;
+    }
     &--success{
         background-color: var(--color-success-light);
         border: 1px solid var(--color-success-dark);
