@@ -36,8 +36,8 @@ export class ModalConfirm extends Component {
                         {children}
                     </div>
                     <ModalFooter className="modal-confirm-footer">
-                        <Button className="modal-confirm primary" onClick={this.onConfirm}>{confirmText}</Button>
                         <Button className="modal-cancel" onClick={this.onCancel}>{cancelText}</Button>
+                        <Button className="modal-confirm primary" onClick={this.onConfirm}>{confirmText}</Button>
                     </ModalFooter>
                 </ModalBody>
             </Modal>
