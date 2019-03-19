@@ -9,10 +9,19 @@ import './Input.scss';
 /** Text Input component with optional label */
 export class Input extends FormElement {
 
+    onKeyDown = (e) =>{
+        const {onKeyDown, onEnter} = this.props;
+        if(e.keyCode === 13 && onEnter){
+            e.preventDefault();
+            onEnter();
+        }
+        onKeyDown && onKeyDown(e);
+    };
+
     render() {
         const {
-            id, name, type, tabIndex, autoCapitalize, className, style, placeholder, disabled, index, maxLength,
-            onBlur, onKeyDown
+            id, name, type, tabIndex, autoCapitalize, className, style, placeholder, disabled, index, maxLength, autoFocus,
+            onBlur
         } = this.props,
         {ref, value, errors} = this.state;
         return (
@@ -29,7 +38,8 @@ export class Input extends FormElement {
                 value={value}
                 autoCapitalize={autoCapitalize}
                 maxLength={maxLength}
-                onKeyDown={onKeyDown}
+                onKeyDown={this.onKeyDown}
+                autoFocus={autoFocus}
                 tabIndex={tabIndex}
                 onChange={(e) => this.onChange({...e, value: e.target.value}, name, index)}
                 onBlur={onBlur}/>
@@ -46,6 +56,7 @@ Input.propTypes = {
     tabIndex: PropTypes.number.isRequired,
     placeholder: PropTypes.string,
     required: PropTypes.bool,
+    autoFocus: PropTypes.bool,
     /** Type of input, text or password */
     type: PropTypes.string.isRequired,
     /** Controls whether first character input is automatically capitalized */
@@ -53,7 +64,8 @@ Input.propTypes = {
     maxLength: PropTypes.number,
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
-    onKeyDown: PropTypes.func
+    onKeyDown: PropTypes.func,
+    onEnter: PropTypes.func
 };
 
 Input.defaultProps = {
@@ -63,7 +75,8 @@ Input.defaultProps = {
     disabled: false,
     className: '',
     autoCapitalize: 'none',
-    required: false
+    required: false,
+    autoFocus: false
 };
 
 export default withForm(Input);
