@@ -14,7 +14,7 @@ export function withForm(Component) {
                             ? componentRef.current.state.errors
                             : null;
 
-                    if(props.wrapper || props.label) {
+                    if(props.wrapper !== false && (props.label || props.wrapper)) {
                         return (
                             <FormElementWrapper id={props.id}
                                                 label={props.label}
