@@ -13,20 +13,29 @@
                 }
             }
         }
+
+
+
         &__single-value, &__placeholder{
             color: var(--color-input-text);
+        }
+        &__indicators{
+            border-radius: 0 .25rem .25rem 0;
+            margin-bottom: 1px;
+            &:hover{
+                background-color: var(--color-input-hover-button);
+                transition: var(--input-transition);
+            }
         }
         &__indicator {
             color: var(--color-input-border);
             cursor: pointer;
             padding: 5px;
-            transition: var(--input-transition);
             &:last-child{
                 border-left: 1px solid var(--color-input-border);
                 height: 86%;
                 &:hover{
                     color: var(--color-input-hover-text);
-                    background-color: var(--color-input-hover-button);
                 }
             }
             &-separator{
