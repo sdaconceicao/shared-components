@@ -10,12 +10,6 @@ import './Slider.scss';
 
 export class Slider extends FormElement {
 
-    componentDidUpdate(prevProps){
-        if(this.props.value !== prevProps.value){
-            this.setState({value: this.props.value});
-        }
-    }
-
     onChange = (value) =>{
         const {onChange} = this.props;
         this.setState({value});

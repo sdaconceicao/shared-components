@@ -20,20 +20,6 @@ export class ImagePicker extends FormElement {
         value: this.props.value
     };
 
-    shouldComponentUpdate(nextProps, nextState){
-        const shouldUpdate = super.shouldComponentUpdate(nextProps, nextState);
-        if (!shouldUpdate){
-            if(this.state.loading !== nextState.loading
-                || this.state.loadedImage !== nextState.loadedImage){
-                return true;
-            } else {
-                return true;
-            }
-        } else {
-            return true;
-        }
-    }
-
     onChange = (value) =>{
         const {onChange} = this.props;
         this.setState({value, loading: false});

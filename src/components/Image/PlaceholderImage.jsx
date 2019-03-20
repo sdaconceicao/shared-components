@@ -7,7 +7,6 @@ export const PlaceholderImage = ({className, alt}) => (
     <img className={`placeholder ${className}`} src={image} alt={alt}/>
 );
 
-
 PlaceholderImage.propTypes = {
     className: PropTypes.string,
     alt: PropTypes.string

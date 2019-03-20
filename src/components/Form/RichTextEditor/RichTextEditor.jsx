@@ -27,19 +27,6 @@ export class RichTextEditor extends FormElement {
         });
     };
 
-    shouldComponentUpdate(nextProps, nextState){
-        const shouldUpdate = super.shouldComponentUpdate(nextProps, nextState);
-        if (!shouldUpdate){
-            if(this.state.editorState !== nextState.editorState){
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return true;
-        }
-    }
-
     getValue(){
         const html = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
         return html.trim() === "<p></p>"

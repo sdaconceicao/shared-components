@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {FormattedMessage} from 'react-intl';
 import PropTypes from "prop-types";
 
 /** Abstract FormElement class used to setup forms for usage within Form component */
-export class FormElement extends Component {
+export class FormElement extends PureComponent {
 
     state = {
         value: this.props.value,
@@ -20,17 +20,6 @@ export class FormElement extends Component {
 
     componentDidUpdate(prevProps){
         this.props.value !== prevProps.value && this.setState({ value: this.props.value });
-    }
-
-    shouldComponentUpdate(nextProps, nextState){
-        if(this.state.value !== nextState.value ||
-            this.props.value !== nextProps.value ||
-            this.props.disabled !== nextProps.disabled ||
-            this.state.errors !== nextState.errors){
-            return true;
-        } else {
-            return false;
-        }
     }
 
     onChange = (e) => {
