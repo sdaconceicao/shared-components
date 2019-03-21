@@ -18,8 +18,18 @@ export class Duration extends FormElement {
         value: this.props.value
     };
 
-    hours = Array.from(Array(60), (_, x)=> {return {label: `${x+1} ${x < 1 ? 'hr' : 'hrs'}`, value: x+1}});
-    minutes = Array.from(Array(60), (_, x)=> {return {label: `${x+1} ${x < 1 ? 'min' : 'mins'}`, value: x+1}});
+    hours = Array.from(Array(61), (_, x)=> ({
+        label: `${x === 0 
+            ? '-----' 
+            : `${x} ${x === 1 ? 'hr' : 'hrs'}`}`,
+        value: x
+    }));
+    minutes = Array.from(Array(61), (_, x)=> ({
+        label: `${x === 0
+            ? '-----'
+            : `${x} ${x === 1 ? 'min' : 'mins'}`}`,
+        value: x
+    }));
 
     onChange = (e, type) =>{
         const {onChange} = this.props;
