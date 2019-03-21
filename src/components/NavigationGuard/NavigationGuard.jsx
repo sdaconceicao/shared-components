@@ -44,7 +44,7 @@ export class NavigationGuard extends Component {
     });
 
     render() {
-        const {when, message} = this.props,
+        const {when, title, message} = this.props,
             {show} = this.state;
         return (
             <Fragment>
@@ -52,8 +52,10 @@ export class NavigationGuard extends Component {
                     when={when}
                     message={this.handleBlockedNavigation}/>
                 {show &&
-                    <ModalConfirm title={message}
-                                  resolve={this.handleConfirmNavigation}/>
+                    <ModalConfirm title={title}
+                                  resolve={this.handleConfirmNavigation}>
+                        <div className="p-3">{message}</div>
+                    </ModalConfirm>
                 }
             </Fragment>
         )
@@ -63,7 +65,8 @@ export class NavigationGuard extends Component {
 NavigationGuard.propTypes = {
     when: PropTypes.bool.isRequired,
     history: PropTypes.object.isRequired,
-    message: PropTypes.string.isRequired
+    title:  PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    message: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired
 };
 
 export default NavigationGuard;

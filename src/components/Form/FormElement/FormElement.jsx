@@ -23,9 +23,10 @@ export class FormElement extends PureComponent {
     }
 
     onChange = (e) => {
-        this.setState({value: e && e.value});
+        this.setState({value: e && e.value, dirty: true});
         this.props.onChange && this.props.onChange({
             value: e.value,
+            dirty: true,
             name: this.props.name
         });
     };

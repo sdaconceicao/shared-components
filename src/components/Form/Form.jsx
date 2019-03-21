@@ -9,7 +9,19 @@ import "./Form.scss";
 export class Form extends Component {
 
     elements = [];
-    state = {};
+    state = {
+        dirty: false
+    };
+
+    onChange = (e) => {
+        const {onChange} = this.props;
+        if (e.dirty !== this.state.dirty){
+            this.setState({dirty:e.dirty || true}, ()=>{
+                onChange && onChange({dirty: this.state.dirty});
+            });
+        }
+
+    };
 
     addFormElement = (element) =>{
         if(this.elements.indexOf(element) === -1) {
@@ -49,7 +61,6 @@ export class Form extends Component {
                     results[name] = element.getValue();
                 }
             } else {
-
                 errors.push(...element.state.errors);
             }
         });
@@ -57,7 +68,7 @@ export class Form extends Component {
             if (errors.length > 0) {
                 this.setState({errors});
             } else {
-                this.setState({errors: null});
+                this.setState({errors: null, dirty: false});
                 this.props.onSubmit(results);
             }
         });
@@ -69,7 +80,8 @@ export class Form extends Component {
         return (
             <FormContext.Provider value={{
                     addFormElement: this.addFormElement,
-                    removeFormElement: this.removeFormElement
+                    removeFormElement: this.removeFormElement,
+                    onChange: this.onChange
                 }}>
                 <form onSubmit={this.onSubmit} className={`form ${className}`}>
                     <Fragment>
