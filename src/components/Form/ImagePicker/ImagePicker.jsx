@@ -7,7 +7,7 @@ import {Spinner} from '../../Loaders';
 import {withForm} from '../FormContext';
 import FormElement from '../FormElement';
 import Button from '../Button';
-import FilePicker from '../FilePicker';
+import {FilePicker} from '../FilePicker';
 import {Image, ImageMeta} from "../../Image";
 
 import './ImagePicker.scss';
@@ -31,6 +31,7 @@ export class ImagePicker extends FormElement {
     };
 
     onImageLoad = (loadedImage) =>{
+        console.log("LOADED");
         this.setState({loadedImage});
     };
 
