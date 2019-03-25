@@ -41,7 +41,7 @@ export class FormElement extends PureComponent {
                 errors = [];
             if(required && !this.getValue()){
                 errors.push({
-                    type: required,
+                    type: "required",
                     value: <FormattedMessage id='form.fieldRequired' values={{name: label || name}}/>
                 });
             }

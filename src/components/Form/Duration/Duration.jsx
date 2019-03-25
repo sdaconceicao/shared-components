@@ -76,7 +76,7 @@ export class Duration extends FormElement {
 };
 
 Duration.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
     disabled: PropTypes.bool,

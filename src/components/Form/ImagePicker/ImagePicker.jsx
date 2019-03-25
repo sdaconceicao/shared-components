@@ -31,7 +31,6 @@ export class ImagePicker extends FormElement {
     };
 
     onImageLoad = (loadedImage) =>{
-        console.log("LOADED");
         this.setState({loadedImage});
     };
 
