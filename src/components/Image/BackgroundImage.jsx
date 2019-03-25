@@ -34,7 +34,7 @@ export class BackgroundImage extends Component {
     };
 
     render() {
-        const {className, src, alt, style, children} = this.props,
+        const {className, src, alt, style, children, placeholder} = this.props,
             {orientation, loading} = this.state;
         return (
             <Fragment>
@@ -62,7 +62,8 @@ BackgroundImage.propTypes = {
 };
 
 BackgroundImage.defaultProps = {
-    className: ''
+    className: '',
+    placeholder: placeholder
 };
 
 export default BackgroundImage;

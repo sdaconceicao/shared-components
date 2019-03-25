@@ -39,7 +39,7 @@ export class ImagePicker extends FormElement {
     };
 
     render() {
-        const {id, name, layout, tabIndex, className, buttonClassName, disabled, accepts, showMeta, index} = this.props,
+        const {id, name, layout, tabIndex, className, placeholder, buttonClassName, disabled, accepts, showMeta, index} = this.props,
             {value, loading, loadedImage} = this.state;
         return (
             <div className={`image-picker ${layout}
@@ -48,6 +48,7 @@ export class ImagePicker extends FormElement {
                 <div className="image-picker__preview">
                     <Image src={value}
                           className="image-picker__preview-image"
+                          placeholder={placeholder}
                           onLoad={this.onImageLoad} />
                     {value &&
                         <Button className={`image-picker__remove ${buttonClassName}`}
@@ -86,6 +87,7 @@ ImagePicker.propTypes = {
     tabIndex: PropTypes.number.isRequired,
     accepts: PropTypes.string,
     layout: PropTypes.string,
+    placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     required: PropTypes.bool,

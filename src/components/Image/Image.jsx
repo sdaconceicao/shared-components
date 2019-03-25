@@ -39,7 +39,7 @@ export class Image extends PureComponent {
 
         return (
             <Fragment>
-                {(loading || !src) && placeholder && placeholder({alt, className})}
+                {(loading || !src)  && <PlaceholderImage alt={alt} src={placeholder} className={className}/>}
                 <img className={`${className} ${orientation} ${loading || !src ? 'd-none' : ''}`}
                      onLoad={this.onLoad}
                      ref={this.loadedImage}
@@ -56,12 +56,11 @@ Image.propTypes = {
     src: PropTypes.string,
     alt: PropTypes.string,
     onLoad: PropTypes.func,
-    placeholder: PropTypes.oneOfType([PropTypes.func, PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.bool])
+    placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 Image.defaultProps = {
     className: '',
-    placeholder:  PlaceholderImage
 };
 
 export default Image;
