@@ -25,7 +25,7 @@ const options = [
     {label: "Ham", value: "ham"}
 ];
 
-const tags = [{id: 1, value: 'breakfast'}, {id: 2, value: 'tasty'}],
+const tags = [{id: 1, name: 'breakfast'}, {id: 2, name: 'tasty'}],
     duration = 5;
 
 const withCustomPreview = withDocs({
