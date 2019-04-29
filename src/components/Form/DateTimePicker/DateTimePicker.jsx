@@ -12,6 +12,8 @@ import FormElement from "../FormElement";
 import Popover from "../../Popover";
 import TimePicker from "../TimePicker/TimePicker";
 
+import './DateTimePicker.scss';
+
 /** Date/Time Picker input component with optional label */
 export class DateTimePicker extends FormElement {
 
@@ -46,7 +48,7 @@ export class DateTimePicker extends FormElement {
             <div className={`date-time-picker ${className}`}>
                 <Popover title={<FormattedMessage id="datePicker.title"/>}
                          target={btnTarget}>
-                    <div className={`date-picker-wrapper ${className}`}>
+                    <div className={`date-time-picker-wrapper ${className}`}>
                         <Calendar
                             onChange={this.onChangeDate}
                             calendarType="US"

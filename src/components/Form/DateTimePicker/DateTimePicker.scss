@@ -1,0 +1,15 @@
+.date-time-picker-wrapper{
+    .react-calendar {
+        width: 100%;
+    }
+    .time-picker{
+        &__hours, &__minutes, &__ampm{
+            min-width: 80px;
+            width: 32%;
+        }
+        .styled-select-wrapper{
+            margin-left: 3px;
+            margin-top: 3px;
+        }
+    }
+}
